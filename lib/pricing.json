@@ -1,0 +1,17 @@
+{
+  "currency": "UAH",
+  "basePrices": {
+    "ctScan": 1500,
+    "implantSingle": 14000,
+    "allOn4": 115000,
+    "allOn6": 165000,
+    "veneersUnit": 16000,
+    "sedationHour": 4500,
+    "alignersCourse": 65000
+  },
+  "multipliers": {
+    "standardRestoration": 1.0,
+    "complexAtrophy": 1.25,
+    "premiumMaterials": 1.35
+  }
+}
