@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useEffect } from "react";
@@ -7,188 +6,178 @@ import { useLocale } from "@/lib/i18n";
 export default function Header() {
   const { locale, setLocale, t } = useLocale();
   const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 40);
+      setScrolled(window.scrollY > 30);
     };
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const navLinks = [
-    { href: "#about", label: String(t("nav.about")) },
-    { href: "#services", label: String(t("nav.services")) },
-    { href: "#prices", label: String(t("nav.prices")) },
-    { href: "#anesthesia", label: String(t("nav.anesthesia")) },
-    { href: "#team", label: String(t("nav.team")) },
-    { href: "#faq", label: String(t("nav.faq")) },
-    { href: "#contacts", label: String(t("nav.contacts")) },
+    { href: "#philosophy", label: t("nav.philosophy") as string },
+    { href: "#services", label: t("nav.services") as string },
+    { href: "#calculator", label: t("nav.calculator") as string },
+    { href: "#technology", label: t("nav.technology") as string },
+    { href: "#team", label: t("nav.team") as string },
+    { href: "#reviews", label: t("nav.reviews") as string },
+    { href: "#faq", label: t("nav.faq") as string },
   ];
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-[hsl(212_48%_9%/0.95)] backdrop-blur-md py-3 shadow-lg border-b border-white/10 text-white"
-          : "bg-gradient-to-b from-black/80 via-black/40 to-transparent py-5 text-white"
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-        {/* Typographic Wordmark Logo */}
-        <a href="#" className="flex items-center gap-3 group">
-          <div className="w-8 h-8 rounded-lg bg-[hsl(185_85%_36%)] flex items-center justify-center text-white font-bold text-base shadow-md group-hover:scale-105 transition-transform">
-            S
-          </div>
-          <div className="flex flex-col">
-            <span className="font-display text-lg sm:text-xl font-bold tracking-wider uppercase leading-none">
-              SYMMETRICA
-            </span>
-            <span className="text-[0.6rem] tracking-widest text-[hsl(185_85%_45%)] uppercase font-semibold mt-0.5">
-              Львів · вул. Стрийська, 45
-            </span>
-          </div>
-        </a>
-
-        {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center gap-6 text-xs font-semibold tracking-wide">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="text-white/80 hover:text-[hsl(185_85%_45%)] transition-colors py-1"
-            >
-              {link.label}
-            </a>
-          ))}
-        </nav>
-
-        {/* Header Right Actions */}
-        <div className="hidden sm:flex items-center gap-4">
-          {/* Language Switcher */}
-          <div className="flex items-center rounded-full bg-white/10 p-0.5 border border-white/15 text-xs">
-            <button
-              onClick={() => setLocale("uk")}
-              className={`px-2.5 py-1 rounded-full font-semibold transition-all ${
-                locale === "uk"
-                  ? "bg-[hsl(185_85%_36%)] text-white shadow-sm"
-                  : "text-white/70 hover:text-white"
-              }`}
-            >
-              UA
-            </button>
-            <button
-              onClick={() => setLocale("en")}
-              className={`px-2.5 py-1 rounded-full font-semibold transition-all ${
-                locale === "en"
-                  ? "bg-[hsl(185_85%_36%)] text-white shadow-sm"
-                  : "text-white/70 hover:text-white"
-              }`}
-            >
-              EN
-            </button>
-          </div>
-
-          {/* Direct Phone */}
-          <a
-            href={`tel:${String(t("nav.phone")).replace(/[^0-9+]/g, "")}`}
-            className="text-xs font-bold text-white hover:text-[hsl(185_85%_45%)] transition-colors whitespace-nowrap tabular-nums"
-          >
-            {String(t("nav.phone"))}
+    <>
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          scrolled
+            ? "bg-bg-dark/95 backdrop-blur-md py-2.5 shadow-xl border-b border-border-dark text-white"
+            : "bg-gradient-to-b from-bg-dark/90 via-bg-dark/50 to-transparent py-4 text-white"
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+          {/* Typographic Logo Wordmark with Minimal Geometry */}
+          <a href="#" className="flex items-center gap-3 group focus-visible:outline-accent">
+            <div className="w-9 h-9 rounded bg-accent flex items-center justify-center font-display font-bold text-lg text-white shadow-md group-hover:bg-accent-hover transition-colors">
+              S
+            </div>
+            <div className="flex flex-col">
+              <span className="font-display font-extrabold text-lg sm:text-xl tracking-widest text-white leading-none">
+                SYMMETRICA
+              </span>
+              <span className="text-[9px] uppercase tracking-[0.25em] text-accent font-mono font-medium mt-1">
+                Dental Reconstruction
+              </span>
+            </div>
           </a>
 
-          {/* Book CTA */}
-          <a
-            href="#booking"
-            className="px-4 py-2.5 rounded-lg bg-[hsl(185_85%_36%)] hover:bg-[hsl(185_85%_30%)] text-white text-[0.7rem] font-bold uppercase tracking-wider transition-all shadow-md hover:shadow-lg"
-          >
-            {String(t("nav.bookCta"))}
-          </a>
-        </div>
-
-        {/* Mobile Hamburger Toggle */}
-        <button
-          onClick={() => setMenuOpen(!menuOpen)}
-          className="lg:hidden p-2 rounded-lg text-white hover:bg-white/10 transition-colors"
-          aria-label="Toggle Menu"
-        >
-          <div className="w-6 h-5 flex flex-col justify-between">
-            <span
-              className={`h-0.5 w-full bg-white transition-transform ${
-                menuOpen ? "rotate-45 translate-y-2" : ""
-              }`}
-            />
-            <span
-              className={`h-0.5 w-full bg-white transition-opacity ${
-                menuOpen ? "opacity-0" : ""
-              }`}
-            />
-            <span
-              className={`h-0.5 w-full bg-white transition-transform ${
-                menuOpen ? "-rotate-45 -translate-y-2" : ""
-              }`}
-            />
-          </div>
-        </button>
-      </div>
-
-      {/* Mobile Fullscreen Menu Overlay */}
-      {menuOpen && (
-        <div className="lg:hidden fixed inset-0 top-[60px] bg-[hsl(212_48%_9%)] z-50 flex flex-col justify-between p-6 overflow-y-auto animate-fadeIn">
-          <div className="flex flex-col gap-4 text-base font-medium pt-4">
+          {/* Desktop Nav */}
+          <nav className="hidden xl:flex items-center gap-6 text-xs uppercase tracking-wider font-mono">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                onClick={() => setMenuOpen(false)}
-                className="text-white/90 hover:text-[hsl(185_85%_45%)] py-2 border-b border-white/10 font-display text-lg"
+                className="text-white/80 hover:text-accent transition-colors py-1 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-accent hover:after:w-full after:transition-all"
               >
                 {link.label}
               </a>
             ))}
+          </nav>
+
+          {/* Right Controls */}
+          <div className="hidden sm:flex items-center gap-4">
+            {/* Lang switcher */}
+            <div className="flex items-center rounded-full bg-white/10 p-0.5 border border-white/15 text-[11px] font-mono">
+              <button
+                type="button"
+                onClick={() => setLocale("uk")}
+                className={`px-2.5 py-0.5 rounded-full font-bold transition-all ${
+                  locale === "uk" ? "bg-accent text-white" : "text-white/70 hover:text-white"
+                }`}
+              >
+                UA
+              </button>
+              <button
+                type="button"
+                onClick={() => setLocale("en")}
+                className={`px-2.5 py-0.5 rounded-full font-bold transition-all ${
+                  locale === "en" ? "bg-accent text-white" : "text-white/70 hover:text-white"
+                }`}
+              >
+                EN
+              </button>
+            </div>
+
+            {/* Direct Phone Link */}
+            <a
+              href="tel:+380674589258"
+              className="text-xs font-mono font-bold tracking-wider text-white hover:text-accent transition-colors hidden md:block"
+            >
+              +38 (067) 458-92-58
+            </a>
+
+            {/* Primary CTA */}
+            <a
+              href="#contacts"
+              className="px-4 py-2 rounded bg-accent hover:bg-accent-hover text-white text-xs uppercase tracking-wider font-mono font-bold transition-all shadow-md hover:shadow-lg"
+            >
+              {t("nav.bookCta") as string}
+            </a>
           </div>
 
-          <div className="pt-6 flex flex-col gap-4 border-t border-white/15">
-            <div className="flex items-center justify-between">
-              <span className="text-xs text-white/60">Мова сайту:</span>
-              <div className="flex items-center rounded-full bg-white/10 p-1 border border-white/15 text-xs">
-                <button
-                  onClick={() => setLocale("uk")}
-                  className={`px-3 py-1 rounded-full font-semibold ${
-                    locale === "uk" ? "bg-[hsl(185_85%_36%)] text-white" : "text-white/70"
-                  }`}
+          {/* Mobile hamburger button */}
+          <button
+            type="button"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="xl:hidden p-2 rounded bg-white/10 text-white hover:bg-white/20 transition-colors"
+            aria-label="Toggle navigation menu"
+          >
+            <span className="font-mono text-xs uppercase tracking-widest">
+              {mobileMenuOpen ? "CLOSE" : "MENU"}
+            </span>
+          </button>
+        </div>
+      </header>
+
+      {/* Full-screen Mobile Overlay */}
+      {mobileMenuOpen && (
+        <div className="fixed inset-0 z-40 bg-bg-dark/98 backdrop-blur-2xl flex flex-col justify-between p-6 pt-24 text-white xl:hidden border-b border-border-dark">
+          <div className="space-y-6">
+            <p className="text-[10px] font-mono uppercase tracking-[0.3em] text-accent">
+              НАВІГАЦІЯ КЛІНІКИ
+            </p>
+            <div className="flex flex-col gap-3">
+              {navLinks.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="font-display text-2xl text-white/90 hover:text-accent transition-colors"
                 >
-                  UA
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <div className="space-y-4 pt-6 border-t border-border-dark/60">
+            <div className="flex items-center justify-between text-xs font-mono">
+              <span className="text-white/60">Language:</span>
+              <div className="flex gap-2">
+                <button
+                  type="button"
+                  onClick={() => { setLocale("uk"); setMobileMenuOpen(false); }}
+                  className={`px-3 py-1 rounded text-xs font-bold ${locale === "uk" ? "bg-accent text-white" : "bg-white/10 text-white/80"}`}
+                >
+                  УКРАЇНСЬКА
                 </button>
                 <button
-                  onClick={() => setLocale("en")}
-                  className={`px-3 py-1 rounded-full font-semibold ${
-                    locale === "en" ? "bg-[hsl(185_85%_36%)] text-white" : "text-white/70"
-                  }`}
+                  type="button"
+                  onClick={() => { setLocale("en"); setMobileMenuOpen(false); }}
+                  className={`px-3 py-1 rounded text-xs font-bold ${locale === "en" ? "bg-accent text-white" : "bg-white/10 text-white/80"}`}
                 >
-                  EN
+                  ENGLISH
                 </button>
               </div>
             </div>
 
             <a
-              href={`tel:${String(t("nav.phone")).replace(/[^0-9+]/g, "")}`}
-              className="text-center py-3 rounded-xl bg-white/10 text-white font-bold text-sm tracking-wider tabular-nums"
+              href="tel:+380674589258"
+              className="block text-center py-3 rounded bg-white/10 font-mono font-bold text-accent text-xs tracking-widest uppercase hover:bg-white/15 transition-colors"
             >
-              {String(t("nav.phone"))}
+              +38 (067) 458-92-58
             </a>
 
             <a
-              href="#booking"
-              onClick={() => setMenuOpen(false)}
-              className="text-center py-3.5 rounded-xl bg-[hsl(185_85%_36%)] text-white font-bold text-xs uppercase tracking-wider shadow-lg"
+              href="#contacts"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block text-center py-3.5 rounded bg-accent text-white font-mono font-bold text-xs uppercase tracking-widest transition-all shadow-lg"
             >
-              {String(t("nav.bookCta"))}
+              {t("nav.bookCta") as string}
             </a>
           </div>
         </div>
       )}
-    </header>
+    </>
   );
 }

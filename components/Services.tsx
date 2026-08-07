@@ -1,109 +1,116 @@
-
 "use client";
 
+import { useState } from "react";
 import { useLocale } from "@/lib/i18n";
 
 export default function Services() {
   const { t } = useLocale();
 
-  const servicesList = [
-    {
-      title: "Дентальна імплантація All-on-4 / All-on-6",
-      desc: "Повне відновлення зубів однієї чи двох щелеп за 24 години із фіксацією незнімного протеза.",
-      tag: "Хірургія 1 дня",
-      img: "https://cdn.prod.website-files.com/65b22ee2a70bd488c02e918e%2F69ccddd651f817894d3f03fd_IMG_6295_poster.0000000.jpg",
-    },
-    {
-      title: "Естетичні вініри E-max & Digital Smile",
-      desc: "Ультратонкі керамічні реставрації для створення гармонійної привабливої усмішки у Symmetrica Tech.",
-      tag: "Естетика",
-      img: "https://cdn.prod.website-files.com/65b22ee2a70bd488c02e918e/65b771ee887ca5129d7d8f50_action-bg.webp",
-    },
-    {
-      title: "Лікування та хірургія уві сні (Седація)",
-      desc: "Штатні анестезіологи забезпечують повний спокій, відсутність тривоги та болю під час складних операцій.",
-      tag: "Без болю",
-      img: "https://cdn.prod.website-files.com/65b22ee2a70bd488c02e918e/681b1e8bf899772803dd4c7b_8e1180665795c3da9ae4e62d22e4b3065cdf1840-p-800.webp",
-    },
-    {
-      title: "Комп'ютерна 3D-томографія та аксіографія",
-      desc: "Високоточна об'ємна діагностика щелеп, скронево-нижньощелепних суглобів та дихальних шляхів.",
-      tag: "Діагностика",
-      img: "https://cdn.prod.website-files.com/65b22ee2a70bd488c02e918e/65b82231067a84cf47b2be41_lines-consult.png",
-    },
-    {
-      title: "Ортодонтія: Елайнери Invisalign & Брекети",
-      desc: "Виправлення прикусу з репрограмуванням м'язів обличчя та мікрострумовою терапією Ortho-Tricks.",
-      tag: "Ортодонтія",
-      img: "https://cdn.prod.website-files.com/65b22ee2a70bd488c02e918e/65b4130011d71e7133725038_bg-team.webp",
-    },
-    {
-      title: "Swiss GBT Професійна гігієна та відбілювання",
-      desc: "Атраматичне видалення нальоту швейцарським протоколом GBT з ніжним доглядом за яснами.",
-      tag: "Профілактика",
-      img: "https://cdn.prod.website-files.com/65b22ee2a70bd488c02e918e/65b77a267afb1b0ddb1d9b69_trust-image-1-p-800.webp",
-    },
-  ];
+  const [activeCategory, setActiveCategory] = useState<string>("ВСІ");
+
+  const services = t("services.items") as Array<{
+    id: string;
+    category: string;
+    title: string;
+    price: string;
+    time: string;
+    description: string;
+    tag: string;
+    signature?: boolean;
+  }>;
+
+  const categories = ["ВСІ", "Імплантація & Хірургія", "Естетика & Ортопедія", "Анестезіологія", "Діагностика & Ортодонтія"];
+
+  const filteredServices = Array.isArray(services)
+    ? activeCategory === "ВСІ"
+      ? services
+      : services.filter((s) => s.category === activeCategory)
+    : [];
 
   return (
-    <section id="services" className="relative py-20 sm:py-24 bg-[hsl(212_48%_9%)] text-white overflow-hidden">
-      {/* Background Watermark Type */}
-      <div
-        aria-hidden="true"
-        className="absolute top-10 right-0 text-[16vw] font-display font-black text-white/[0.02] pointer-events-none select-none uppercase whitespace-nowrap z-0"
-      >
-        SERVICES
-      </div>
-
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-xs font-bold uppercase tracking-widest text-[hsl(185_85%_45%)] block mb-3">
-            {String(t("services.kicker"))}
+    <section id="services" className="py-20 sm:py-24 bg-primary text-white relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        {/* Header Block */}
+        <div className="max-w-3xl space-y-4">
+          <span className="text-xs font-mono uppercase tracking-[0.25em] text-accent font-bold block">
+            {t("services.kicker") as string}
           </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold mb-4">
-            {String(t("services.title"))}
+          <h2 className="text-3xl sm:text-5xl font-display font-bold text-white leading-tight">
+            {t("services.title") as string}
           </h2>
-          <p className="text-sm sm:text-base text-white/70 font-body">
-            {String(t("services.subtitle"))}
+          <p className="text-base sm:text-lg text-white/70 font-body">
+            {t("services.subtitle") as string}
           </p>
         </div>
 
-        {/* Action Photo Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {servicesList.map((item, idx) => (
-            <div
-              key={idx}
-              className="group relative rounded-2xl overflow-hidden bg-white/5 border border-white/10 flex flex-col justify-end min-h-[380px] shadow-xl hover:border-[hsl(185_85%_36%)] transition-all duration-300"
+        {/* Category Filters */}
+        <div className="flex flex-wrap gap-2 border-b border-white/10 pb-4">
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              type="button"
+              onClick={() => setActiveCategory(cat)}
+              className={`px-4 py-2 rounded text-xs font-mono uppercase tracking-wider transition-all ${
+                activeCategory === cat
+                  ? "bg-accent text-white font-bold"
+                  : "bg-white/5 text-white/70 hover:bg-white/10 hover:text-white"
+              }`}
             >
-              {/* Image background with dark scrim overlay */}
-              <img
-                src={item.img}
-                alt={item.title}
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-55"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[hsl(212_48%_9%)] via-[hsl(212_48%_9%/0.7)] to-transparent" />
+              {cat}
+            </button>
+          ))}
+        </div>
 
-              {/* Card Content */}
-              <div className="relative z-10 p-6 flex flex-col items-start">
-                <span className="px-3 py-1 rounded-full bg-[hsl(185_85%_36%)] text-white text-[0.65rem] font-bold uppercase tracking-wider mb-3">
-                  {item.tag}
-                </span>
-                <h3 className="text-lg font-display font-bold text-white mb-2 leading-tight group-hover:text-[hsl(185_85%_45%)] transition-colors">
-                  {item.title}
-                </h3>
-                <p className="text-xs text-white/80 font-body leading-relaxed mb-4">
-                  {item.desc}
-                </p>
-                <a
-                  href="#booking"
-                  className="text-xs font-bold text-[hsl(185_85%_45%)] hover:underline inline-flex items-center gap-1 uppercase tracking-wider"
-                >
-                  Записатись на прийом →
-                </a>
+        {/* Offer Rows with Dotted Leaders */}
+        <div className="space-y-3">
+          {filteredServices.map((item) => (
+            <div
+              key={item.id}
+              className={`p-6 rounded-xl transition-all border ${
+                item.signature
+                  ? "bg-primary-light border-accent shadow-xl"
+                  : "bg-primary-light/40 hover:bg-primary-light/70 border-white/10"
+              }`}
+            >
+              <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
+                <div className="flex items-center gap-3 flex-wrap">
+                  <span className="text-xs font-mono uppercase tracking-widest text-accent font-bold">
+                    [{item.tag}]
+                  </span>
+                  <h3 className="text-lg sm:text-xl font-display font-bold text-white">
+                    {item.title}
+                  </h3>
+                </div>
+
+                {/* Dotted Leader Line (hidden on tiny screens) */}
+                <div className="hidden md:block flex-grow border-b border-dotted border-white/20 mx-4" />
+
+                <div className="flex items-baseline gap-4 shrink-0">
+                  <span className="text-xs font-mono text-white/50">
+                    {item.time}
+                  </span>
+                  <span className="text-xl font-display font-bold text-accent tabular-nums">
+                    {item.price}
+                  </span>
+                </div>
               </div>
+
+              <p className="text-xs sm:text-sm font-body text-white/70 mt-2 max-w-4xl leading-relaxed">
+                {item.description}
+              </p>
             </div>
           ))}
+        </div>
+
+        {/* Footnote & Secondary CTA */}
+        <div className="pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-white/60">
+          <p className="max-w-2xl">{t("services.footnote") as string}</p>
+          <a
+            href="#contacts"
+            className="px-6 py-3 rounded bg-accent hover:bg-accent-hover text-white font-bold uppercase tracking-wider transition-all shrink-0"
+          >
+            Замовити кошторис —
+          </a>
         </div>
       </div>
     </section>
