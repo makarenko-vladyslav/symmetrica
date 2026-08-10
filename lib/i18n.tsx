@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useState, useCallback, type ReactNode } from 'react';
+import { createContext, useContext, useState, useEffect, useCallback, type ReactNode } from 'react';
 import content from '@/lib/content.json';
 
 interface LocaleContextType {
@@ -16,12 +16,15 @@ const LocaleContext = createContext<LocaleContextType>({
 });
 
 export function LocaleProvider({ children }: { children: ReactNode }) {
-  const [locale, setLocaleState] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return localStorage.getItem('locale') || content.defaultLocale;
-    }
-    return content.defaultLocale;
-  });
+  const [locale, setLocaleState] = useState(content.defaultLocale);
+
+  // Читаємо збережений вибір ПІСЛЯ монтування: сторінка це статичний експорт,
+  // і перший рендер на клієнті мусить збігтися з HTML, інакше React викидає
+  // серверне дерево цілком (помилка #418).
+  useEffect(() => {
+    const saved = localStorage.getItem('locale');
+    if (saved && saved !== content.defaultLocale) setLocaleState(saved);
+  }, []);
 
   const setLocale = useCallback((l: string) => {
     setLocaleState(l);
