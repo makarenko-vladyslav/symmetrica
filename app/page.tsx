@@ -1,47 +1,39 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import SocialProof from "@/components/SocialProof";
-import Philosophy from "@/components/Philosophy";
+import DiagnosticsTech from "@/components/DiagnosticsTech";
 import Services from "@/components/Services";
-import Calculator from "@/components/Calculator";
-import TechAndAnesthesia from "@/components/TechAndAnesthesia";
+import TreatmentCalculator from "@/components/TreatmentCalculator";
+import SedationSection from "@/components/SedationSection";
+import DigitalLabSection from "@/components/DigitalLabSection";
 import BeforeAfter from "@/components/BeforeAfter";
-import Team from "@/components/Team";
+import TeamSection from "@/components/TeamSection";
+import SterilizationProtocol from "@/components/SterilizationProtocol";
 import Testimonials from "@/components/Testimonials";
-import Gallery from "@/components/Gallery";
-import Faq from "@/components/Faq";
-import CtaBanner from "@/components/CtaBanner";
-import ContactSection from "@/components/ContactSection";
+import FaqSection from "@/components/FaqSection";
+import BookingForm from "@/components/BookingForm";
+import LocationSection from "@/components/LocationSection";
 import Footer from "@/components/Footer";
-import { InterstitialHairline, InterstitialStatement } from "@/components/Interstitials";
-import { Reveal } from "@/components/motion";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-bg-light text-text-main">
+    <div className="relative min-h-screen bg-[var(--color-bg-light)]">
       <Header />
-      <main>
-        <Reveal><Hero /></Reveal>
-        <Reveal><SocialProof /></Reveal>
-        <Reveal><Philosophy /></Reveal>
-        <Reveal>
-          <InterstitialStatement
-            quote="Точне планування та власна CAD/CAM лабораторія дозволяють виключати помилки людського фактора."
-            source="Symmetrica Dental Quality Protocol"
-          />
-        </Reveal>
-        <Reveal><Services /></Reveal>
-        <Reveal><InterstitialHairline label="ІНТЕРАКТИВНИЙ КОШТОРИС" /></Reveal>
-        <Reveal><Calculator /></Reveal>
-        <Reveal><TechAndAnesthesia /></Reveal>
-        <Reveal><BeforeAfter /></Reveal>
-        <Reveal><Team /></Reveal>
-        <Reveal><InterstitialHairline label="СЛОВО ПАЦІЄНТІВ" /></Reveal>
-        <Reveal><Testimonials /></Reveal>
-        <Reveal><Gallery /></Reveal>
-        <Reveal><Faq /></Reveal>
-        <Reveal><CtaBanner /></Reveal>
-        <Reveal><ContactSection /></Reveal>
+      <main id="main-content">
+        <Hero />
+        <SocialProof />
+        <DiagnosticsTech />
+        <Services />
+        <TreatmentCalculator />
+        <SedationSection />
+        <DigitalLabSection />
+        <BeforeAfter />
+        <TeamSection />
+        <SterilizationProtocol />
+        <Testimonials />
+        <FaqSection />
+        <BookingForm />
+        <LocationSection />
       </main>
       <Footer />
     </div>

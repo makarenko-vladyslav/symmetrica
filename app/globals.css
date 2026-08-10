@@ -1,19 +1,17 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: hsl(215 35% 12%);
-  --color-primary-light: hsl(215 25% 20%);
-  --color-accent: hsl(172 80% 38%);
-  --color-accent-hover: hsl(172 85% 30%);
-  --color-accent-gold: hsl(42 75% 52%);
-  --color-bg-dark: hsl(215 40% 8%);
-  --color-bg-card-dark: hsl(215 35% 12%);
-  --color-bg-light: hsl(210 20% 98%);
-  --color-text-main: hsl(215 30% 15%);
-  --color-text-muted: hsl(215 15% 45%);
-  --color-border-light: hsl(210 15% 90%);
-  --color-border-dark: hsl(215 25% 20%);
-
+  --color-primary: hsl(218 55% 14%);
+  --color-primary-light: hsl(218 40% 22%);
+  --color-accent: hsl(38 85% 52%);
+  --color-accent-hover: hsl(38 90% 44%);
+  --color-accent-light: hsl(38 80% 95%);
+  --color-bg-dark: hsl(220 50% 9%);
+  --color-bg-light: hsl(210 30% 98%);
+  --color-bg-surface: hsl(0 0% 100%);
+  --color-text-main: hsl(218 45% 16%);
+  --color-text-muted: hsl(218 20% 45%);
+  
   --font-display: 'Playfair Display', Georgia, serif;
   --font-body: 'Lora', Georgia, serif;
 }
@@ -21,63 +19,27 @@
 @layer base {
   html {
     font-size: 16px;
+    scroll-behavior: smooth;
   }
-  @media (max-width: 1920px) {
-    html { font-size: 0.833333vw; }
-  }
-  @media (max-width: 1440px) {
-    html { font-size: 1.111111vw; }
-  }
-  @media (max-width: 1024px) {
-    html { font-size: 1.5625vw; }
-  }
-  @media (max-width: 640px) {
-    html { font-size: 4.444444vw; }
-  }
+  @media (max-width: 1920px) { html { font-size: 0.833333vw; } }
+  @media (max-width: 1440px) { html { font-size: 1.111111vw; } }
+  @media (max-width: 1024px) { html { font-size: 1.5625vw; } }
+  @media (max-width: 640px)  { html { font-size: 4.444444vw; } }
 
   body {
     font-family: var(--font-body);
     color: var(--color-text-main);
     background-color: var(--color-bg-light);
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
   }
 
-  h1, h2, h3, h4, .font-display {
+  h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
+    text-wrap: balance;
   }
 }
 
-@keyframes marquee {
-  0% { transform: translateX(0%); }
-  100% { transform: translateX(-50%); }
-}
-
-.animate-marquee {
-  display: flex;
-  width: max-content;
-  animation: marquee 35s linear infinite;
-}
-
-.animate-marquee:hover {
-  animation-play-state: paused;
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-8px); }
-}
-
-.animate-float {
-  animation: float 6s ease-in-out infinite;
-}
-
-.img-fallback {
-  background: linear-gradient(135deg, hsl(215 35% 15%) 0%, hsl(172 80% 25%) 100%);
-  min-height: 12rem;
-  border-radius: 0.75rem;
-}
-
-/* Accessibility reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
@@ -85,12 +47,83 @@
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-  .animate-marquee {
-    animation: none !important;
+}
+
+*:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+  animation: spinSlow 20s linear infinite;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: hsl(218 40% 12%);
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(38 60% 40%);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(38 85% 52%);
+}
+
+
+/* iOS Safari zooms the whole page when a focused field is under 16px. */
+@media (max-width: 1024px) {
+  input:not([type="checkbox"]):not([type="radio"]),
+  select,
+  textarea {
+    font-size: max(16px, 1em);
   }
 }
 
-:focus-visible {
-  outline: 2px solid var(--color-accent);
-  outline-offset: 3px;
+
+/* iOS Safari zooms the whole page when a focused field is under 16px. */
+@media (max-width: 1024px) {
+  input:not([type="checkbox"]):not([type="radio"]),
+  select,
+  textarea {
+    font-size: max(16px, 1em);
+  }
+}
+
+
+/* iOS Safari zooms the whole page when a focused field is under 16px. */
+@media (max-width: 1024px) {
+  input:not([type="checkbox"]):not([type="radio"]),
+  select,
+  textarea {
+    font-size: max(16px, 1em);
+  }
+}
+
+
+/* iOS Safari zooms the whole page when a focused field is under 16px. */
+@media (max-width: 1024px) {
+  input:not([type="checkbox"]):not([type="radio"]),
+  select,
+  textarea {
+    font-size: max(16px, 1em);
+  }
+}
+
+
+/* iOS Safari zooms the whole page when a focused field is under 16px. */
+@media (max-width: 1024px) {
+  input:not([type="checkbox"]):not([type="radio"]),
+  select,
+  textarea {
+    font-size: max(16px, 1em);
+  }
 }

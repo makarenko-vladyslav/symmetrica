@@ -5,175 +5,182 @@ import { useLocale } from "@/lib/i18n";
 
 export default function Header() {
   const { locale, setLocale, t } = useLocale();
-  const [scrolled, setScrolled] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 30);
+      setIsScrolled(window.scrollY > 20);
     };
-    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navLinks = [
-    { href: "#philosophy", label: t("nav.philosophy") as string },
-    { href: "#services", label: t("nav.services") as string },
-    { href: "#calculator", label: t("nav.calculator") as string },
-    { href: "#technology", label: t("nav.technology") as string },
-    { href: "#team", label: t("nav.team") as string },
-    { href: "#reviews", label: t("nav.reviews") as string },
-    { href: "#faq", label: t("nav.faq") as string },
-  ];
+  const toggleMobileMenu = () => {
+    const next = !mobileMenuOpen;
+    setMobileMenuOpen(next);
+    document.body.style.overflow = next ? "hidden" : "auto";
+  };
+
+  const closeMenu = () => {
+    setMobileMenuOpen(false);
+    document.body.style.overflow = "auto";
+  };
 
   return (
     <>
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled
-            ? "bg-bg-dark/95 backdrop-blur-md py-2.5 shadow-xl border-b border-border-dark text-white"
-            : "bg-gradient-to-b from-bg-dark/90 via-bg-dark/50 to-transparent py-4 text-white"
+          isScrolled
+            ? "bg-[var(--color-primary)]/95 backdrop-blur-md shadow-lg py-3 border-b border-white/10"
+            : "bg-gradient-to-b from-black/80 via-black/40 to-transparent py-5"
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-          {/* Typographic Logo Wordmark with Minimal Geometry */}
-          <a href="#" className="flex items-center gap-3 group focus-visible:outline-accent">
-            <div className="w-9 h-9 rounded bg-accent flex items-center justify-center font-display font-bold text-lg text-white shadow-md group-hover:bg-accent-hover transition-colors">
-              S
-            </div>
-            <div className="flex flex-col">
-              <span className="font-display font-extrabold text-lg sm:text-xl tracking-widest text-white leading-none">
-                SYMMETRICA
-              </span>
-              <span className="text-[9px] uppercase tracking-[0.25em] text-accent font-mono font-medium mt-1">
-                Dental Reconstruction
-              </span>
-            </div>
+          {/* Logo */}
+          <a href="#" className="flex items-center gap-3 group">
+            <img
+              src="https://cdn.prod.website-files.com/65b22ee2a70bd488c02e918e/664f346033a636ff1febebae_%D0%BB%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF.svg"
+              alt="Symmetrica Dental Logo"
+              className="h-8 sm:h-10 w-auto object-contain brightness-0 invert"
+            />
           </a>
 
           {/* Desktop Nav */}
-          <nav className="hidden xl:flex items-center gap-6 text-xs uppercase tracking-wider font-mono">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-white/80 hover:text-accent transition-colors py-1 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-accent hover:after:w-full after:transition-all"
-              >
-                {link.label}
-              </a>
-            ))}
+          <nav className="hidden lg:flex items-center gap-7 text-xs uppercase tracking-widest font-semibold text-white/90">
+            <a href="#diagnostics" className="hover:text-[var(--color-accent)] transition-colors">
+              {String(t("nav.diagnostics"))}
+            </a>
+            <a href="#services" className="hover:text-[var(--color-accent)] transition-colors">
+              {String(t("nav.services"))}
+            </a>
+            <a href="#calculator" className="hover:text-[var(--color-accent)] transition-colors">
+              {String(t("nav.calculator"))}
+            </a>
+            <a href="#sedation" className="hover:text-[var(--color-accent)] transition-colors">
+              {String(t("nav.sedation"))}
+            </a>
+            <a href="#lab" className="hover:text-[var(--color-accent)] transition-colors">
+              {String(t("nav.lab"))}
+            </a>
+            <a href="#team" className="hover:text-[var(--color-accent)] transition-colors">
+              {String(t("nav.team"))}
+            </a>
+            <a href="#faq" className="hover:text-[var(--color-accent)] transition-colors">
+              {String(t("nav.faq"))}
+            </a>
           </nav>
 
-          {/* Right Controls */}
-          <div className="hidden sm:flex items-center gap-4">
-            {/* Lang switcher */}
-            <div className="flex items-center rounded-full bg-white/10 p-0.5 border border-white/15 text-[11px] font-mono">
+          {/* Right Action Group */}
+          <div className="hidden sm:flex items-center gap-5">
+            {/* Phone as clean text link */}
+            <a
+              href="tel:+380674589247"
+              className="text-white font-semibold text-xs tracking-wider hover:text-[var(--color-accent)] transition-colors tabular-nums"
+            >
+              +380 67 458 92 47
+            </a>
+
+            {/* Locale Switcher */}
+            <div className="flex items-center bg-white/10 rounded-full p-1 border border-white/20 text-[10px] text-white tracking-widest font-bold">
               <button
-                type="button"
                 onClick={() => setLocale("uk")}
-                className={`px-2.5 py-0.5 rounded-full font-bold transition-all ${
-                  locale === "uk" ? "bg-accent text-white" : "text-white/70 hover:text-white"
+                className={`px-2.5 py-1 rounded-full transition-all ${
+                  locale === "uk" ? "bg-[var(--color-accent)] text-black font-bold" : "hover:text-white/80"
                 }`}
               >
                 UA
               </button>
               <button
-                type="button"
                 onClick={() => setLocale("en")}
-                className={`px-2.5 py-0.5 rounded-full font-bold transition-all ${
-                  locale === "en" ? "bg-accent text-white" : "text-white/70 hover:text-white"
+                className={`px-2.5 py-1 rounded-full transition-all ${
+                  locale === "en" ? "bg-[var(--color-accent)] text-black font-bold" : "hover:text-white/80"
                 }`}
               >
                 EN
               </button>
             </div>
 
-            {/* Direct Phone Link */}
+            {/* Book CTA */}
             <a
-              href="tel:+380674589258"
-              className="text-xs font-mono font-bold tracking-wider text-white hover:text-accent transition-colors hidden md:block"
+              href="#booking"
+              className="bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-black font-bold text-xs uppercase tracking-wider px-5 py-2.5 rounded-full transition-all shadow-md shadow-amber-500/20"
             >
-              +38 (067) 458-92-58
-            </a>
-
-            {/* Primary CTA */}
-            <a
-              href="#contacts"
-              className="px-4 py-2 rounded bg-accent hover:bg-accent-hover text-white text-xs uppercase tracking-wider font-mono font-bold transition-all shadow-md hover:shadow-lg"
-            >
-              {t("nav.bookCta") as string}
+              {String(t("nav.bookCta"))}
             </a>
           </div>
 
-          {/* Mobile hamburger button */}
+          {/* Mobile Menu Button - Typography-based */}
           <button
-            type="button"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="xl:hidden p-2 rounded bg-white/10 text-white hover:bg-white/20 transition-colors"
-            aria-label="Toggle navigation menu"
+            onClick={toggleMobileMenu}
+            className="lg:hidden text-xs uppercase font-bold tracking-widest text-white hover:text-[var(--color-accent)] px-3 py-1.5 rounded border border-white/20"
+            aria-label="Переключити меню"
           >
-            <span className="font-mono text-xs uppercase tracking-widest">
-              {mobileMenuOpen ? "CLOSE" : "MENU"}
-            </span>
+            {mobileMenuOpen ? "ЗАКРИТИ" : "МЕНЮ"}
           </button>
         </div>
       </header>
 
-      {/* Full-screen Mobile Overlay */}
+      {/* Full-Screen Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-40 bg-bg-dark/98 backdrop-blur-2xl flex flex-col justify-between p-6 pt-24 text-white xl:hidden border-b border-border-dark">
-          <div className="space-y-6">
-            <p className="text-[10px] font-mono uppercase tracking-[0.3em] text-accent">
-              НАВІГАЦІЯ КЛІНІКИ
-            </p>
-            <div className="flex flex-col gap-3">
-              {navLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="font-display text-2xl text-white/90 hover:text-accent transition-colors"
-                >
-                  {link.label}
-                </a>
-              ))}
+        <div className="fixed inset-0 z-40 bg-[var(--color-primary)] text-white flex flex-col justify-between p-8 overflow-y-auto">
+          <div className="flex justify-between items-center pt-16 border-b border-white/10 pb-6">
+            <img
+              src="https://cdn.prod.website-files.com/65b22ee2a70bd488c02e918e/664f346033a636ff1febebae_%D0%BB%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF.svg"
+              alt="Symmetrica"
+              className="h-8 w-auto brightness-0 invert"
+            />
+            <div className="flex items-center gap-2 bg-white/10 rounded-full p-1 text-xs">
+              <button
+                onClick={() => setLocale("uk")}
+                className={`px-3 py-1 rounded-full font-bold ${locale === "uk" ? "bg-[var(--color-accent)] text-black" : "text-white"}`}
+              >
+                UA
+              </button>
+              <button
+                onClick={() => setLocale("en")}
+                className={`px-3 py-1 rounded-full font-bold ${locale === "en" ? "bg-[var(--color-accent)] text-black" : "text-white"}`}
+              >
+                EN
+              </button>
             </div>
           </div>
 
-          <div className="space-y-4 pt-6 border-t border-border-dark/60">
-            <div className="flex items-center justify-between text-xs font-mono">
-              <span className="text-white/60">Language:</span>
-              <div className="flex gap-2">
-                <button
-                  type="button"
-                  onClick={() => { setLocale("uk"); setMobileMenuOpen(false); }}
-                  className={`px-3 py-1 rounded text-xs font-bold ${locale === "uk" ? "bg-accent text-white" : "bg-white/10 text-white/80"}`}
-                >
-                  УКРАЇНСЬКА
-                </button>
-                <button
-                  type="button"
-                  onClick={() => { setLocale("en"); setMobileMenuOpen(false); }}
-                  className={`px-3 py-1 rounded text-xs font-bold ${locale === "en" ? "bg-accent text-white" : "bg-white/10 text-white/80"}`}
-                >
-                  ENGLISH
-                </button>
-              </div>
-            </div>
-
-            <a
-              href="tel:+380674589258"
-              className="block text-center py-3 rounded bg-white/10 font-mono font-bold text-accent text-xs tracking-widest uppercase hover:bg-white/15 transition-colors"
-            >
-              +38 (067) 458-92-58
+          <nav className="flex flex-col gap-6 text-2xl font-display my-auto py-8">
+            <a href="#diagnostics" onClick={closeMenu} className="hover:text-[var(--color-accent)] transition-colors">
+              {String(t("nav.diagnostics"))}
             </a>
+            <a href="#services" onClick={closeMenu} className="hover:text-[var(--color-accent)] transition-colors">
+              {String(t("nav.services"))}
+            </a>
+            <a href="#calculator" onClick={closeMenu} className="hover:text-[var(--color-accent)] transition-colors">
+              {String(t("nav.calculator"))}
+            </a>
+            <a href="#sedation" onClick={closeMenu} className="hover:text-[var(--color-accent)] transition-colors">
+              {String(t("nav.sedation"))}
+            </a>
+            <a href="#lab" onClick={closeMenu} className="hover:text-[var(--color-accent)] transition-colors">
+              {String(t("nav.lab"))}
+            </a>
+            <a href="#team" onClick={closeMenu} className="hover:text-[var(--color-accent)] transition-colors">
+              {String(t("nav.team"))}
+            </a>
+            <a href="#faq" onClick={closeMenu} className="hover:text-[var(--color-accent)] transition-colors">
+              {String(t("nav.faq"))}
+            </a>
+          </nav>
 
+          <div className="border-t border-white/10 pt-6 flex flex-col gap-4">
+            <a href="tel:+380674589247" className="text-xl font-bold text-[var(--color-accent)] tabular-nums">
+              +380 67 458 92 47
+            </a>
+            <p className="text-xs text-white/60">{String(t("headerAddress"))}</p>
             <a
-              href="#contacts"
-              onClick={() => setMobileMenuOpen(false)}
-              className="block text-center py-3.5 rounded bg-accent text-white font-mono font-bold text-xs uppercase tracking-widest transition-all shadow-lg"
+              href="#booking"
+              onClick={closeMenu}
+              className="bg-[var(--color-accent)] text-black font-bold text-center py-4 rounded-xl text-xs uppercase tracking-wider shadow-lg"
             >
-              {t("nav.bookCta") as string}
+              {String(t("nav.bookCta"))}
             </a>
           </div>
         </div>

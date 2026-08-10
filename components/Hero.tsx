@@ -1,173 +1,183 @@
 "use client";
 
 import { useLocale } from "@/lib/i18n";
+import { TextReveal } from "@/components/motion";
 
 export default function Hero() {
   const { t } = useLocale();
 
   return (
-    <section className="relative min-h-[100svh] flex flex-col justify-between pt-24 pb-8 overflow-hidden bg-bg-dark text-white">
-      {/* Layer 1: Background Video + Dark Scrim */}
-      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+    <section className="relative min-h-[100svh] flex flex-col justify-between pt-28 pb-12 overflow-hidden bg-[var(--color-bg-dark)]">
+      {/* Background Layer 1: Looping Video + Dark Scrim Stack */}
+      <div className="absolute inset-0 z-0">
         <video
           autoPlay
           muted
           loop
           playsInline
-          poster="https://images.pexels.com/videos/6998091/pexels-photo-6998091.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=630&w=1200"
-          className="w-full h-full object-cover scale-105 opacity-30"
+          poster={String(t("hero.heroPoster"))}
+          className="w-full h-full object-cover filter brightness-75 scale-105"
         >
-          <source
-            src="https://videos.pexels.com/video-files/6998091/6998091-hd_1920_1080_25fps.mp4"
-            type="video/mp4"
-          />
+          <source src={String(t("hero.heroVideo"))} type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-t from-bg-dark via-bg-dark/80 to-bg-dark/50" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[var(--color-bg-dark)]/95 via-[var(--color-bg-dark)]/85 to-[var(--color-bg-dark)]/60" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-bg-dark)] via-transparent to-[var(--color-bg-dark)]/70" />
       </div>
 
-      {/* Layer 2: Giant Watermark Word (Zero height, pointer-events-none, aria-hidden) */}
+      {/* Background Layer 2: Giant Watermark Type Layer (pointer-events-none, whitespace-nowrap) */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 pointer-events-none select-none z-0 flex items-center justify-center overflow-hidden"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0 pointer-events-none select-none text-[15vw] font-display font-bold text-white/[0.03] uppercase tracking-widest whitespace-nowrap"
       >
-        <span className="font-display font-black text-[18vw] leading-none text-white/[0.03] uppercase tracking-widest whitespace-nowrap">
-          SYMMETRICA
-        </span>
+        SYMMETRICA
       </div>
 
-      {/* Layer 3: Rotating Text Seal Badge (Top Right) */}
-      <div className="absolute top-28 right-8 z-10 hidden lg:block pointer-events-none">
-        <div className="relative w-28 h-28 flex items-center justify-center">
-          <svg className="w-full h-full animate-[spin_20s_linear_infinite]" viewBox="0 0 100 100">
-            <path
-              id="circlePath"
-              d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0"
-              fill="none"
-            />
-            <text className="text-[9.5px] font-mono uppercase tracking-[0.2em] fill-accent font-semibold">
-              <textPath href="#circlePath">
-                SYMMETRICA DENTAL CENTER · EST. 2013 · SWISS QUALITY ·
-              </textPath>
-            </text>
-          </svg>
-          <span className="absolute font-display text-accent font-bold text-xs tracking-wider">
-            ZURICH
-          </span>
-        </div>
-      </div>
-
-      {/* Layer 4 & 5: Main Hero Content Cluster */}
+      {/* Main Content Viewport */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full my-auto py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          <div className="lg:col-span-9 space-y-6">
-            {/* Kicker with REAL Meta */}
-            <div className="inline-flex items-center gap-3 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md text-[11px] font-mono tracking-[0.2em] text-accent uppercase font-semibold">
-              <span className="w-1.5 h-1.5 rounded-full bg-accent animate-ping" />
-              {t("hero.kicker") as string}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          {/* Left Column: 10-Layer Stack */}
+          <div className="lg:col-span-8 space-y-6 text-white">
+            
+            {/* Layer 1: Eyebrow Kicker with REAL Meta */}
+            <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-xs font-semibold tracking-widest text-[var(--color-accent)] uppercase">
+              <span className="w-2 h-2 rounded-full bg-[var(--color-accent)] animate-pulse" />
+              <span>{String(t("hero.kicker"))}</span>
             </div>
 
-            {/* Poster H1 with Italic Word */}
-            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-display font-bold leading-[1.05] tracking-tight text-white">
-              {t("hero.titlePre") as string}{" "}
-              <span className="italic font-normal text-accent font-display">
-                {t("hero.titleItalic") as string}
-              </span>{" "}
-              {t("hero.titlePost") as string}
+            {/* Layer 2: Multi-line Poster H1 with contrast typography */}
+            <h1 className="text-3xl sm:text-5xl lg:text-6.5xl font-display font-medium leading-[1.1] text-white tracking-tight">
+              Тотальне <em className="italic font-serif text-[var(--color-accent)]">{String(t("hero.recoveryWord"))}</em> зубів уві сні за 24 години
             </h1>
 
-            {/* Subtitle */}
-            <p className="text-base sm:text-lg text-white/80 font-body leading-relaxed max-w-2xl">
-              {t("hero.subtitle") as string}
+            {/* Layer 3: Lede Paragraph */}
+            <p className="text-base sm:text-lg text-white/80 max-w-2xl font-light leading-relaxed">
+              {String(t("hero.subtitle"))}
             </p>
 
-            {/* CTA Pair */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
+            {/* Layer 4: Flanking Mini-Copy Columns & Prices */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+              <div className="p-4 rounded-xl bg-white/10 backdrop-blur-sm border border-white/10 space-y-1">
+                <p className="text-[11px] uppercase tracking-wider text-[var(--color-accent)] font-semibold">
+                  3D КТ Діагностика СНЩС
+                </p>
+                <p className="text-sm font-bold text-white tabular-nums">
+                  {String(t("hero.priceConsult"))}
+                </p>
+                <p className="text-[11px] text-white/60">{String(t("hero.jointAnalysis"))}</p>
+              </div>
+
+              <div className="p-4 rounded-xl bg-white/10 backdrop-blur-sm border border-white/10 space-y-1">
+                <p className="text-[11px] uppercase tracking-wider text-[var(--color-accent)] font-semibold">
+                  Хірургічна Імплантація
+                </p>
+                <p className="text-sm font-bold text-white tabular-nums">
+                  {String(t("hero.priceImplant"))}
+                </p>
+                <p className="text-[11px] text-white/60">{String(t("hero.systemsLabel"))}</p>
+              </div>
+            </div>
+
+            {/* Layer 5: CTA Pair (Solid Primary + Secondary Text Link) */}
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-5 pt-2">
               <a
-                href="#contacts"
-                className="px-8 py-4 rounded bg-accent hover:bg-accent-hover text-white font-mono text-xs uppercase tracking-widest font-bold text-center transition-all shadow-xl hover:shadow-2xl"
+                href="#booking"
+                className="px-8 py-4 rounded-xl bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-black font-bold text-xs uppercase tracking-wider text-center transition-all shadow-xl shadow-amber-500/20 transform hover:-translate-y-0.5"
               >
-                {t("hero.ctaPrimary") as string}
+                {String(t("hero.ctaPrimary"))}
               </a>
               <a
                 href="#calculator"
-                className="px-8 py-4 rounded bg-white/10 hover:bg-white/20 text-white font-mono text-xs uppercase tracking-widest font-semibold text-center border border-white/20 transition-all backdrop-blur-sm"
+                className="px-6 py-4 text-white hover:text-[var(--color-accent)] font-semibold text-xs uppercase tracking-wider transition-colors text-center border-b border-white/20 hover:border-[var(--color-accent)]"
               >
-                {t("hero.ctaSecondary") as string}
+                {String(t("hero.ctaSecondary"))} →
               </a>
             </div>
-          </div>
 
-          {/* Layer 6: Flanking Mini-Copy Column (Right side desktop) */}
-          <div className="lg:col-span-3 hidden lg:flex flex-col gap-6 text-xs font-body text-white/70 border-l border-white/10 pl-6 space-y-4">
-            <div className="space-y-1">
-              <span className="font-mono text-[10px] uppercase tracking-widest text-accent font-bold block">
-                01 — КЛІНІЧНИЙ ДОСВІД
-              </span>
-              <p className="leading-relaxed text-white/80">
-                {t("hero.flankLeft") as string}
-              </p>
+            {/* Layer 6: Meta Strip with Hairline Separators */}
+            <div className="pt-4 border-t border-white/15 flex flex-wrap items-center gap-4 text-xs text-white/70 tracking-wider uppercase font-semibold tabular-nums">
+              <span>ПН-ПТ: 09:00 - 20:00</span>
+              <span className="text-[var(--color-accent)]">·</span>
+              <span>{String(t("hero.addressLine"))}</span>
+              <span className="text-[var(--color-accent)]">·</span>
+              <span className="text-amber-400 font-bold">{String(t("hero.googleReviews"))}</span>
             </div>
-            <div className="space-y-1 pt-4 border-t border-white/10">
-              <span className="font-mono text-[10px] uppercase tracking-widest text-accent font-bold block">
-                02 — ВЛАСНА ІНФРАСТРУКТУРА
-              </span>
-              <p className="leading-relaxed text-white/80">
-                {t("hero.flankRight") as string}
-              </p>
+
+          </div>
+
+          {/* Right Column: Rotating Text Badge & Interactive Diagnostic Protocol Panel */}
+          <div className="lg:col-span-4 relative flex flex-col items-center justify-center">
+            
+            {/* Layer 7: Rotating Text Circular Seal (Text Only, NO Glyphs) */}
+            <div className="relative w-40 h-40 mb-6 flex items-center justify-center pointer-events-none select-none">
+              <div className="absolute inset-0 animate-spin-slow rounded-full border border-dashed border-[var(--color-accent)]/40 flex items-center justify-center">
+                <svg viewBox="0 0 100 100" className="w-full h-full text-[var(--color-accent)] text-[9px] font-bold uppercase tracking-widest fill-current">
+                  <path id="circlePath" d="M 50, 50 m -38, 0 a 38,38 0 1,1 76,0 a 38,38 0 1,1 -76,0" fill="none" />
+                  <text>
+                    <textPath href="#circlePath">
+                      SYMMETRICA DENTAL CENTER · EST 2013 ·
+                    </textPath>
+                  </text>
+                </svg>
+              </div>
+              <div className="text-center space-y-0.5">
+                <span className="block text-2xl font-display font-bold text-white tabular-nums">13</span>
+                <span className="block text-[9px] uppercase tracking-widest text-[var(--color-accent)]">{String(t("hero.yearsText"))}</span>
+              </div>
             </div>
+
+            {/* Protocol Panel Card */}
+            <div className="w-full rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20 p-6 space-y-4 text-white shadow-2xl">
+              <div className="flex justify-between items-center border-b border-white/10 pb-3">
+                <span className="text-[10px] font-bold uppercase tracking-widest text-[var(--color-accent)]">
+                  ПРОТОКОЛ SYMMETRICA TECH
+                </span>
+                <span className="bg-emerald-500/20 text-emerald-300 text-[10px] font-bold px-2 py-0.5 rounded border border-emerald-500/30">
+                  СЕДАЦІЯ
+                </span>
+              </div>
+
+              <div className="relative h-40 rounded-xl overflow-hidden border border-white/10">
+                <img
+                  src="https://cdn.prod.website-files.com/65b22ee2a70bd488c02e918e/65b76cba7d575c31abae62e8_research-image-1.webp"
+                  alt="3D КТ Комп'ютерна томографія щелепи"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-3">
+                  <p className="text-[11px] text-white/90">
+                    Точне 3D-сканування кісткової тканини перед імплантацією
+                  </p>
+                </div>
+              </div>
+
+              <div className="space-y-2 text-xs text-white/80">
+                <p className="flex justify-between border-b border-white/10 pb-1">
+                  <span>{String(t("hero.anesthesiologistLabel"))}</span>
+                  <span className="font-bold text-white">{String(t("hero.anesthesiologistName"))}</span>
+                </p>
+                <p className="flex justify-between border-b border-white/10 pb-1">
+                  <span>{String(t("hero.prosthesisReadyLabel"))}</span>
+                  <span className="font-bold text-[var(--color-accent)]">{String(t("hero.prosthesisReadyTime"))}</span>
+                </p>
+              </div>
+
+              <a
+                href="#booking"
+                className="block text-center w-full py-3 bg-white/10 hover:bg-white/20 text-white font-semibold text-xs uppercase tracking-wider rounded-xl transition-colors border border-white/20"
+              >
+                Забронювати візит →
+              </a>
+            </div>
+
           </div>
+
         </div>
       </div>
 
-      {/* Layer 7: 3-Item Meta Strip with Hairline Separators */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-6 border-t border-white/10">
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-xs font-mono text-white/80">
-          <div className="flex flex-col space-y-0.5">
-            <span className="text-[10px] uppercase tracking-widest text-accent">ЛОКАЦІЯ КЛІНІКИ</span>
-            <span className="font-bold text-white">{t("hero.address") as string}</span>
-            <span className="text-white/50 text-[11px]">м. Львів, Франківський р-н</span>
-          </div>
-
-          <div className="flex flex-col space-y-0.5 sm:border-l sm:border-white/10 sm:pl-6">
-            <span className="text-[10px] uppercase tracking-widest text-accent">ПРЯМИЙ ЗВ'ЯЗОК</span>
-            <a href="tel:+380674589258" className="font-bold text-white hover:text-accent transition-colors">
-              +38 (067) 458-92-58
-            </a>
-            <span className="text-white/50 text-[11px]">Персональний сервіс-менеджер</span>
-          </div>
-
-          <div className="flex flex-col space-y-0.5 sm:border-l sm:border-white/10 sm:pl-6">
-            <span className="text-[10px] uppercase tracking-widest text-accent">ГРАФІК ТА РЕЙТИНГ</span>
-            <span className="font-bold text-white">{t("hero.workHours") as string}</span>
-            <span className="text-white/50 text-[11px]">4.9 / 5.0 на базі 340+ відгуків Google</span>
-          </div>
-        </div>
-      </div>
-
-      {/* Layer 8: Scroll Cue Indicator in Normal Flow */}
-      <div className="relative z-10 pt-6 pb-2 flex flex-col items-center justify-center gap-1.5 opacity-70">
-        <span className="text-[9px] tracking-[0.3em] uppercase font-mono text-white/80">SCROLL</span>
-        <div className="w-[1px] h-5 bg-gradient-to-b from-accent to-transparent animate-pulse" />
-      </div>
-
-      {/* Layer 9: Thin Ticker Strip at Base */}
-      <div className="w-full py-2 bg-primary/90 border-t border-white/10 overflow-hidden relative z-10">
-        <div className="animate-marquee flex items-center gap-8 whitespace-nowrap text-[10px] font-mono uppercase tracking-[0.25em] text-accent/90">
-          <span>SYMMETRICA TECH CAD/CAM</span>
-          <span className="text-white/20">—</span>
-          <span>ALL-ON-4 & ALL-ON-6 EXPRESS</span>
-          <span className="text-white/20">—</span>
-          <span>ВЛАСНА АНЕСТЕЗІОЛОГІЯ</span>
-          <span className="text-white/20">—</span>
-          <span>ВІНІРИ E-MAX ZIRKONZAHN</span>
-          <span className="text-white/20">—</span>
-          <span>SWISS GBT PROTOCOL</span>
-          <span className="text-white/20">—</span>
-          <span>SYMMETRICA TECH CAD/CAM</span>
-          <span className="text-white/20">—</span>
-          <span>ALL-ON-4 & ALL-ON-6 EXPRESS</span>
-          <span className="text-white/20">—</span>
-        </div>
+      {/* Layer 8: Scroll Cue (Tiny bottom-center indicator) */}
+      <div className="relative z-10 text-center pb-2 text-white/50 text-[9px] tracking-widest uppercase flex flex-col items-center gap-1">
+        <span>{String(t("hero.scroll"))}</span>
+        <div className="w-0.5 h-5 bg-gradient-to-b from-[var(--color-accent)] to-transparent animate-pulse" />
       </div>
     </section>
   );
