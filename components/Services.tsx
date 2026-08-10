@@ -187,3 +187,5 @@ export function Services() {
     </section>
   );
 }
+
+export default Services;
