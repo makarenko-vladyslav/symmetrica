@@ -1,216 +1,188 @@
 "use client";
 
-import { useState } from 'react';
-import { useLocale } from '@/lib/i18n';
-import { Reveal } from '@/components/motion';
+import { useState } from "react";
+import { useLocale } from "@/lib/i18n";
 
-export default function Services() {
-  const { t } = useLocale();
-  const [activeCategory, setActiveCategory] = useState<string>('all');
+interface ServiceItem {
+  name: string;
+  price: string;
+  desc?: string;
+  image?: string;
+}
 
-  const categories = [
-    { id: 'all', label: 'Усі напрямки' },
-    { id: 'implantation', label: 'Імплантація & All-on-4' },
-    { id: 'orthopedics', label: 'Вініри & Протезування' },
-    { id: 'gnathology', label: 'Гнатологія & СНЩС' },
-    { id: 'sedation', label: 'Седація' }
-  ];
+interface ServiceCategory {
+  title: string;
+  items: ServiceItem[];
+}
 
-  const priceItems = [
+export function Services() {
+  const { t, locale } = useLocale();
+  const [activeTab, setActiveTab] = useState<number>(0);
+
+  const categoriesUk: ServiceCategory[] = [
     {
-      id: "all-on-4",
-      category: "implantation",
-      name: "All-on-4 / All-on-6 тотальне відновлення (1 щелепа)",
-      price: "від 88 000 UAH",
-      description: "Повний зубний ряд за 24 години на 4 або 6 імплантатах Straumann / Megagen з фіксацією незнімного протеза.",
-      tag: "Хіт відновлення",
-      featured: true
+      title: "Імплантація та All-on-4",
+      items: [
+        { name: "Консультація хірурга-імплантолога + план лікування", price: "800 UAH", desc: "Детальний огляд, аналіз КТ та складання точного кошторису.", image: "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=800&q=80" },
+        { name: "Дентальний імплант Megagen (Південна Корея)", price: "14 500 UAH", desc: "Преміальна система з високою первинною стабільністю.", image: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&q=80" },
+        { name: "Дентальний імплант Straumann (Швейцарія)", price: "28 000 UAH", desc: "Світовий лідер з приживленням до 99.8%.", image: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=800&q=80" },
+        { name: "Відновлення зубів All-on-4 (під ключ на одну щелепу)", price: "от 120 000 UAH", desc: "4 імпланти + незнімний адаптаційний протез за 24 години.", image: "https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&w=800&q=80" },
+        { name: "Відновлення зубів All-on-6 (під ключ)", price: "от 155 000 UAH", desc: "Посилена фіксація на 6 імплантах для максимальної надійності.", image: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=800&q=80" },
+        { name: "Кісткова пластика (остеопластика)", price: "від 6 500 UAH", desc: "Нарощування об'єму кісткової тканини.", image: "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=800&q=80" },
+        { name: "Синус-ліфтинг (відкритий / закритий)", price: "від 9 000 UAH", desc: "Підняття дна гайморової пазухи для встановлення імплантів у боковому відділі.", image: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&q=80" }
+      ]
     },
     {
-      id: "implant-single",
-      category: "implantation",
-      name: "Дентальна імплантація Megagen AnyOne",
-      price: "від 14 500 UAH",
-      description: "Преміальний корейський імплант з навігаційним шаблоном та пожиттєвою гарантією виробника.",
-      tag: "Пожиттєва гарантія"
+      title: "Естетична стоматологія",
+      items: [
+        { name: "Керамічний вінір / ультранір (E-Max)", price: "від 9 500 UAH", desc: "Тончайша кераміка для голлівудської посмішки без обточування або з мінімальним препаруванням.", image: "https://images.unsplash.com/photo-1609840114035-3c981b782dfe?auto=format&fit=crop&w=800&q=80" },
+        { name: "Керамічна коронка E-Max", price: "від 10 000 UAH", desc: "Повністю керамічна коронка з імітацією природної прозорості.", image: "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=800&q=80" },
+        { name: "Цирконієва коронка", price: "від 9 000 UAH", desc: "Надміцна конструкція для жувальних та передніх зубів.", image: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&q=80" },
+        { name: "Художня реставрація зуба", price: "від 2 500 UAH", desc: "Відновлення форми та кольору фотополімерними матеріалами.", image: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=800&q=80" },
+        { name: "Професійне відбілювання зубів (Beyond / Zoom)", price: "від 4 500 UAH", desc: "Безпечне освітлення емалі на кілька відтінків за 1 візит.", image: "https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&w=800&q=80" }
+      ]
     },
     {
-      id: "implant-straumann",
-      category: "implantation",
-      name: "Дентальна імплантація Straumann BLX (Швейцарія)",
-      price: "від 22 000 UAH",
-      description: "Швейцарська імплантаційна система для негайного навантаження у складних кісткових умовах.",
-      tag: "Швейцарія"
+      title: "Лікування під седацією",
+      items: [
+        { name: "Медикаментозний сон (седація) — 1 година", price: "2 800 UAH", desc: "Комфортний стан дрімоти під контролем лікаря-анестезіолога з повним кардіомоніторингом.", image: "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=800&q=80" },
+        { name: "Лікування зубів під седацією (пакет 2 години)", price: "5 200 UAH", desc: "Санація кількох зубів або складне видалення без стресу та болю.", image: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=800&q=80" },
+        { name: "Консультація анестезіолога перед седацією", price: "Включено", desc: "Збір анамнезу, розшифровка ЕКГ та підбір дозування препаратів.", image: "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=800&q=80" }
+      ]
     },
     {
-      id: "veneers",
-      category: "orthopedics",
-      name: "Керамічний вінір E.max Symmetrica Tech",
-      price: "від 11 500 UAH",
-      description: "Високохудожня керамічна накладка з власної цифрової лабораторії без 'ефекту унітазної білизни'.",
-      tag: "За 48 годин"
-    },
-    {
-      id: "sedation-service",
-      category: "sedation",
-      name: "Лікування під седацією (медикаментозний сон)",
-      price: "від 3 500 UAH/год",
-      description: "Повний комфорт та відсутність стресу під керуванням власної штатної анестезіологічної служби.",
-      tag: "Ліцензія МОЗ"
-    },
-    {
-      id: "diag-service",
-      category: "gnathology",
-      name: "Первинна 3D КТ діагностика та огляд лікаря",
-      price: "від 800 UAH",
-      description: "Комплексне 3D-сканування щелеп та складання писемного плану реабілітації."
-    },
-    {
-      id: "gnathology-splint",
-      category: "gnathology",
-      name: "Сплінт-терапія та репрограмування СНЩС",
-      price: "від 4 500 UAH",
-      description: "Усунення болю та клацання в суглобі за допомогою індивідуальних шин та мікрострумової розрядки."
-    },
-    {
-      id: "aligners",
-      category: "orthopedics",
-      name: "Ортодонтична капа / елайнер (Invisalign)",
-      price: "від 45 000 UAH",
-      description: "Прозорі капи для виправлення прикусу без брекетів із цифровим сетапом."
-    },
-    {
-      id: "endo-microscope",
-      category: "orthopedics",
-      name: "Мікроскопна ендодонтія (лікування каналів)",
-      price: "від 3 200 UAH",
-      description: "Прецизійна обробка та пломбування каналів під оптичним операційним мікроскопним збільшенням."
+      title: "Діагностика та терапія",
+      items: [
+        { name: "3D Комп'ютерна томографія (КТ) щелеп", price: "800 UAH", desc: "Знімок високої точності на сучасному томографі з мінімальним опроміненням.", image: "https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=800&q=80" },
+        { name: "Інтраоральне 3D сканування", price: "500 UAH", desc: "Цифровий зліпок без дискомфорту та силіконових мас.", image: "https://images.unsplash.com/photo-1629909615184-74f495363b67?auto=format&fit=crop&w=800&q=80" },
+        { name: "Ендодонтичне лікування каналів під мікроскопом Zeiss", price: "від 2 200 UAH", desc: "Лікування пульпіту та періодонтиту зі збільшенням у 30 разів.", image: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=800&q=80" },
+        { name: "Професійна гігієна (ultrasonic + AirFlow + полірування)", price: "1 500 UAH", desc: "Видалення твердого зубного каменю та пігментованого нальоту.", image: "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=800&q=80" },
+        { name: "Сплінт-терапія при дисфункції СНЩС (1 щелепа)", price: "від 6 500 UAH", desc: "Виготовлення індивідуальної шини для розслаблення жувальних м'язів.", image: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=800&q=80" }
+      ]
     }
   ];
 
-  const filteredItems = activeCategory === 'all'
-    ? priceItems
-    : priceItems.filter(item => item.category === activeCategory);
+  const categoriesEn: ServiceCategory[] = [
+    {
+      title: "Implantology & All-on-4",
+      items: [
+        { name: "Implant Surgeon Consultation + Treatment Plan", price: "800 UAH", desc: "Detailed examination, CT analysis, and precise cost estimation.", image: "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=800&q=80" },
+        { name: "Megagen Dental Implant (South Korea)", price: "14 500 UAH", desc: "Premium system with high primary stability.", image: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&q=80" },
+        { name: "Straumann Dental Implant (Switzerland)", price: "28 000 UAH", desc: "Global leader with up to 99.8% osseointegration success.", image: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=800&q=80" },
+        { name: "All-on-4 Restoration (Turnkey per jaw)", price: "from 120 000 UAH", desc: "4 implants + fixed provisional prosthesis in 24 hours.", image: "https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&w=800&q=80" },
+        { name: "All-on-6 Restoration (Turnkey)", price: "from 155 000 UAH", desc: "Enhanced support on 6 implants for ultimate durability.", image: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=800&q=80" },
+        { name: "Bone Grafting (Osteoplasty)", price: "from 6 500 UAH", desc: "Restoration of bone tissue volume prior to implantation.", image: "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=800&q=80" },
+        { name: "Sinus Lift (Open / Closed)", price: "from 9 000 UAH", desc: "Maxillary sinus floor elevation for molar implants.", image: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&q=80" }
+      ]
+    },
+    {
+      title: "Aesthetic Dentistry",
+      items: [
+        { name: "Ceramic Veneer / Ultraneer (E-Max)", price: "from 9 500 UAH", desc: "Ultra-thin ceramics for a Hollywood smile with minimal or no grinding.", image: "https://images.unsplash.com/photo-1609840114035-3c981b782dfe?auto=format&fit=crop&w=800&q=80" },
+        { name: "E-Max Ceramic Crown", price: "from 10 000 UAH", desc: "All-ceramic crown mimicking natural translucency.", image: "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=800&q=80" },
+        { name: "Zirconia Crown", price: "from 9 000 UAH", desc: "High-strength restoration for posterior and anterior teeth.", image: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&q=80" },
+        { name: "Artistic Tooth Restoration", price: "from 2 500 UAH", desc: "Restoration of shape and shade with composite photopolymers.", image: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=800&q=80" },
+        { name: "Professional Teeth Whitening (Beyond / Zoom)", price: "from 4 500 UAH", desc: "Safe enamel brightening by several shades in 1 visit.", image: "https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&w=800&q=80" }
+      ]
+    },
+    {
+      title: "Sedation Sleep Dentistry",
+      items: [
+        { name: "Medical Sleep (Sedation) — 1 hour", price: "2 800 UAH", desc: "Comfortable doze state under anesthesiologist supervision with full cardiopulmonary monitoring.", image: "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=800&q=80" },
+        { name: "Dental Treatment under Sedation (2-hour package)", price: "5 200 UAH", desc: "Multi-tooth treatment or complex surgery without stress and pain.", image: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=800&q=80" },
+        { name: "Pre-sedation Anesthesiologist Consultation", price: "Included", desc: "Anamnesis, ECG interpretation, and medication dosage selection.", image: "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=800&q=80" }
+      ]
+    },
+    {
+      title: "Diagnostics & Therapy",
+      items: [
+        { name: "3D CT Computed Tomography", price: "800 UAH", desc: "High-precision scan on advanced tomograph with minimal radiation.", image: "https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=800&q=80" },
+        { name: "Intraoral 3D Scanning", price: "500 UAH", desc: "Digital impressions without discomfort or silicone putties.", image: "https://images.unsplash.com/photo-1629909615184-74f495363b67?auto=format&fit=crop&w=800&q=80" },
+        { name: "Microscopic Root Canal Treatment (Zeiss)", price: "from 2 200 UAH", desc: "Pulpitis and periodontitis treatment under 30x magnification.", image: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=800&q=80" },
+        { name: "Professional Hygiene (Ultrasonic + AirFlow + Polish)", price: "1 500 UAH", desc: "Removal of hard dental calculus and pigmented plaque.", image: "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=800&q=80" },
+        { name: "TMJ Splint Therapy for Dysfunction (1 jaw)", price: "from 6 500 UAH", desc: "Custom bite guard fabrication for jaw muscle relaxation.", image: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=800&q=80" }
+      ]
+    }
+  ];
 
-  const featuredItem = priceItems.find(i => i.featured);
+  const categories = locale === "en" ? categoriesEn : categoriesUk;
 
   return (
-    <section id="services" className="py-20 bg-bg-card text-text-main">
+    <section id="services" className="py-24 bg-slate-900 text-white relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Section Heading */}
-        <Reveal className="text-center max-w-3xl mx-auto mb-12 space-y-4">
-          <span className="text-xs uppercase tracking-widest text-accent font-bold font-mono">
-            РЕЄСТР ПОСЛУГ ТА ВАРТОСТІ
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <span className="text-amber-400 font-semibold tracking-widest text-xs uppercase mb-3 block">
+            {t("servicesSection.kicker")}
           </span>
-          <h2 className="text-3xl sm:text-4xl font-bold font-display text-primary">
-            Повний прейскурант та напрямки відновлення
+          <h2 className="text-3xl sm:text-4xl font-serif font-bold text-white mb-4">
+            {t("servicesSection.title")}
           </h2>
-          <p className="text-slate-600 font-body text-base">
-            Фіксовані розцінки на первинні маніпуляції та тотальні реабілітаційні комплекси у Центрі Symmetrica.
+          <p className="text-slate-300 text-base sm:text-lg">
+            {t("servicesSection.subtitle")}
           </p>
-        </Reveal>
+        </div>
 
-        {/* Category Tabs */}
-        <div className="flex flex-wrap justify-center gap-2 mb-12">
-          {categories.map((cat) => (
+        {/* Tabs */}
+        <div className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-12">
+          {categories.map((cat, idx) => (
             <button
-              key={cat.id}
-              onClick={() => setActiveCategory(cat.id)}
-              className={`px-4 py-2 text-xs font-semibold rounded-full transition-all duration-200 min-h-[44px] flex items-center ${
-                activeCategory === cat.id
-                  ? 'bg-primary text-white shadow-md'
-                  : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+              key={idx}
+              onClick={() => setActiveTab(idx)}
+              className={`px-5 py-3 rounded-full text-sm sm:text-base font-medium transition-all ${
+                activeTab === idx
+                  ? "bg-amber-500 text-slate-950 font-semibold shadow-lg shadow-amber-500/20"
+                  : "bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white"
               }`}
             >
-              {cat.label}
+              {cat.title}
             </button>
           ))}
         </div>
 
-        <div className="grid lg:grid-cols-12 gap-8 items-start">
-          
-          {/* Main Structured Price List (ROWS) */}
-          <div className="lg:col-span-8 bg-bg-light border border-border-light rounded-2xl p-6 sm:p-8 space-y-6">
-            <div className="space-y-6">
-              {filteredItems.map((item) => (
-                <div key={item.id} className="group border-b border-border-light/60 pb-4 last:border-0 last:pb-0">
-                  <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
-                    <div className="flex items-center gap-2 flex-wrap">
-                      <span className="font-bold font-display text-primary text-base group-hover:text-accent transition-colors">
-                        {item.name}
-                      </span>
-                      {item.tag && (
-                        <span className="text-[10px] font-mono uppercase bg-accent/15 text-accent px-2 py-0.5 rounded">
-                          {item.tag}
-                        </span>
-                      )}
-                    </div>
-                    <div className="flex-1 hidden sm:block border-b border-dotted border-slate-300 mx-3" />
-                    <span className="font-display font-bold text-primary text-sm sm:text-base whitespace-nowrap text-accent">
-                      {item.price}
-                    </span>
-                  </div>
-                  <p className="text-xs text-slate-500 font-body leading-relaxed mt-1.5 max-w-2xl">
-                    {item.description}
-                  </p>
+        {/* Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {categories[activeTab].items.map((item, idx) => (
+            <div
+              key={idx}
+              className="bg-slate-800/80 backdrop-blur rounded-2xl overflow-hidden border border-slate-700/60 hover:border-amber-500/50 transition-all duration-300 flex flex-col shadow-xl group"
+            >
+              {item.image && (
+                <div className="w-full aspect-[4/3] overflow-hidden bg-slate-900 relative">
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent"></div>
                 </div>
-              ))}
-            </div>
-
-            {/* Footnote Line */}
-            <div className="pt-6 border-t border-border-light text-[11px] text-slate-500 font-body flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
-              <div>{t('services.note') as string}</div>
-              <a href="#calculator" className="text-accent font-bold hover:underline min-h-[44px] flex items-center">
-                Розрахувати в калькуляторі →
-              </a>
-            </div>
-          </div>
-
-          {/* Featured Signature Card */}
-          {featuredItem && (
-            <div className="lg:col-span-4 bg-primary text-white rounded-2xl overflow-hidden border border-white/10 shadow-xl flex flex-col justify-between">
-              <div className="relative h-48 bg-slate-800">
-                <img
-                  src="https://cdn.prod.website-files.com/65b22ee2a70bd488c02e918e/65b77a267afb1b0ddb1d9b69_trust-image-1-p-800.webp"
-                  alt="All-on-4 у Symmetrica"
-                  className="w-full h-full object-cover filter brightness-90"
-                />
-                <div className="absolute top-3 left-3 bg-accent text-white text-[10px] font-mono uppercase px-2.5 py-1 rounded shadow">
-                  ФЛАГМАНСЬКИЙ ПРОТОКОЛ
-                </div>
-              </div>
-
-              <div className="p-6 space-y-4">
+              )}
+              <div className="p-6 flex flex-col flex-grow justify-between">
                 <div>
-                  <span className="text-[10px] text-accent font-mono uppercase tracking-widest">
-                    ТОТАЛЬНЕ ВІДНОВЛЕННЯ
-                  </span>
-                  <h3 className="text-xl font-bold font-display text-white mt-1">
-                    All-on-4 / All-on-6 уві сні
+                  <h3 className="text-lg font-bold text-white mb-2 group-hover:text-amber-400 transition-colors">
+                    {item.name}
                   </h3>
-                  <p className="text-xs text-slate-300 font-body leading-relaxed mt-2">
-                    Повне відновлення жувальної функції та естетики посмішки за один день під наглядом власного анестезіолога.
-                  </p>
+                  {item.desc && (
+                    <p className="text-slate-300 text-sm mb-4 leading-relaxed">
+                      {item.desc}
+                    </p>
+                  )}
                 </div>
-
-                <div className="bg-white/5 rounded-xl p-3 border border-white/10 text-xs flex justify-between items-center">
-                  <span className="text-slate-300">{t('services.package') as string}</span>
-                  <span className="font-bold text-accent font-display text-sm">{t('services.pkgPrice') as string}</span>
+                <div className="pt-4 border-t border-slate-700/60 flex items-center justify-between">
+                  <span className="text-xs uppercase tracking-wider text-slate-400 font-medium">
+                    {locale === "en" ? "Price from" : "Вартість"}
+                  </span>
+                  <span className="text-lg sm:text-xl font-bold text-amber-400">
+                    {item.price}
+                  </span>
                 </div>
-
-                <a
-                  href="#booking"
-                  className="block text-center w-full py-3 bg-accent hover:bg-accent-hover text-white text-xs font-bold uppercase tracking-wider rounded-xl transition-all min-h-[44px] flex items-center justify-center"
-                >
-                  Забронювати консультацію →
-                </a>
               </div>
             </div>
-          )}
-
+          ))}
         </div>
 
+        <div className="mt-12 text-center text-slate-400 text-xs sm:text-sm">
+          {t("servicesSection.footnote")}
+        </div>
       </div>
     </section>
   );

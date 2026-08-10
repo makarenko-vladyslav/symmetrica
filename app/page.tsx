@@ -1,44 +1,41 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import SocialProof from "@/components/SocialProof";
-import TechShowcase from "@/components/TechShowcase";
+import DiagnosticsTech from "@/components/DiagnosticsTech";
 import Services from "@/components/Services";
-import Calculator from "@/components/Calculator";
-import SedationUnit from "@/components/SedationUnit";
-import DigitalLab from "@/components/DigitalLab";
+import TreatmentCalculator from "@/components/TreatmentCalculator";
+import SedationSection from "@/components/SedationSection";
+import DigitalLabSection from "@/components/DigitalLabSection";
 import BeforeAfter from "@/components/BeforeAfter";
-import Team from "@/components/Team";
+import TeamSection from "@/components/TeamSection";
+import SterilizationProtocol from "@/components/SterilizationProtocol";
 import Testimonials from "@/components/Testimonials";
-import FAQ from "@/components/FAQ";
+import FaqSection from "@/components/FaqSection";
 import BookingForm from "@/components/BookingForm";
-import ContactMap from "@/components/ContactMap";
+import LocationSection from "@/components/LocationSection";
 import Footer from "@/components/Footer";
-import { LabeledHairline, StatementBand, WatermarkStrip, TrustHairline } from "@/components/Interstitials";
 
 export default function Home() {
   return (
-    <>
+    <div className="relative min-h-screen bg-[var(--color-bg-light)]">
       <Header />
-      <main>
+      <main id="main-content">
         <Hero />
         <SocialProof />
-        <LabeledHairline label="ЦЕНТР СТОМАТОЛОГІЧНОГО ВІДНОВЛЕННЯ — МІСТО ЛЬВІВ" />
-        <TechShowcase />
-        <StatementBand text="«Кожен клінічний випадок моделюється в 3D до початку хірургічного чи естетичного втручання»" />
+        <DiagnosticsTech />
         <Services />
-        <Calculator />
-        <WatermarkStrip text="БЕЗПЕКА · ДІАГНОСТИКА · ЕСТЕТИКА · 24–48 ГОДИН" />
-        <SedationUnit />
-        <DigitalLab />
+        <TreatmentCalculator />
+        <SedationSection />
+        <DigitalLabSection />
         <BeforeAfter />
-        <TrustHairline text="63 000+ ПАЦІЄНТІВ · 13 РОКІВ ДОСВІДУ · 17 ФАХІВЦІВ" />
-        <Team />
+        <TeamSection />
+        <SterilizationProtocol />
         <Testimonials />
-        <FAQ />
+        <FaqSection />
         <BookingForm />
-        <ContactMap />
+        <LocationSection />
       </main>
       <Footer />
-    </>
+    </div>
   );
 }
