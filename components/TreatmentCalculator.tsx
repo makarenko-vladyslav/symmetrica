@@ -5,6 +5,9 @@ import pricingData from "@/lib/pricing.json";
 import { useLocale } from "@/lib/i18n";
 import { Reveal } from "@/components/motion";
 
+/** Формат числа, однаковий на збірці й у браузері: платформу не питаємо. */
+const money = (n: number) => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "\u00A0");
+
 export default function TreatmentCalculator() {
   const { t } = useLocale();
   const { calculatorOptions } = pricingData;
@@ -71,7 +74,7 @@ export default function TreatmentCalculator() {
                   >
                     <span className="text-sm font-display font-bold">{t.name}</span>
                     <span className="text-xs font-bold text-gray-500 tabular-nums">
-                      від {t.basePrice.toLocaleString()} UAH / {t.unitLabel}
+                      від {money(t.basePrice)} UAH / {t.unitLabel}
                     </span>
                   </button>
                 ))}
@@ -130,7 +133,7 @@ export default function TreatmentCalculator() {
                         <div className="flex justify-between items-center">
                           <span className="text-xs font-bold text-gray-800">{addon.name}</span>
                           <span className="text-xs font-bold text-[var(--color-primary)] tabular-nums">
-                            +{addon.price.toLocaleString()} UAH
+                            +{money(addon.price)} UAH
                           </span>
                         </div>
                         <p className="text-[11px] text-gray-500 mt-0.5">{addon.description}</p>
@@ -158,7 +161,7 @@ export default function TreatmentCalculator() {
                 <span>
                   {currentTreatment.name} ({quantity} {currentTreatment.unitLabel})
                 </span>
-                <span className="font-semibold text-white tabular-nums">{baseCalc.toLocaleString()} UAH</span>
+                <span className="font-semibold text-white tabular-nums">{money(baseCalc)} UAH</span>
               </div>
 
               {calculatorOptions.addons
@@ -166,7 +169,7 @@ export default function TreatmentCalculator() {
                 .map((a) => (
                   <div key={a.id} className="flex justify-between text-xs text-amber-200">
                     <span>+ {a.name}</span>
-                    <span className="tabular-nums">{a.price.toLocaleString()} UAH</span>
+                    <span className="tabular-nums">{money(a.price)} UAH</span>
                   </div>
                 ))}
             </div>
@@ -174,7 +177,7 @@ export default function TreatmentCalculator() {
             <div className="border-t border-white/10 pt-4 space-y-2">
               <p className="text-xs text-white/60">{String(t("calculatorSection.totalCostLabel"))}</p>
               <p className="text-3xl sm:text-4xl font-display font-bold text-[var(--color-accent)] tabular-nums">
-                від {totalPrice.toLocaleString()} UAH
+                від {money(totalPrice)} UAH
               </p>
               <p className="text-[11px] text-white/50 leading-relaxed pt-1">
                 * Фінальний кошторис розраховується лікарем на основі даних 3D КТ томографії.
