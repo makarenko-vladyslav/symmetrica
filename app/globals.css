@@ -78,7 +78,6 @@
   background: hsl(38 85% 52%);
 }
 
-
 /* iOS Safari zooms the whole page when a focused field is under 16px. */
 @media (max-width: 1024px) {
   input:not([type="checkbox"]):not([type="radio"]),
@@ -86,44 +85,12 @@
   textarea {
     font-size: max(16px, 1em);
   }
-}
 
-
-/* iOS Safari zooms the whole page when a focused field is under 16px. */
-@media (max-width: 1024px) {
-  input:not([type="checkbox"]):not([type="radio"]),
-  select,
-  textarea {
-    font-size: max(16px, 1em);
-  }
-}
-
-
-/* iOS Safari zooms the whole page when a focused field is under 16px. */
-@media (max-width: 1024px) {
-  input:not([type="checkbox"]):not([type="radio"]),
-  select,
-  textarea {
-    font-size: max(16px, 1em);
-  }
-}
-
-
-/* iOS Safari zooms the whole page when a focused field is under 16px. */
-@media (max-width: 1024px) {
-  input:not([type="checkbox"]):not([type="radio"]),
-  select,
-  textarea {
-    font-size: max(16px, 1em);
-  }
-}
-
-
-/* iOS Safari zooms the whole page when a focused field is under 16px. */
-@media (max-width: 1024px) {
-  input:not([type="checkbox"]):not([type="radio"]),
-  select,
-  textarea {
-    font-size: max(16px, 1em);
+  /* A finger needs 44px. Measured on a shipped page: 30 of 63 controls came in
+     under 40, which reads as "nothing responds". Buttons only — an inline link
+     inside a paragraph is text, and inflating it would break the prose. */
+  button,
+  [role="button"] {
+    min-height: 44px;
   }
 }
