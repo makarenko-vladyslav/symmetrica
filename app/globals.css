@@ -93,4 +93,14 @@
   [role="button"] {
     min-height: 44px;
   }
+
+  /* The root size a phone actually reads at.
+     Everything on these pages is laid out in rem, so the root decides the size
+     of the whole site — and a viewport-scaled root breaks on exactly the
+     devices people use. Measured live: 17.3px at 390px, heading for 26.7px at
+     600px, while an 800px tablet got 12.5px. 16px is the platform baseline and
+     what iOS text-size settings are calibrated against. */
+  html {
+    font-size: 16px;
+  }
 }
