@@ -29,3 +29,14 @@ export function SmoothScroll() {
 
   return null;
 }
+
+/**
+ * Also the default export.
+ *
+ * The prompt shows a named import and the sanitiser injects one, but the model
+ * writes `import SmoothScroll from "@/components/smooth-scroll"` often enough
+ * that it shipped: a default import of a module without one is `undefined`, and
+ * the static export died with "Element type is invalid" on every page. One line
+ * here costs nothing and removes the whole class of failure.
+ */
+export default SmoothScroll;
