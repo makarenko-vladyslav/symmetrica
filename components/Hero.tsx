@@ -1,184 +1,164 @@
 "use client";
 
-import { useLocale } from "@/lib/i18n";
-import { TextReveal } from "@/components/motion";
+import { useLocale } from '@/lib/i18n';
+import { Reveal, TextReveal } from '@/components/motion';
 
 export default function Hero() {
   const { t } = useLocale();
 
+  const heroVideoSrc = "https://videos.pexels.com/video-files/6998091/6998091-hd_1920_1080_25fps.mp4";
+  const heroPoster = "https://images.pexels.com/videos/6998091/pexels-photo-6998091.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=630&w=1200";
+
   return (
-    <section className="relative min-h-[100svh] flex flex-col justify-between pt-28 pb-12 overflow-hidden bg-[var(--color-bg-dark)]">
-      {/* Background Layer 1: Looping Video + Dark Scrim Stack */}
+    <section className="relative min-h-[100svh] flex flex-col justify-between pt-28 pb-6 overflow-hidden bg-primary text-white">
+      
+      {/* Background Video with Scrim Stack */}
       <div className="absolute inset-0 z-0">
         <video
           autoPlay
           muted
           loop
           playsInline
-          poster={String(t("hero.heroPoster"))}
-          className="w-full h-full object-cover filter brightness-75 scale-105"
+          poster={heroPoster}
+          className="w-full h-full object-cover scale-105 filter brightness-75"
         >
-          <source src={String(t("hero.heroVideo"))} type="video/mp4" />
+          <source src={heroVideoSrc} type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-r from-[var(--color-bg-dark)]/95 via-[var(--color-bg-dark)]/85 to-[var(--color-bg-dark)]/60" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-bg-dark)] via-transparent to-[var(--color-bg-dark)]/70" />
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/85 to-primary/60" />
+        <div className="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-primary/40" />
       </div>
 
-      {/* Background Layer 2: Giant Watermark Type Layer (pointer-events-none, whitespace-nowrap) */}
-      <div
+      {/* Background Decorative Watermark */}
+      <div 
+        className="absolute top-12 left-1/2 -translate-x-1/2 text-[15vw] font-display font-bold text-white/[0.03] pointer-events-none select-none whitespace-nowrap z-0 uppercase tracking-widest"
         aria-hidden="true"
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0 pointer-events-none select-none text-[15vw] font-display font-bold text-white/[0.03] uppercase tracking-widest whitespace-nowrap"
       >
         SYMMETRICA
       </div>
 
-      {/* Main Content Viewport */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full my-auto py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full my-auto">
+        <div className="grid lg:grid-cols-12 gap-12 items-center">
           
-          {/* Left Column: 10-Layer Stack */}
-          <div className="lg:col-span-8 space-y-6 text-white">
+          {/* Main Hero Copy */}
+          <div className="lg:col-span-8 space-y-6 text-left">
             
-            {/* Layer 1: Eyebrow Kicker with REAL Meta */}
-            <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-xs font-semibold tracking-widest text-[var(--color-accent)] uppercase">
-              <span className="w-2 h-2 rounded-full bg-[var(--color-accent)] animate-pulse" />
-              <span>{String(t("hero.kicker"))}</span>
+            {/* Kicker badge with REAL meta */}
+            <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-white/10 border border-white/15 backdrop-blur-md text-accent text-xs uppercase tracking-widest font-semibold">
+              <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+              <span>{t('hero.est') as string}</span>
             </div>
 
-            {/* Layer 2: Multi-line Poster H1 with contrast typography */}
-            <h1 className="text-3xl sm:text-5xl lg:text-6.5xl font-display font-medium leading-[1.1] text-white tracking-tight">
-              Тотальне <em className="italic font-serif text-[var(--color-accent)]">{String(t("hero.recoveryWord"))}</em> зубів уві сні за 24 години
+            {/* Main Headline */}
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-[1.12]">
+              <span>{t('hero.titleBefore') as string} </span>
+              <span className="font-serif italic text-accent font-normal">{t('hero.titleHighlight') as string}</span>
+              <span> {t('hero.titleAfter') as string}</span>
             </h1>
 
-            {/* Layer 3: Lede Paragraph */}
-            <p className="text-base sm:text-lg text-white/80 max-w-2xl font-light leading-relaxed">
-              {String(t("hero.subtitle"))}
+            {/* Subtitle */}
+            <p className="text-base sm:text-lg text-slate-200 max-w-2xl font-body leading-relaxed">
+              {t('hero.subtitle') as string}
             </p>
 
-            {/* Layer 4: Flanking Mini-Copy Columns & Prices */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-              <div className="p-4 rounded-xl bg-white/10 backdrop-blur-sm border border-white/10 space-y-1">
-                <p className="text-[11px] uppercase tracking-wider text-[var(--color-accent)] font-semibold">
-                  3D КТ Діагностика СНЩС
-                </p>
-                <p className="text-sm font-bold text-white tabular-nums">
-                  {String(t("hero.priceConsult"))}
-                </p>
-                <p className="text-[11px] text-white/60">{String(t("hero.jointAnalysis"))}</p>
+            {/* Flanking mini-copy columns */}
+            <div className="grid sm:grid-cols-2 gap-4 py-2 max-w-xl text-xs text-slate-300 font-mono border-y border-white/10 my-4">
+              <div className="flex items-center gap-2">
+                <span className="text-accent font-bold">— 01</span>
+                <span>{t('hero.nav1') as string}</span>
               </div>
-
-              <div className="p-4 rounded-xl bg-white/10 backdrop-blur-sm border border-white/10 space-y-1">
-                <p className="text-[11px] uppercase tracking-wider text-[var(--color-accent)] font-semibold">
-                  Хірургічна Імплантація
-                </p>
-                <p className="text-sm font-bold text-white tabular-nums">
-                  {String(t("hero.priceImplant"))}
-                </p>
-                <p className="text-[11px] text-white/60">{String(t("hero.systemsLabel"))}</p>
+              <div className="flex items-center gap-2">
+                <span className="text-accent font-bold">— 02</span>
+                <span>{t('hero.nav2') as string}</span>
               </div>
             </div>
 
-            {/* Layer 5: CTA Pair (Solid Primary + Secondary Text Link) */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-5 pt-2">
+            {/* Call to Actions PAIR */}
+            <div className="pt-2 flex flex-col sm:flex-row gap-5 items-stretch sm:items-center">
               <a
                 href="#booking"
-                className="px-8 py-4 rounded-xl bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-black font-bold text-xs uppercase tracking-wider text-center transition-all shadow-xl shadow-amber-500/20 transform hover:-translate-y-0.5"
+                className="px-8 py-4 bg-accent hover:bg-accent-hover text-white text-xs font-bold uppercase tracking-wider rounded-xl shadow-lg shadow-accent/30 text-center transition-all duration-300 transform hover:-translate-y-0.5 min-h-[44px] flex items-center justify-center"
               >
-                {String(t("hero.ctaPrimary"))}
+                {t('hero.ctaPrimary') as string}
               </a>
               <a
                 href="#calculator"
-                className="px-6 py-4 text-white hover:text-[var(--color-accent)] font-semibold text-xs uppercase tracking-wider transition-colors text-center border-b border-white/20 hover:border-[var(--color-accent)]"
+                className="text-xs font-bold uppercase tracking-wider text-slate-200 hover:text-accent transition-colors flex items-center justify-center gap-2 py-2 min-h-[44px]"
               >
-                {String(t("hero.ctaSecondary"))} →
+                <span>{t('hero.ctaSecondary') as string}</span>
+                <span>→</span>
               </a>
             </div>
 
-            {/* Layer 6: Meta Strip with Hairline Separators */}
-            <div className="pt-4 border-t border-white/15 flex flex-wrap items-center gap-4 text-xs text-white/70 tracking-wider uppercase font-semibold tabular-nums">
-              <span>ПН-ПТ: 09:00 - 20:00</span>
-              <span className="text-[var(--color-accent)]">·</span>
-              <span>{String(t("hero.addressLine"))}</span>
-              <span className="text-[var(--color-accent)]">·</span>
-              <span className="text-amber-400 font-bold">{String(t("hero.googleReviews"))}</span>
+            {/* Rating / Meta strip */}
+            <div className="pt-4 flex flex-wrap items-center gap-6 text-xs text-slate-300 border-t border-white/10">
+              <div className="flex items-center gap-2">
+                <span className="font-bold text-white">4.9 / 5.0</span>
+                <span className="text-slate-400">{t('hero.reviews') as string}</span>
+              </div>
+              <div className="hidden sm:block text-slate-600">|</div>
+              <div>{t('hero.patients') as string}</div>
             </div>
 
           </div>
 
-          {/* Right Column: Rotating Text Badge & Interactive Diagnostic Protocol Panel */}
-          <div className="lg:col-span-4 relative flex flex-col items-center justify-center">
-            
-            {/* Layer 7: Rotating Text Circular Seal (Text Only, NO Glyphs) */}
-            <div className="relative w-40 h-40 mb-6 flex items-center justify-center pointer-events-none select-none">
-              <div className="absolute inset-0 animate-spin-slow rounded-full border border-dashed border-[var(--color-accent)]/40 flex items-center justify-center">
-                <svg viewBox="0 0 100 100" className="w-full h-full text-[var(--color-accent)] text-[9px] font-bold uppercase tracking-widest fill-current">
-                  <path id="circlePath" d="M 50, 50 m -38, 0 a 38,38 0 1,1 76,0 a 38,38 0 1,1 -76,0" fill="none" />
-                  <text>
-                    <textPath href="#circlePath">
-                      SYMMETRICA DENTAL CENTER · EST 2013 ·
-                    </textPath>
-                  </text>
-                </svg>
-              </div>
-              <div className="text-center space-y-0.5">
-                <span className="block text-2xl font-display font-bold text-white tabular-nums">13</span>
-                <span className="block text-[9px] uppercase tracking-widest text-[var(--color-accent)]">{String(t("hero.yearsText"))}</span>
-              </div>
-            </div>
+          {/* Floating Text Seal & Trust Element */}
+          <div className="lg:col-span-4 hidden lg:block">
+            <Reveal delay={0.2}>
+              <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-6 shadow-2xl text-white space-y-6 relative overflow-hidden">
+                
+                {/* Text Seal SVG (no icons inside) */}
+                <div className="flex justify-between items-center border-b border-white/10 pb-4">
+                  <div className="space-y-1">
+                    <span className="text-[10px] uppercase tracking-widest text-accent font-bold block">{t('hero.sealSubtitle') as string}</span>
+                    <span className="text-xs font-bold text-white font-display block">{t('hero.sealTitle') as string}</span>
+                  </div>
+                  <div className="w-14 h-14 relative shrink-0">
+                    <svg viewBox="0 0 100 100" className="w-full h-full animate-[spin_12s_linear_infinite]">
+                      <path id="circlePath" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="none" />
+                      <text className="text-[10px] font-mono fill-accent uppercase tracking-widest">
+                        <textPath href="#circlePath">
+                          • SYMMETRICA MEDICAL GROUP • EST. 2013
+                        </textPath>
+                      </text>
+                    </svg>
+                  </div>
+                </div>
 
-            {/* Protocol Panel Card */}
-            <div className="w-full rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20 p-6 space-y-4 text-white shadow-2xl">
-              <div className="flex justify-between items-center border-b border-white/10 pb-3">
-                <span className="text-[10px] font-bold uppercase tracking-widest text-[var(--color-accent)]">
-                  ПРОТОКОЛ SYMMETRICA TECH
-                </span>
-                <span className="bg-emerald-500/20 text-emerald-300 text-[10px] font-bold px-2 py-0.5 rounded border border-emerald-500/30">
-                  СЕДАЦІЯ
-                </span>
-              </div>
-
-              <div className="relative h-40 rounded-xl overflow-hidden border border-white/10">
-                <img
-                  src="https://cdn.prod.website-files.com/65b22ee2a70bd488c02e918e/65b76cba7d575c31abae62e8_research-image-1.webp"
-                  alt="3D КТ Комп'ютерна томографія щелепи"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-3">
-                  <p className="text-[11px] text-white/90">
-                    Точне 3D-сканування кісткової тканини перед імплантацією
+                <div className="space-y-3">
+                  <h3 className="text-base font-bold leading-tight font-display text-white">
+                    Гарантія точного відновлення посмішки
+                  </h3>
+                  <p className="text-xs text-slate-300 leading-relaxed font-body">
+                    Власна цифрова зуботехнічна лабораторія та штатна анестезіологія дають змогу виконати тотальне відновлення без сторонніх підрядників.
                   </p>
                 </div>
+
+                <div className="bg-black/30 rounded-xl p-3.5 flex items-center justify-between text-xs border border-white/10">
+                  <span className="text-slate-300">{t('hero.ctLabel') as string}</span>
+                  <span className="font-bold text-accent font-mono">{t('hero.ctPrice') as string}</span>
+                </div>
+
+                <a
+                  href="#sedation"
+                  className="block text-center text-xs font-bold text-accent hover:text-white uppercase tracking-wider transition-colors pt-1 min-h-[44px] flex items-center justify-center"
+                >
+                  Детальніше про лікування уві сні →
+                </a>
               </div>
-
-              <div className="space-y-2 text-xs text-white/80">
-                <p className="flex justify-between border-b border-white/10 pb-1">
-                  <span>{String(t("hero.anesthesiologistLabel"))}</span>
-                  <span className="font-bold text-white">{String(t("hero.anesthesiologistName"))}</span>
-                </p>
-                <p className="flex justify-between border-b border-white/10 pb-1">
-                  <span>{String(t("hero.prosthesisReadyLabel"))}</span>
-                  <span className="font-bold text-[var(--color-accent)]">{String(t("hero.prosthesisReadyTime"))}</span>
-                </p>
-              </div>
-
-              <a
-                href="#booking"
-                className="block text-center w-full py-3 bg-white/10 hover:bg-white/20 text-white font-semibold text-xs uppercase tracking-wider rounded-xl transition-colors border border-white/20"
-              >
-                Забронювати візит →
-              </a>
-            </div>
-
+            </Reveal>
           </div>
 
         </div>
       </div>
 
-      {/* Layer 8: Scroll Cue (Tiny bottom-center indicator) */}
-      <div className="relative z-10 text-center pb-2 text-white/50 text-[9px] tracking-widest uppercase flex flex-col items-center gap-1">
-        <span>{String(t("hero.scroll"))}</span>
-        <div className="w-0.5 h-5 bg-gradient-to-b from-[var(--color-accent)] to-transparent animate-pulse" />
+      {/* Hero Bottom Scroll Cue */}
+      <div className="relative z-10 text-center pt-6 pb-2">
+        <div className="inline-flex flex-col items-center opacity-80 hover:opacity-100 transition-opacity">
+          <span className="text-[9px] uppercase tracking-[0.3em] font-mono text-slate-300 mb-1">{t('hero.scroll') as string}</span>
+          <div className="w-px h-6 bg-gradient-to-b from-accent via-accent/50 to-transparent" />
+        </div>
       </div>
+
     </section>
   );
 }

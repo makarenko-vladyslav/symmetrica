@@ -1,41 +1,44 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import SocialProof from "@/components/SocialProof";
-import DiagnosticsTech from "@/components/DiagnosticsTech";
+import TechShowcase from "@/components/TechShowcase";
 import Services from "@/components/Services";
-import TreatmentCalculator from "@/components/TreatmentCalculator";
-import SedationSection from "@/components/SedationSection";
-import DigitalLabSection from "@/components/DigitalLabSection";
+import Calculator from "@/components/Calculator";
+import SedationUnit from "@/components/SedationUnit";
+import DigitalLab from "@/components/DigitalLab";
 import BeforeAfter from "@/components/BeforeAfter";
-import TeamSection from "@/components/TeamSection";
-import SterilizationProtocol from "@/components/SterilizationProtocol";
+import Team from "@/components/Team";
 import Testimonials from "@/components/Testimonials";
-import FaqSection from "@/components/FaqSection";
+import FAQ from "@/components/FAQ";
 import BookingForm from "@/components/BookingForm";
-import LocationSection from "@/components/LocationSection";
+import ContactMap from "@/components/ContactMap";
 import Footer from "@/components/Footer";
+import { LabeledHairline, StatementBand, WatermarkStrip, TrustHairline } from "@/components/Interstitials";
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen bg-[var(--color-bg-light)]">
+    <>
       <Header />
-      <main id="main-content">
+      <main>
         <Hero />
         <SocialProof />
-        <DiagnosticsTech />
+        <LabeledHairline label="ЦЕНТР СТОМАТОЛОГІЧНОГО ВІДНОВЛЕННЯ — МІСТО ЛЬВІВ" />
+        <TechShowcase />
+        <StatementBand text="«Кожен клінічний випадок моделюється в 3D до початку хірургічного чи естетичного втручання»" />
         <Services />
-        <TreatmentCalculator />
-        <SedationSection />
-        <DigitalLabSection />
+        <Calculator />
+        <WatermarkStrip text="БЕЗПЕКА · ДІАГНОСТИКА · ЕСТЕТИКА · 24–48 ГОДИН" />
+        <SedationUnit />
+        <DigitalLab />
         <BeforeAfter />
-        <TeamSection />
-        <SterilizationProtocol />
+        <TrustHairline text="63 000+ ПАЦІЄНТІВ · 13 РОКІВ ДОСВІДУ · 17 ФАХІВЦІВ" />
+        <Team />
         <Testimonials />
-        <FaqSection />
+        <FAQ />
         <BookingForm />
-        <LocationSection />
+        <ContactMap />
       </main>
       <Footer />
-    </div>
+    </>
   );
 }

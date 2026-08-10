@@ -3,355 +3,323 @@
   "locales": {
     "uk": {
       "meta": {
-        "title": "Symmetrica — Центр стоматологічного відновлення Львів | Імплантація All-on-4",
-        "description": "Центр стоматологічного відновлення Symmetrica у Львові з 2013 року. Дентальна імплантація All-on-4, медикаментозний сон, власна лабораторія Symmetrica Tech.",
-        "keywords": "стоматологія Львів, імплантація зубів, All-on-4, седація, вініри, СНЩС",
+        "title": "Symmetrica — Центр стоматологічного відновлення у Львові",
+        "description": "Повний спектр високоестетичної стоматології, імплантація All-on-4 уві сні, власна анестезіологічна служба та цифрова лабораторія Symmetrica Tech.",
+        "keywords": "стоматологія Львів, імплантація All-on-4, вініри Львів, медикаментозний сон",
         "lang": "uk"
       },
       "nav": {
-        "diagnostics": "3D-Діагностика",
-        "services": "Послуги та Ціни",
-        "calculator": "Розрахунок",
-        "sedation": "Медикаментозний сон",
-        "lab": "Цифрова лабораторія",
-        "cases": "Результати",
+        "services": "Послуги",
+        "lab": "Лабораторія",
+        "sedation": "Лікування уві сні",
+        "calculator": "Калькулятор",
         "team": "Лікарі",
-        "faq": "Часті питання",
+        "cases": "Кейси",
+        "faq": "Запитання",
         "contact": "Контакти",
-        "bookCta": "Записатись на 3D КТ"
+        "bookBtn": "Записатися"
+      },
+      "header": {
+        "address": "вул. Стрийська, 45, Львів"
       },
       "hero": {
-        "kicker": "ЛЬВІВ · ВУЛ. СТРИЙСЬКА, 45 · EST. 2013",
-        "title": "Тотальне стоматологічне відновлення уві сні за 24 години",
-        "subtitle": "Центр стоматологічного відновлення Symmetrica — хірургічна імплантація All-on-4, гнатологічна реабілітація та естетичні керамічні реставрації із власною анестезіологічною службою.",
-        "badge": "Понад 63 000 пролікованих пацієнтів",
-        "ctaPrimary": "Записатися на 3D-діагностику",
-        "ctaSecondary": "Розрахувати вартість",
-        "priceConsult": "Первинний огляд + КТ від 800 UAH",
-        "priceImplant": "Дентальна імплантація від 14 500 UAH",
-        "heroVideo": "https://videos.pexels.com/video-files/6998091/6998091-hd_1920_1080_25fps.mp4",
-        "heroPoster": "https://images.pexels.com/videos/6998091/pexels-photo-6998091.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=630&w=1200",
-        "recoveryWord": "відновлення",
-        "jointAnalysis": "Аналіз суглоба та жувальних м'язів",
-        "systemsLabel": "Швейцарські та корейські системи",
-        "addressLine": "М. ЛЬВІВ, СТРИЙСЬКА, 45",
-        "googleReviews": "4.9 / 5.0 GOOGLE REVIEWS",
-        "yearsText": "РОКІВ",
-        "anesthesiologistLabel": "Штатний анестезіолог:",
-        "anesthesiologistName": "Олександр Біган",
-        "prosthesisReadyLabel": "Готовність протеза:",
-        "prosthesisReadyTime": "24 години",
+        "kicker": "Центр стоматологічного відновлення Symmetrica",
+        "est": "Est. 2013 — Львів, вул. Стрийська, 45",
+        "titleBefore": "Відновлення",
+        "titleHighlight": "посмішки",
+        "titleAfter": "All-on-4 та естетика уві сні",
+        "subtitle": "Повний цикл високоестетичного та хірургічного лікування з 2013 року. Власна анестезіологічна служба та цифрова зуботехнічна лабораторія Symmetrica Tech.",
+        "pill1": "Штатна анестезіологія",
+        "pill2": "Реставрації за 24–48 год",
+        "pill3": "Офіційна ліцензія МОЗ",
+        "nav1": "Хірургічна навігація 10 мкм",
+        "nav2": "Ліцензія МОЗ №582910",
+        "ctaPrimary": "Записатись на 3D КТ",
+        "ctaSecondary": "Розрахувати кошторис",
+        "reviews": "· Google Reviews (600+ відгуків)",
+        "patients": "63,000+ пролікованих пацієнтів з 2013 року",
+        "sealTitle": "ЦИФРОВА ЛАБОРАТОРІЯ",
+        "sealSubtitle": "SYMMETRICA TECH",
+        "ctLabel": "Комп'ютерна томографія:",
+        "ctPrice": "від 800 UAH",
         "scroll": "SCROLL"
       },
-      "stats": [
-        { "value": "13 років", "label": "безперервного досвіду та розвитку у Львові" },
-        { "value": "63 000+", "label": "пацієнтів з відновленою функцією та естетикою" },
-        { "value": "24-48 год", "label": "виготовлення незнімного протеза у власні лабораторії" },
-        { "value": "100%", "label": "безпечний медикаментозний сон під контролем анестезіолога" }
-      ],
-      "socialTicker": [
-        "· All-on-4 / All-on-6 Імплантація",
-        "· Медикаментозний Сон під наглядом анестезіолога",
-        "· Власна Цифрова Лабораторія Symmetrica Tech",
-        "· Гнатологічна Діагностика СНЩС та Сплінт-Терапія",
-        "· Ортодонтія Елайнерами Invisalign",
-        "· Естетичні Керамічні Вініри",
-        "· Ендодонтія Під Мікроскопом Zeiss"
-      ],
-      "techSection": {
-        "kicker": "ПРИЧИНА НАШОЇ ТОЧНОСТІ",
-        "title": "Цифрова діагностика та гнатологічний аналіз СНЩС",
-        "subtitle": "Перш ніж відновлювати зуби, ми досліджуємо роботу скронево-нижньощелепного суглоба та м'язів для прогнозованого довговічного результату.",
-        "includedInCt": "Включено в 3D КТ"
+      "social": {
+        "licenseTitle": "Офіційна ліцензія МОЗ",
+        "licenseDesc": "Анестезіологічна служба №582910 без підрядників",
+        "certsLink": "Сертифікати та ліцензії →"
       },
-      "servicesSection": {
-        "kicker": "НАПРЯМКИ ЛІКУВАННЯ ТА КЛІНІЧНИЙ ПРАЙС",
-        "title": "Повний спектр високоестетичної та хірургічної стоматології",
-        "subtitle": "Прозорий кошторис без прихованих платежів, європейські протоколи та бездоганний сервісний супровід.",
-        "footnote": "* Точна вартість формується за результатами комп'ютерної томографії та консультації головного лікаря."
+      "tech": {
+        "kicker": "Точна діагностика",
+        "title": "Цифрова комп'ютерна діагностика та гнатологія",
+        "subtitle": "Всебічне дослідження прикусу, суглобів (СНЩС) та будови щелепи перед проведенням складних реставрацій.",
+        "book": "Записатись"
       },
-      "calculatorSection": {
-        "totalCostLabel": "Загальна вартість лікування:"
+      "services": {
+        "kicker": "Напрямки лікування",
+        "title": "Послуги Центру Symmetrica",
+        "subtitle": "Преміальні матеріали, мікроскопна точність та безболісні методики відновлення зубного ряду.",
+        "note": "* Остаточна вартість фіксується у писемному договорі після огляду та 3D КТ.",
+        "package": "Пакетна вартість:",
+        "pkgPrice": "від 88 000 UAH"
       },
-      "sedationSection": {
-        "kicker": "БЕЗБОЛІСНА СТОМАТОЛОГІЯ",
-        "title": "Власна офіційна анестезіологічна служба з медичним сном",
-        "description": "Symmetrica володіє державною ліцензією на анестезіологію. Складні хірургічні втручання, видалення чотирьох ретинованих зубів мудрості або тотальна імплантація All-on-4 проходять безболісно, поки ви комфортно спите під цілодобовим моніторингом серця та дихання.",
-        "feat1Title": "Офіційна ліцензія МОЗ на анестезіологію",
-        "feat1Desc": "Штатний лікар-анестезіолог вищої категорії Олександр Біган присутній протягом всієї процедури.",
-        "feat2Title": "Повний кардіомоніторинг та джерело кисню",
-        "feat2Desc": "Апарат інфузомат, дефібрилятор та сучасні сертифіковані препарати для швидкого та м'якого пробудження.",
-        "feat3Title": "Без болю, стресу чи тривоги",
-        "feat3Desc": "Ви засинаєте в комфортному кріслі та прокидаєтеся вже з відновленими зубами без неприємних спогадів."
+      "calculator": {
+        "teethCount": "Кількість зубів / вінірів:",
+        "sedationTime": "Тривалість медикаментозного сну (седація):",
+        "uah": "UAH",
+        "anesthesia": "Штатна анестезіологія:",
+        "included": "Включено",
+        "lab": "Власна лабораторія:",
+        "symTech": "Symmetrica Tech",
+        "installment": "Розтермінування:",
+        "months": "До 6 місяців"
       },
-      "labSection": {
-        "kicker": "ВЛАСНА ЦИФРОВА ЛАБОРАТОРІЯ SYMMETRICA TECH",
-        "title": "Анатомічна точність та керамічні реставрації за 24-48 годин",
-        "description": "Власний зуботехнічний комплекс безпосередньо в клініці дозволяє лікарю-ортопеду та майстру-техніку спільно моделювати форму, колір та прозорість майбутніх коронок і вінірів.",
-        "card1Title": "Фрезерування",
-        "card1Subtitle": "01. CAD/CAM",
-        "card2Title": "Пряма співпраця",
-        "card2Subtitle": "02. КОНСИЛІУМ"
+      "sedation": {
+        "licTitle": "Ліцензія МОЗ України",
+        "licDesc": "Сертифіковані ліцензовані препарати для безпечного сну",
+        "monTitle": "Безперервний моніторинг",
+        "monDesc": "Кардіомонітор, інфузомат, дефібрилятор та киснева станція",
+        "docTitle": "Штатний анестезіолог",
+        "docDesc": "Керівник служби Олександр Біган з досвідом понад 15 років",
+        "wakeTitle": "Легке пробудження",
+        "wakeDesc": "Без нудоти та головокружіння вже через 30 хвилин після процедури",
+        "name": "Олександр Біган",
+        "role": "Керівник анестезіологічної служби",
+        "spec": "Спеціалізація з дорослої та дитячої анестезіології"
       },
-      "sterilizationSection": {
-        "kicker": "БЕЗПЕКА ПАЦІЄНТА",
-        "title": "Потрійна сертифікована система стерилізації інструментів",
-        "description": "Замочування в дезінфектанті Korzolex (Німеччина) під ультразвуком, пакування в одноразові вакуумні крафт-пакети та автоклавування класу B під тиском. Ваша безпека гарантована.",
-        "step1Title": "Холодна фаза & Ультразвук",
-        "step1Desc": "Замочування інструментів у розчині «Корзолекс» (Німеччина) на 60 хв під ультразвуковим коливанням.",
-        "step2Title": "Одноразові вакуумні крафт-пакети",
-        "step2Desc": "Кожен інструмент пакується окремо. Пакет відкривається виключно в присутності пацієнта.",
-        "step3Title": "Автоклавування класу B під тиском",
-        "step3Desc": "Фінальна термічна обробка парою при високій температурі знищує 100% вірусів та мікроорганізмів."
+      "lab": {
+        "time": "24–48 год",
+        "timeDesc": "Термін виготовлення",
+        "acc": "10 мкм",
+        "accDesc": "Точність CAD/CAM",
+        "ctrl": "Цифровий контроль",
+        "gar": "10 років",
+        "garDesc": "Гарантія кераміки"
       },
-      "beforeAfterSection": {
-        "durationLabel": "Тривалість роботи:",
-        "doctorsLabel": "Лікарі комплексу:",
-        "anesthesiaMethodLabel": "Метод анестезії:",
-        "medicalSleep": "Медикаментозний сон"
+      "cases": {
+        "doctors": "Лікарі:",
+        "more": "Детальніше →"
       },
-      "teamSection": {
-        "kicker": "КОМАНДА ЕКСПЕРТІВ SYMMETRICA",
-        "title": "Досвідчені лікарі з вищою медичною кваліфікацією",
-        "subtitle": "Команда хірургів, ортопедів, ортодонтів та анестезіологів, які спільно вирішують складні клінічні завдання.",
-        "doctors": [
-          { "name": "Андрій Іванців", "role": "Засновник, ортодонт, ортопед", "photo": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/6922f52c673c4b16cc37800b_ivanciv_a.webp" },
-          { "name": "Мар'ян Шляхта", "role": "Медичний директор, стоматолог-ортодонт", "photo": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/69149b27ee2978af4c8c587d_shlyakhta.webp" },
-          { "name": "Олександр Біган", "role": "Керівник анестезіологічної служби", "photo": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/6922f46f4ffa72d4d7099cfb_bigan-removebg-preview.webp" },
-          { "name": "Марія Лис", "role": "Стоматолог-терапевт", "photo": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/69149aba00f14af00b2d6dfa_lus.webp" },
-          { "name": "Поліна Сухенко", "role": "Cтоматолог-пародонтолог", "photo": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/6953df50f03c26feba8b7e60_polina-suhenko-paradontolog.png" },
-          { "name": "Аліна Сняк", "role": "Стоматолог-гігієніст", "photo": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/69149b111161792dceda6fc4_snyak.webp" },
-          { "name": "Павло Троєцький", "role": "Стоматолог-терапевт-ортопед", "photo": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/69e086f5124d0fad2570c438_pavlo-troieckiy-likar.png" },
-          { "name": "Вікторія Cтадницька", "role": "Стоматолог-ортопед", "photo": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/6953c947d602dd2a84576c7c_viktoriya-kulyavec-likar-ortoped.png" },
-          { "name": "Софія Іванців", "role": "Спеціаліст цифрової діагностики", "photo": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/6953dea203eab3b018f11864_sofiya-ivanciv-likar.png" },
-          { "name": "Олексій Мотрук", "role": "Стоматолог-хірург", "photo": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/695f88598c93ec8ba1edd93a_oleksiy-motruk.png" },
-          { "name": "Дудун Ірена", "role": "Лікар-стоматолог-терапевт", "photo": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/69f1f38dcc15c785218b1e84_dudun-irena.png" },
-          { "name": "Тарас Яріш", "role": "Хірург-стоматолог", "photo": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/69149adb6b5b29b799279b23_Yarish.webp" },
-          { "name": "Максим Калужний", "role": "Стоматолог-ортопед", "photo": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/69149b1b11e8cbcb70b0f604_kalushny.webp" },
-          { "name": "Андрій Гриневич", "role": "Хірург — імплантолог, ортопед", "photo": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/69149ad283c01f7f4d3acb1c_grynavich.webp" },
-          { "name": "Оксана Іванців", "role": "Косметолог-дермофармацевт", "photo": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/69149b2fd624b9ea6cc76194_ivanciv_o.webp" },
-          { "name": "Наталя Понаморьова", "role": "Стоматолог терапевт", "photo": null },
-          { "name": "Андрій Комащенко", "role": "Лікар-анестезіолог", "photo": null }
-        ]
+      "testimonials": {
+        "badge": "4.9/5 · Google Reviews · 600+ відгуків",
+        "patient": "Пацієнт клініки",
+        "google": "Google Review"
       },
-      "bookingForm": {
-        "kicker": "ОНЛАЙН-ЗАПИС",
-        "title": "Записатися на комплексну 3D-діагностику з КТ",
-        "subtitle": "Залиште заявку — сервіс-менеджер зв'яжеться з вами протягом 15 хвилин для узгодження зручного часу.",
-        "namePlaceholder": "Ваше ім'я та прізвище",
-        "phonePlaceholder": "+380 (XX) XXX-XX-XX",
-        "serviceSelect": "Оберіть послугу / напрямок",
-        "dateLabel": "Бажана дата візиту",
-        "submitCta": "Забронювати візит на Стрийській, 45",
-        "guarantee": "Надаємо гарантійний сертифікат на всі види хірургічних та ортопедичних робіт.",
-        "workScheduleLabel": "Графік роботи:",
-        "clinicAddressLabel": "Адреса клініки:",
-        "clinicAddressText": "м. Львів, вул. Стрийська, 45",
-        "opt1": "3D КТ Комп'ютерна томографія (800 UAH)",
-        "opt2": "Консультація Головного лікаря",
-        "opt3": "Імплантація All-on-4 / All-on-6 уві сні",
-        "opt4": "Встановлення керамічних вінірів",
-        "opt5": "Діагностика суглоба СНЩС",
-        "opt6": "Елайнери Invisalign"
+      "booking": {
+        "opt1": "3D Комп’ютерна томографія (КТ)",
+        "opt2": "Консультація та All-on-4 уві сні",
+        "opt3": "Встановлення імплантатів",
+        "opt4": "Керамічні вініри / коронки",
+        "opt5": "Діагностика СНЩС / Гнатологія",
+        "schedule": "Графік прийому:",
+        "loc": "Локація:",
+        "addr": "вул. Стрийська, 45, Львів"
       },
-      "locationSection": {
-        "addressLabel": "Адреса:",
-        "addressText": "м. Львів, вул. Стрийська, 45 (зручний під'їзд, парковка)",
-        "phoneLabel": "Телефон:",
-        "emailLabel": "Електронна пошта:",
-        "email": "symmetricalviv@gmail.com",
-        "hoursLabel": "Графік роботи:",
-        "hoursText": "Пн-Пт: 09:00 - 20:00 · Сб: 09:00 - 16:00 · Нд: за домовленістю"
+      "contact": {
+        "addrTitle": "Адреса Центру",
+        "addrLine": "вул. Стрийська, 45",
+        "city": "м. Львів, Україна, 79000",
+        "phoneTitle": "Телефон гарячої лінії",
+        "emailTitle": "Електронна пошта",
+        "socialTitle": "Соціальні мережі"
       },
       "footer": {
-        "about": "Центр стоматологічного відновлення Symmetrica — високоестетична та хірургічна стоматологія у Львові. Ліцензія МОЗ України.",
-        "hours": "Пн-Пт: 09:00 - 20:00 · Сб: 09:00 - 16:00 · Нд: за домовленістю",
-        "rights": "Всі права захищено. Центр стоматологічного відновлення Symmetrica © 2026.",
-        "linkCt": "3D КТ Діагностика",
-        "linkAllOn4": "Імплантація All-on-4",
-        "linkVeneers": "Керамічні Вініри",
-        "linkSedation": "Лікування уві сні",
-        "linkTmj": "Сплінт-терапія СНЩС",
-        "address": "м. Львів, вул. Стрийська, 45",
-        "email": "symmetricalviv@gmail.com"
+        "servicesTitle": "Послуги та ціни",
+        "s1": "3D Діагностика КТ",
+        "s2": "Анестезіологія та наркоз",
+        "s3": "Лабораторія Symmetrica Tech",
+        "s4": "Калькулятор кошторису",
+        "s5": "Наші лікарі",
+        "spec1": "Імплантація All-on-4 / All-on-6",
+        "spec2": "Керамічні вініри E.max",
+        "spec3": "Лікування під седацією",
+        "spec4": "Гнатологія та СНЩС",
+        "spec5": "Елайнери Invisalign",
+        "spec6": "Мікроскопна ендодонтія",
+        "addr": "вул. Стрийська, 45, Львів",
+        "email": "symmetricalviv@gmail.com",
+        "socialLabel": "Соціальні мережі:",
+        "studio": "Студія Тест"
       },
-      "headerAddress": "м. Львів, вул. Стрийська, 45 (поруч з Монументом)"
+      "teamMembersList": [
+        { "name": "Андрій Іванців", "role": "Засновник, ортодонт, ортопед", "image": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/6922f52c673c4b16cc37800b_ivanciv_a.webp" },
+        { "name": "Мар'ян Шляхта", "role": "Медичний директор, стоматолог-ортодонт", "image": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/69149b27ee2978af4c8c587d_shlyakhta.webp" },
+        { "name": "Олександр Біган", "role": "Керівник анестезіологічної служби", "image": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/6922f46f4ffa72d4d7099cfb_bigan-removebg-preview.webp" },
+        { "name": "Андрій Гриневич", "role": "Хірург — імплантолог, ортопед", "image": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/69149ad283c01f7f4d3acb1c_grynavich.webp" },
+        { "name": "Марія Лис", "role": "Стоматолог-терапевт", "image": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/69149aba00f14af00b2d6dfa_lus.webp" },
+        { "name": "Поліна Сухенко", "role": "Cтоматолог-пародонтолог", "image": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/6953df50f03c26feba8b7e60_polina-suhenko-paradontolog.png" },
+        { "name": "Вікторія Cтадницька", "role": "Стоматолог-ортопед", "image": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/6953c947d602dd2a84576c7c_viktoriya-kulyavec-likar-ortoped.png" },
+        { "name": "Павло Троєцький", "role": "Стоматолог-терапевт-ортопед", "image": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/69e086f5124d0fad2570c438_pavlo-troieckiy-likar.png" },
+        { "name": "Олексій Мотрук", "role": "Стоматолог-хірург", "image": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/695f88598c93ec8ba1edd93a_oleksiy-motruk.png" },
+        { "name": "Тарас Яріш", "role": "Хірург-стоматолог", "image": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/69149adb6b5b29b799279b23_Yarish.webp" },
+        { "name": "Максим Калужний", "role": "Стоматолог-ортопед", "image": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/69149b1b11e8cbcb70b0f604_kalushny.webp" },
+        { "name": "Аліна Сняк", "role": "Стоматолог-гігієніст", "image": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/69149b111161792dceda6fc4_snyak.webp" },
+        { "name": "Софія Іванців", "role": "Спеціаліст цифрової діагностики", "image": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/6953dea203eab3b018f11864_sofiya-ivanciv-likar.png" },
+        { "name": "Дудун Ірена", "role": "Лікар-стоматолог-терапевт", "image": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/69f1f38dcc15c785218b1e84_dudun-irena.png" },
+        { "name": "Оксана Іванців", "role": "Косметолог-дермофармацевт", "image": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/69149b2fd624b9ea6cc76194_ivanciv_o.webp" },
+        { "name": "Наталя Понаморьова", "role": "Стоматолог-терапевт", "image": null },
+        { "name": "Андрій Комащенко", "role": "Лікар-анестезіолог", "image": null }
+      ]
     },
     "en": {
       "meta": {
-        "title": "Symmetrica — Dental Restoration Center Lviv | All-on-4 Implants",
-        "description": "Dental restoration clinic in Lviv since 2013. All-on-4 implantology, medical sedation, in-house digital lab Symmetrica Tech.",
-        "keywords": "dentistry Lviv, dental implants, All-on-4, sedation, veneers, TMJ",
+        "title": "Symmetrica — Dental Restoration Center in Lviv",
+        "description": "Full spectrum of aesthetic and surgical dentistry, All-on-4 in sleep, in-house anesthesia service & Symmetrica Tech lab.",
+        "keywords": "dentistry Lviv, All-on-4 implants, dental veneers, sleep dentistry",
         "lang": "en"
       },
       "nav": {
-        "diagnostics": "3D Diagnostics",
-        "services": "Services & Prices",
-        "calculator": "Estimator",
-        "sedation": "Sedation Sleep",
+        "services": "Services",
         "lab": "Digital Lab",
-        "cases": "Results",
+        "sedation": "Sleep Dentistry",
+        "calculator": "Cost Estimator",
         "team": "Doctors",
+        "cases": "Cases",
         "faq": "FAQ",
-        "contact": "Contact",
-        "bookCta": "Book 3D Scan"
+        "contact": "Contacts",
+        "bookBtn": "Book Now"
+      },
+      "header": {
+        "address": "45 Stryiska St, Lviv"
       },
       "hero": {
-        "kicker": "LVIV · 45 STRYISKA ST. · EST. 2013",
-        "title": "Total dental restoration under sedation in 24 hours",
-        "subtitle": "Symmetrica Restoration Center — All-on-4 surgical implants, gnathological rehabilitation, and aesthetic ceramic veneers with an in-house anesthesiology team.",
-        "badge": "Over 63,000 satisfied patients",
-        "ctaPrimary": "Book 3D Diagnostics",
-        "ctaSecondary": "Calculate Treatment Cost",
-        "priceConsult": "Initial exam + 3D CT scan from 800 UAH",
-        "priceImplant": "Dental implant from 14,500 UAH",
-        "heroVideo": "https://videos.pexels.com/video-files/6998091/6998091-hd_1920_1080_25fps.mp4",
-        "heroPoster": "https://images.pexels.com/videos/6998091/pexels-photo-6998091.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=630&w=1200",
-        "recoveryWord": "restoration",
-        "jointAnalysis": "Joint & chewing muscles analysis",
-        "systemsLabel": "Swiss & Korean implant systems",
-        "addressLine": "LVIV, 45 STRYISKA ST.",
-        "googleReviews": "4.9 / 5.0 GOOGLE REVIEWS",
-        "yearsText": "YEARS",
-        "anesthesiologistLabel": "Anesthesiologist:",
-        "anesthesiologistName": "Oleksandr Bihan",
-        "prosthesisReadyLabel": "Prosthesis ready:",
-        "prosthesisReadyTime": "24 hours",
+        "kicker": "Symmetrica Dental Restoration Center",
+        "est": "Est. 2013 — Lviv, 45 Stryiska St",
+        "titleBefore": "Smile",
+        "titleHighlight": "Restoration",
+        "titleAfter": "All-on-4 & Sleep Aesthetics",
+        "subtitle": "Complete aesthetic and surgical treatment cycle in Lviv since 2013. In-house anesthesia department & digital Symmetrica Tech laboratory.",
+        "pill1": "In-house Anesthesia",
+        "pill2": "Restorations in 24-48h",
+        "pill3": "Ministry License",
+        "nav1": "Surgical Navigation 10 µm",
+        "nav2": "MoH License #582910",
+        "ctaPrimary": "Book 3D Scan",
+        "ctaSecondary": "Calculate Cost",
+        "reviews": "· Google Reviews (600+ reviews)",
+        "patients": "63,000+ treated patients since 2013",
+        "sealTitle": "DIGITAL LABORATORY",
+        "sealSubtitle": "SYMMETRICA TECH",
+        "ctLabel": "Computed Tomography:",
+        "ctPrice": "from 800 UAH",
         "scroll": "SCROLL"
       },
-      "stats": [
-        { "value": "13 years", "label": "of continuous clinical experience in Lviv" },
-        { "value": "63,000+", "label": "patients with restored function and aesthetics" },
-        { "value": "24-48 hrs", "label": "fixed prosthesis crafting in our digital lab" },
-        { "value": "100%", "label": "safe medical sleep monitored by anesthesiologist" }
-      ],
-      "socialTicker": [
-        "· All-on-4 / All-on-6 Implants",
-        "· Medical Sedation Sleep under Anesthesiologist Supervision",
-        "· In-House Digital Laboratory Symmetrica Tech",
-        "· TMJ Gnathological Diagnostics & Splint Therapy",
-        "· Invisalign Clear Aligners Orthodontics",
-        "· Aesthetic Ceramic Veneers",
-        "· Zeiss Microscopic Endodontics"
-      ],
-      "techSection": {
-        "kicker": "REASON FOR OUR PRECISION",
-        "title": "3D Digital Diagnostics & TMJ Gnathology Analysis",
-        "subtitle": "Before restoring teeth, we analyze jaw joint function and facial muscles for long-lasting, predictable clinical outcomes.",
-        "includedInCt": "Included in 3D CT"
+      "social": {
+        "licenseTitle": "Official MoH License",
+        "licenseDesc": "Anesthesia service #582910 without third-party contractors",
+        "certsLink": "Certificates & Licenses →"
       },
-      "servicesSection": {
-        "kicker": "CLINICAL SPECIALTIES & PRICING",
-        "title": "Full scope of aesthetic & surgical dental care",
-        "subtitle": "Transparent cost estimates with no hidden fees, European protocols, and personal service management.",
-        "footnote": "* Exact cost is determined after computed tomography and head physician consultation."
+      "tech": {
+        "kicker": "Precision Diagnostics",
+        "title": "Digital 3D CT & Gnathology Research",
+        "subtitle": "Comprehensive analysis of jaw structure, occlusion, and TMJ before complex restorations.",
+        "book": "Book Now"
       },
-      "calculatorSection": {
-        "totalCostLabel": "Total treatment cost:"
+      "services": {
+        "kicker": "Treatment Directions",
+        "title": "Symmetrica Center Services",
+        "subtitle": "Premium materials, microscopic precision, and pain-free dental restoration techniques.",
+        "note": "* Final cost is fixed in a written contract after examination and 3D CT.",
+        "package": "Package Cost:",
+        "pkgPrice": "from 88,000 UAH"
       },
-      "sedationSection": {
-        "kicker": "PAIN-FREE DENTISTRY",
-        "title": "Licensed in-house anesthesiology & sleep dentistry",
-        "description": "Symmetrica holds a state medical license for full anesthesia and sedation. Complex surgical procedures or All-on-4 restorations are completed painlessly while you rest comfortably.",
-        "feat1Title": "Official Ministry of Health Anesthesiology License",
-        "feat1Desc": "Full-time senior anesthesiologist Oleksandr Bihan is present throughout the entire procedure.",
-        "feat2Title": "Full Cardiopulmonary Monitoring & Oxygen Supply",
-        "feat2Desc": "Infusion pumps, defibrillator, and modern certified medications for rapid and gentle awakening.",
-        "feat3Title": "No Pain, Stress, or Anxiety",
-        "feat3Desc": "You fall asleep in a comfortable chair and wake up with restored teeth without unpleasant memories."
+      "calculator": {
+        "teethCount": "Number of teeth / veneers:",
+        "sedationTime": "Duration of medical sleep (sedation):",
+        "uah": "UAH",
+        "anesthesia": "In-house Anesthesia:",
+        "included": "Included",
+        "lab": "In-house Lab:",
+        "symTech": "Symmetrica Tech",
+        "installment": "Installment:",
+        "months": "Up to 6 months"
       },
-      "labSection": {
-        "kicker": "IN-HOUSE DIGITAL LAB SYMMETRICA TECH",
-        "title": "Anatomical precision & ceramic crowns in 24-48 hours",
-        "description": "In-house CAD/CAM manufacturing allows our prosthodontists and master technicians to sculpt realistic shade and translucency.",
-        "card1Title": "Milling",
-        "card1Subtitle": "01. CAD/CAM",
-        "card2Title": "Direct Collaboration",
-        "card2Subtitle": "02. CONSILIUM"
+      "sedation": {
+        "licTitle": "MoH License of Ukraine",
+        "licDesc": "Certified licensed medications for safe sleep",
+        "monTitle": "Continuous Monitoring",
+        "monDesc": "Cardiomonitor, infusion pump, defibrillator & oxygen station",
+        "docTitle": "Staff Anesthesiologist",
+        "docDesc": "Head of service Oleksandr Bihan with 15+ years of experience",
+        "wakeTitle": "Easy Awakening",
+        "wakeDesc": "No nausea or dizziness 30 minutes after the procedure",
+        "name": "Oleksandr Bihan",
+        "role": "Head of Anesthesiology Service",
+        "spec": "Specialization in adult and pediatric anesthesiology"
       },
-      "sterilizationSection": {
-        "kicker": "PATIENT SAFETY FIRST",
-        "title": "Triple-stage certified sterilization system",
-        "description": "Korzolex German disinfectant ultrasonic bath, single-use vacuum kraft packaging, and Class B autoclaving under high pressure ensure maximum hygiene.",
-        "step1Title": "Cold Phase & Ultrasonic",
-        "step1Desc": "Soaking instruments in Korzolex solution (Germany) for 60 min under ultrasonic vibration.",
-        "step2Title": "Single-Use Vacuum Kraft Pouches",
-        "step2Desc": "Every instrument is packed individually. The pouch is opened exclusively in the patient's presence.",
-        "step3Title": "Class B Pressure Autoclaving",
-        "step3Desc": "Final thermal treatment with high-temperature steam eliminates 100% of viruses and microorganisms."
+      "lab": {
+        "time": "24–48 h",
+        "timeDesc": "Production time",
+        "acc": "10 µm",
+        "accDesc": "CAD/CAM Precision",
+        "ctrl": "Digital Control",
+        "gar": "10 years",
+        "garDesc": "Ceramics Warranty"
       },
-      "beforeAfterSection": {
-        "durationLabel": "Work duration:",
-        "doctorsLabel": "Complex doctors:",
-        "anesthesiaMethodLabel": "Anesthesia method:",
-        "medicalSleep": "Medical sleep"
+      "cases": {
+        "doctors": "Doctors:",
+        "more": "Learn more →"
       },
-      "teamSection": {
-        "kicker": "SYMMETRICA EXPERT TEAM",
-        "title": "Experienced doctors with highest medical qualifications",
-        "subtitle": "A team of surgeons, prosthodontists, orthodontists, and anesthesiologists solving complex clinical cases together.",
-        "doctors": [
-          { "name": "Андрій Іванців", "role": "Founder, orthodontist, prosthodontist", "photo": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/6922f52c673c4b16cc37800b_ivanciv_a.webp" },
-          { "name": "Мар'ян Шляхта", "role": "Medical Director, orthodontist", "photo": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/69149b27ee2978af4c8c587d_shlyakhta.webp" },
-          { "name": "Олександр Біган", "role": "Head of Anesthesiology Department", "photo": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/6922f46f4ffa72d4d7099cfb_bigan-removebg-preview.webp" },
-          { "name": "Марія Лис", "role": "General Dentist", "photo": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/69149aba00f14af00b2d6dfa_lus.webp" },
-          { "name": "Поліна Сухенко", "role": "Periodontist", "photo": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/6953df50f03c26feba8b7e60_polina-suhenko-paradontolog.png" },
-          { "name": "Аліна Сняк", "role": "Dental Hygienist", "photo": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/69149b111161792dceda6fc4_snyak.webp" },
-          { "name": "Павло Троєцький", "role": "General & Prosthetic Dentist", "photo": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/69e086f5124d0fad2570c438_pavlo-troieckiy-likar.png" },
-          { "name": "Вікторія Cтадницька", "role": "Prosthodontist", "photo": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/6953c947d602dd2a84576c7c_viktoriya-kulyavec-likar-ortoped.png" },
-          { "name": "Софія Іванців", "role": "Digital Diagnostics Specialist", "photo": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/6953dea203eab3b018f11864_sofiya-ivanciv-likar.png" },
-          { "name": "Олексій Мотрук", "role": "Dental Surgeon", "photo": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/695f88598c93ec8ba1edd93a_oleksiy-motruk.png" },
-          { "name": "Дудун Ірена", "role": "General Dentist", "photo": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/69f1f38dcc15c785218b1e84_dudun-irena.png" },
-          { "name": "Тарас Яріш", "role": "Dental Surgeon", "photo": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/69149adb6b5b29b799279b23_Yarish.webp" },
-          { "name": "Максим Калужний", "role": "Prosthodontist", "photo": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/69149b1b11e8cbcb70b0f604_kalushny.webp" },
-          { "name": "Андрій Гриневич", "role": "Implantologist & Prosthodontist", "photo": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/69149ad283c01f7f4d3acb1c_grynavich.webp" },
-          { "name": "Оксана Іванців", "role": "Dermopharmacist Cosmetologist", "photo": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/69149b2fd624b9ea6cc76194_ivanciv_o.webp" },
-          { "name": "Наталя Понаморьова", "role": "General Dentist", "photo": null },
-          { "name": "Андрій Комащенко", "role": "Anesthesiologist", "photo": null }
-        ]
+      "testimonials": {
+        "badge": "4.9/5 · Google Reviews · 600+ reviews",
+        "patient": "Clinic Patient",
+        "google": "Google Review"
       },
-      "bookingForm": {
-        "kicker": "ONLINE BOOKING",
-        "title": "Book Comprehensive 3D Diagnostics with CT",
-        "subtitle": "Submit your request — our service manager will contact you within 15 minutes to confirm convenient timing.",
-        "namePlaceholder": "Full Name",
-        "phonePlaceholder": "+380 (XX) XXX-XX-XX",
-        "serviceSelect": "Select Service / Direction",
-        "dateLabel": "Preferred Date",
-        "submitCta": "Book Appointment on Stryiska 45",
-        "guarantee": "Official warranty certificate provided for all surgical and prosthetic treatments.",
-        "workScheduleLabel": "Working Hours:",
-        "clinicAddressLabel": "Clinic Address:",
-        "clinicAddressText": "Lviv, 45 Stryiska St.",
-        "opt1": "3D CT Computed Tomography (800 UAH)",
-        "opt2": "Head Physician Consultation",
-        "opt3": "All-on-4 / All-on-6 Implantation Under Sedation",
-        "opt4": "Ceramic Veneers Placement",
-        "opt5": "TMJ Joint Diagnostics",
-        "opt6": "Invisalign Aligners"
+      "booking": {
+        "opt1": "3D Computed Tomography (CT)",
+        "opt2": "Consultation & All-on-4 in Sleep",
+        "opt3": "Dental Implants Installation",
+        "opt4": "Ceramic Veneers / Crowns",
+        "opt5": "TMJ Diagnostics / Gnathology",
+        "schedule": "Working hours:",
+        "loc": "Location:",
+        "addr": "45 Stryiska St, Lviv"
       },
-      "locationSection": {
-        "addressLabel": "Address:",
-        "addressText": "Lviv, 45 Stryiska St. (convenient access, parking)",
-        "phoneLabel": "Phone:",
-        "emailLabel": "Email:",
-        "email": "symmetricalviv@gmail.com",
-        "hoursLabel": "Hours:",
-        "hoursText": "Mon-Fri: 09:00 - 20:00 · Sat: 09:00 - 16:00 · Sun: By appointment"
+      "contact": {
+        "addrTitle": "Center Address",
+        "addrLine": "45 Stryiska St",
+        "city": "Lviv, Ukraine, 79000",
+        "phoneTitle": "Hotline Phone",
+        "emailTitle": "Email Address",
+        "socialTitle": "Social Media"
       },
       "footer": {
-        "about": "Symmetrica Dental Restoration Center — aesthetic and surgical dental care in Lviv. License by Ministry of Health Ukraine.",
-        "hours": "Mon-Fri: 09:00 - 20:00 · Sat: 09:00 - 16:00 · Sun: By appointment",
-        "rights": "All rights reserved. Symmetrica Dental Restoration Center © 2026.",
-        "linkCt": "3D CT Diagnostics",
-        "linkAllOn4": "All-on-4 Implants",
-        "linkVeneers": "Ceramic Veneers",
-        "linkSedation": "Sleep Dentistry",
-        "linkTmj": "TMJ Splint Therapy",
-        "address": "Lviv, 45 Stryiska St.",
-        "email": "symmetricalviv@gmail.com"
+        "servicesTitle": "Services & Pricing",
+        "s1": "3D CT Diagnostics",
+        "s2": "Anesthesia & Sedation",
+        "s3": "Symmetrica Tech Lab",
+        "s4": "Cost Calculator",
+        "s5": "Our Doctors",
+        "spec1": "All-on-4 / All-on-6 Implants",
+        "spec2": "E.max Ceramic Veneers",
+        "spec3": "Sedation Dentistry",
+        "spec4": "Gnathology & TMJ",
+        "spec5": "Invisalign Aligners",
+        "spec6": "Microscopic Endodontics",
+        "addr": "45 Stryiska St, Lviv",
+        "email": "symmetricalviv@gmail.com",
+        "socialLabel": "Social Media:",
+        "studio": "Studio Test"
       },
-      "headerAddress": "Lviv, 45 Stryiska St. (near the Monument)"
+      "teamMembersList": [
+        { "name": "Andriy Ivantsiv", "role": "Founder, Orthodontist, Orthopedist", "image": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/6922f52c673c4b16cc37800b_ivanciv_a.webp" },
+        { "name": "Maryan Shlakhta", "role": "Medical Director, Orthodontist", "image": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/69149b27ee2978af4c8c587d_shlyakhta.webp" },
+        { "name": "Oleksandr Bihan", "role": "Head of Anesthesiology Service", "image": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/6922f46f4ffa72d4d7099cfb_bigan-removebg-preview.webp" },
+        { "name": "Andriy Hrynkevych", "role": "Implantologist Surgeon, Orthopedist", "image": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/69149ad283c01f7f4d3acb1c_grynavich.webp" },
+        { "name": "Mariya Lys", "role": "General Dentist", "image": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/69149aba00f14af00b2d6dfa_lus.webp" },
+        { "name": "Polina Sukhenko", "role": "Periodontist", "image": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/6953df50f03c26feba8b7e60_polina-suhenko-paradontolog.png" },
+        { "name": "Viktoriya Stadnytska", "role": "Orthopedic Dentist", "image": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/6953c947d602dd2a84576c7c_viktoriya-kulyavec-likar-ortoped.png" },
+        { "name": "Pavlo Troieckiy", "role": "Therapist & Orthopedist", "image": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/69e086f5124d0fad2570c438_pavlo-troieckiy-likar.png" },
+        { "name": "Oleksiy Motruk", "role": "Dental Surgeon", "image": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/695f88598c93ec8ba1edd93a_oleksiy-motruk.png" },
+        { "name": "Taras Yarish", "role": "Dental Surgeon", "image": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/69149adb6b5b29b799279b23_Yarish.webp" },
+        { "name": "Maksym Kalushny", "role": "Orthopedic Dentist", "image": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/69149b1b11e8cbcb70b0f604_kalushny.webp" },
+        { "name": "Alina Snyak", "role": "Dental Hygienist", "image": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/69149b111161792dceda6fc4_snyak.webp" },
+        { "name": "Sofiya Ivantsiv", "role": "Digital Diagnostics Specialist", "image": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/6953dea203eab3b018f11864_sofiya-ivanciv-likar.png" },
+        { "name": "Dudun Irena", "role": "General Dentist", "image": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/69f1f38dcc15c785218b1e84_dudun-irena.png" },
+        { "name": "Oksana Ivantsiv", "role": "Cosmetologist", "image": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/69149b2fd624b9ea6cc76194_ivanciv_o.webp" },
+        { "name": "Natalya Ponamoryova", "role": "General Dentist", "image": null },
+        { "name": "Andriy Komashchenko", "role": "Anesthesiologist", "image": null }
+      ]
     }
   }
 }

@@ -1,184 +1,214 @@
 "use client";
 
-import { useState } from "react";
-import { useLocale } from "@/lib/i18n";
-import { Reveal } from "@/components/motion";
+import { useState } from 'react';
+import { useLocale } from '@/lib/i18n';
+import { Reveal } from '@/components/motion';
 
 export default function Services() {
   const { t } = useLocale();
-  const [activeTab, setActiveTab] = useState("all");
+  const [activeCategory, setActiveCategory] = useState<string>('all');
 
   const categories = [
-    { id: "all", label: "Всі послуги" },
-    { id: "implants", label: "Імплантація & All-on-4" },
-    { id: "aesthetics", label: "Вініри & Естетика" },
-    { id: "ortho", label: "Ортодонтія & СНЩС" },
-    { id: "therapy", label: "Терапія під мікроскопом" },
+    { id: 'all', label: 'Усі напрямки' },
+    { id: 'implantation', label: 'Імплантація & All-on-4' },
+    { id: 'orthopedics', label: 'Вініри & Протезування' },
+    { id: 'gnathology', label: 'Гнатологія & СНЩС' },
+    { id: 'sedation', label: 'Седація' }
   ];
 
-  const serviceList = [
+  const priceItems = [
     {
-      cat: "implants",
-      title: "Комплексна імплантація All-on-4 / All-on-6",
-      price: "від 120 000 UAH",
-      desc: "Відновлення повного зубного ряду за 24 години із фіксацією незнімного тимчасового протеза в день операції або наступного ранку.",
-      time: "24 години",
-      tag: "ТОТАЛЬНЕ ВІДНОВЛЕННЯ",
-      isFeatured: true,
-      photo: "https://cdn.prod.website-files.com/65b22ee2a70bd488c02e918e/6659cb6805d7fc2915dd42de_%D1%96%D0%BC%D0%BF%D0%BB%D0%B0%D0%BD%D1%82%D0%B0%D1%86%D1%96%D1%8F.webp",
+      id: "all-on-4",
+      category: "implantation",
+      name: "All-on-4 / All-on-6 тотальне відновлення (1 щелепа)",
+      price: "від 88 000 UAH",
+      description: "Повний зубний ряд за 24 години на 4 або 6 імплантатах Straumann / Megagen з фіксацією незнімного протеза.",
+      tag: "Хіт відновлення",
+      featured: true
     },
     {
-      cat: "implants",
-      title: "Дентальна імплантація (Megagen, Straumann)",
+      id: "implant-single",
+      category: "implantation",
+      name: "Дентальна імплантація Megagen AnyOne",
       price: "від 14 500 UAH",
-      desc: "Установка преміальних швейцарських та корейських імплантів за навігаційним хірургічним шаблоном для точного приживання.",
-      time: "30-45 хв",
-      tag: "ХІРУРГІЯ 3D",
-      isFeatured: false,
-      photo: "https://cdn.prod.website-files.com/65b22ee2a70bd488c02e918e/681b1e8bf899772803dd4c7b_8e1180665795c3da9ae4e62d22e4b3065cdf1840-p-800.webp",
+      description: "Преміальний корейський імплант з навігаційним шаблоном та пожиттєвою гарантією виробника.",
+      tag: "Пожиттєва гарантія"
     },
     {
-      cat: "aesthetics",
-      title: "Встановлення керамічних вінірів та ультранірів",
-      price: "від 12 500 UAH",
-      desc: "Тонкі керамічні накладки виготовлені у власній лабораторії Symmetrica Tech з урахуванням анатомії обличчя та мікротекстури.",
-      time: "2 візити",
-      tag: "CAD/CAM SYMMETRICA",
-      isFeatured: false,
-      photo: "https://cdn.prod.website-files.com/65b22ee2a70bd488c02e918e/65b7d691b76e5f6f01875d44_awward-news-1.webp",
+      id: "implant-straumann",
+      category: "implantation",
+      name: "Дентальна імплантація Straumann BLX (Швейцарія)",
+      price: "від 22 000 UAH",
+      description: "Швейцарська імплантаційна система для негайного навантаження у складних кісткових умовах.",
+      tag: "Швейцарія"
     },
     {
-      cat: "ortho",
-      title: "Ортодонтичне лікування елайнерами (Invisalign)",
-      price: "від 75 000 UAH",
-      desc: "Прозорі капи для непомітного виправлення прикусу з візуалізацією кінцевого результату ще до початку лікування.",
-      time: "6-18 місяців",
-      tag: "3D МОДЕЛЮВАННЯ",
-      isFeatured: false,
-      photo: "https://cdn.prod.website-files.com/65b22ee2a70bd488c02e918e/65b76cba519fa489ce0cb3e9_research-image-2.webp",
+      id: "veneers",
+      category: "orthopedics",
+      name: "Керамічний вінір E.max Symmetrica Tech",
+      price: "від 11 500 UAH",
+      description: "Високохудожня керамічна накладка з власної цифрової лабораторії без 'ефекту унітазної білизни'.",
+      tag: "За 48 годин"
     },
     {
-      cat: "ortho",
-      title: "Діагностика СНЩС та сплінт-терапія",
-      price: "від 8 500 UAH",
-      desc: "Лікування клацання, болю в щелепі, головного болю та бруксизму за допомогою розвантажувальних суглобових шин.",
-      time: "індивідуально",
-      tag: "ГНАТОЛОГІЯ",
-      isFeatured: false,
-      photo: "https://cdn.prod.website-files.com/65b22ee2a70bd488c02e918e/65b76cc2a1a2d766f74db929_research-image-3.webp",
+      id: "sedation-service",
+      category: "sedation",
+      name: "Лікування під седацією (медикаментозний сон)",
+      price: "від 3 500 UAH/год",
+      description: "Повний комфорт та відсутність стресу під керуванням власної штатної анестезіологічної служби.",
+      tag: "Ліцензія МОЗ"
     },
     {
-      cat: "therapy",
-      title: "Ендодонтичне лікування каналів під мікроскопом",
-      price: "від 4 200 UAH",
-      desc: "Точна обробка та тривимірне запломбовування кореневих каналів під 25-кратним збільшенням мікроскопа Zeiss.",
-      time: "1-2 години",
-      tag: "МІКРОСКОП ZEISS",
-      isFeatured: false,
-      photo: "https://cdn.prod.website-files.com/65b22ee2a70bd488c02e918e/66a8ce4cf2f9e76340956062_1440_how-works-bg.webp",
+      id: "diag-service",
+      category: "gnathology",
+      name: "Первинна 3D КТ діагностика та огляд лікаря",
+      price: "від 800 UAH",
+      description: "Комплексне 3D-сканування щелеп та складання писемного плану реабілітації."
     },
+    {
+      id: "gnathology-splint",
+      category: "gnathology",
+      name: "Сплінт-терапія та репрограмування СНЩС",
+      price: "від 4 500 UAH",
+      description: "Усунення болю та клацання в суглобі за допомогою індивідуальних шин та мікрострумової розрядки."
+    },
+    {
+      id: "aligners",
+      category: "orthopedics",
+      name: "Ортодонтична капа / елайнер (Invisalign)",
+      price: "від 45 000 UAH",
+      description: "Прозорі капи для виправлення прикусу без брекетів із цифровим сетапом."
+    },
+    {
+      id: "endo-microscope",
+      category: "orthopedics",
+      name: "Мікроскопна ендодонтія (лікування каналів)",
+      price: "від 3 200 UAH",
+      description: "Прецизійна обробка та пломбування каналів під оптичним операційним мікроскопним збільшенням."
+    }
   ];
 
-  const filtered = activeTab === "all" ? serviceList : serviceList.filter((s) => s.cat === activeTab);
+  const filteredItems = activeCategory === 'all'
+    ? priceItems
+    : priceItems.filter(item => item.category === activeCategory);
+
+  const featuredItem = priceItems.find(i => i.featured);
 
   return (
-    <section id="services" className="py-20 bg-white border-t border-gray-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+    <section id="services" className="py-20 bg-bg-card text-text-main">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Layer 1-3: Kicker, Heading, Lede */}
-        <Reveal className="text-center max-w-3xl mx-auto space-y-4">
-          <p className="text-xs font-bold uppercase tracking-widest text-[var(--color-accent)]">
-            {String(t("servicesSection.kicker"))}
-          </p>
-          <h2 className="text-3xl sm:text-4xl font-display font-bold text-[var(--color-text-main)]">
-            {String(t("servicesSection.title"))}
+        {/* Section Heading */}
+        <Reveal className="text-center max-w-3xl mx-auto mb-12 space-y-4">
+          <span className="text-xs uppercase tracking-widest text-accent font-bold font-mono">
+            РЕЄСТР ПОСЛУГ ТА ВАРТОСТІ
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-bold font-display text-primary">
+            Повний прейскурант та напрямки відновлення
           </h2>
-          <p className="text-base text-[var(--color-text-muted)]">
-            {String(t("servicesSection.subtitle"))}
+          <p className="text-slate-600 font-body text-base">
+            Фіксовані розцінки на первинні маніпуляції та тотальні реабілітаційні комплекси у Центрі Symmetrica.
           </p>
-
-          {/* Filter tabs */}
-          <div className="flex flex-wrap justify-center gap-2 pt-6">
-            {categories.map((tab) => (
-              <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                className={`px-5 py-2 rounded-full text-xs font-bold tracking-wider uppercase transition-all ${
-                  activeTab === tab.id
-                    ? "bg-[var(--color-primary)] text-white shadow-md"
-                    : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-                }`}
-              >
-                {tab.label}
-              </button>
-            ))}
-          </div>
         </Reveal>
 
-        {/* Layer 5: Editorial Row-Based Price Catalog with Dotted Leaders */}
-        <div className="space-y-4">
-          {filtered.map((item, idx) => (
-            <div
-              key={idx}
-              className={`rounded-2xl p-6 sm:p-8 border transition-all duration-300 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 ${
-                item.isFeatured
-                  ? "bg-[var(--color-primary)] text-white border-[var(--color-accent)] shadow-xl"
-                  : "bg-[var(--color-bg-light)] text-[var(--color-text-main)] border-gray-200 hover:border-[var(--color-accent)]"
+        {/* Category Tabs */}
+        <div className="flex flex-wrap justify-center gap-2 mb-12">
+          {categories.map((cat) => (
+            <button
+              key={cat.id}
+              onClick={() => setActiveCategory(cat.id)}
+              className={`px-4 py-2 text-xs font-semibold rounded-full transition-all duration-200 min-h-[44px] flex items-center ${
+                activeCategory === cat.id
+                  ? 'bg-primary text-white shadow-md'
+                  : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
               }`}
             >
-              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 md:max-w-3xl">
-                <img
-                  src={item.photo}
-                  alt={item.title}
-                  className="w-24 h-24 sm:w-28 sm:h-28 rounded-xl object-cover shrink-0 border border-gray-200/20"
-                />
-                <div className="space-y-2">
-                  <div className="flex items-center gap-3">
-                    <span className={`text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider ${
-                      item.isFeatured ? "bg-[var(--color-accent)] text-black" : "bg-gray-200 text-gray-800"
-                    }`}>
-                      {item.tag}
-                    </span>
-                    <span className="text-[11px] font-semibold opacity-70">
-                      Термін: {item.time}
-                    </span>
-                  </div>
-                  <h3 className="text-xl font-display font-bold leading-snug">
-                    {item.title}
-                  </h3>
-                  <p className={`text-xs leading-relaxed ${item.isFeatured ? "text-white/80" : "text-[var(--color-text-muted)]"}`}>
-                    {item.desc}
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex flex-col sm:flex-row md:flex-col items-start sm:items-center md:items-end gap-3 w-full md:w-auto shrink-0 border-t md:border-t-0 pt-4 md:pt-0 border-gray-200/20">
-                <span className={`text-xl font-display font-bold tabular-nums ${
-                  item.isFeatured ? "text-[var(--color-accent)]" : "text-[var(--color-primary)]"
-                }`}>
-                  {item.price}
-                </span>
-                <a
-                  href="#booking"
-                  className={`w-full sm:w-auto px-6 py-2.5 text-xs font-bold uppercase tracking-wider rounded-xl transition-all text-center ${
-                    item.isFeatured
-                      ? "bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-black shadow-lg"
-                      : "bg-[var(--color-primary)] hover:bg-[var(--color-primary-light)] text-white"
-                  }`}
-                >
-                  Записатись
-                </a>
-              </div>
-            </div>
+              {cat.label}
+            </button>
           ))}
         </div>
 
-        {/* Footnote line & secondary link */}
-        <div className="border-t border-gray-200 pt-6 flex flex-col sm:flex-row justify-between items-center text-xs text-gray-500 gap-4">
-          <p>{String(t("servicesSection.footnote"))}</p>
-          <a href="#calculator" className="text-[var(--color-primary)] font-bold uppercase tracking-wider hover:underline">
-            Перейти в калькулятор кошторису →
-          </a>
+        <div className="grid lg:grid-cols-12 gap-8 items-start">
+          
+          {/* Main Structured Price List (ROWS) */}
+          <div className="lg:col-span-8 bg-bg-light border border-border-light rounded-2xl p-6 sm:p-8 space-y-6">
+            <div className="space-y-6">
+              {filteredItems.map((item) => (
+                <div key={item.id} className="group border-b border-border-light/60 pb-4 last:border-0 last:pb-0">
+                  <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <span className="font-bold font-display text-primary text-base group-hover:text-accent transition-colors">
+                        {item.name}
+                      </span>
+                      {item.tag && (
+                        <span className="text-[10px] font-mono uppercase bg-accent/15 text-accent px-2 py-0.5 rounded">
+                          {item.tag}
+                        </span>
+                      )}
+                    </div>
+                    <div className="flex-1 hidden sm:block border-b border-dotted border-slate-300 mx-3" />
+                    <span className="font-display font-bold text-primary text-sm sm:text-base whitespace-nowrap text-accent">
+                      {item.price}
+                    </span>
+                  </div>
+                  <p className="text-xs text-slate-500 font-body leading-relaxed mt-1.5 max-w-2xl">
+                    {item.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            {/* Footnote Line */}
+            <div className="pt-6 border-t border-border-light text-[11px] text-slate-500 font-body flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+              <div>{t('services.note') as string}</div>
+              <a href="#calculator" className="text-accent font-bold hover:underline min-h-[44px] flex items-center">
+                Розрахувати в калькуляторі →
+              </a>
+            </div>
+          </div>
+
+          {/* Featured Signature Card */}
+          {featuredItem && (
+            <div className="lg:col-span-4 bg-primary text-white rounded-2xl overflow-hidden border border-white/10 shadow-xl flex flex-col justify-between">
+              <div className="relative h-48 bg-slate-800">
+                <img
+                  src="https://cdn.prod.website-files.com/65b22ee2a70bd488c02e918e/65b77a267afb1b0ddb1d9b69_trust-image-1-p-800.webp"
+                  alt="All-on-4 у Symmetrica"
+                  className="w-full h-full object-cover filter brightness-90"
+                />
+                <div className="absolute top-3 left-3 bg-accent text-white text-[10px] font-mono uppercase px-2.5 py-1 rounded shadow">
+                  ФЛАГМАНСЬКИЙ ПРОТОКОЛ
+                </div>
+              </div>
+
+              <div className="p-6 space-y-4">
+                <div>
+                  <span className="text-[10px] text-accent font-mono uppercase tracking-widest">
+                    ТОТАЛЬНЕ ВІДНОВЛЕННЯ
+                  </span>
+                  <h3 className="text-xl font-bold font-display text-white mt-1">
+                    All-on-4 / All-on-6 уві сні
+                  </h3>
+                  <p className="text-xs text-slate-300 font-body leading-relaxed mt-2">
+                    Повне відновлення жувальної функції та естетики посмішки за один день під наглядом власного анестезіолога.
+                  </p>
+                </div>
+
+                <div className="bg-white/5 rounded-xl p-3 border border-white/10 text-xs flex justify-between items-center">
+                  <span className="text-slate-300">{t('services.package') as string}</span>
+                  <span className="font-bold text-accent font-display text-sm">{t('services.pkgPrice') as string}</span>
+                </div>
+
+                <a
+                  href="#booking"
+                  className="block text-center w-full py-3 bg-accent hover:bg-accent-hover text-white text-xs font-bold uppercase tracking-wider rounded-xl transition-all min-h-[44px] flex items-center justify-center"
+                >
+                  Забронювати консультацію →
+                </a>
+              </div>
+            </div>
+          )}
+
         </div>
 
       </div>
