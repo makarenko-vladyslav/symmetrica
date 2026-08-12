@@ -167,7 +167,7 @@ export function Services() {
                     </p>
                   )}
                 </div>
-                <div className="pt-4 border-t border-slate-700/60 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-4">
+                <div className="pt-4 border-t border-slate-700/60 flex items-center justify-between">
                   <span className="text-xs uppercase tracking-wider text-slate-400 font-medium">
                     {locale === "en" ? "Price from" : "Вартість"}
                   </span>

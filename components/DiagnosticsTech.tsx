@@ -84,7 +84,7 @@ export default function DiagnosticsTech() {
                 </div>
                 <div className="p-6 flex flex-col justify-between flex-grow space-y-4">
                   <div className="space-y-2">
-                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 sm:gap-4">
+                    <div className="flex justify-between items-center">
                       <h3 className="text-base font-display font-bold text-[var(--color-text-main)] group-hover:text-[var(--color-primary)] transition-colors">
                         {item.title}
                       </h3>
@@ -93,7 +93,7 @@ export default function DiagnosticsTech() {
                       {item.description}
                     </p>
                   </div>
-                  <div className="pt-3 border-t border-gray-100 flex flex-col sm:flex-row sm:items-center sm:justify-between text-xs font-semibold text-[var(--color-primary)] gap-1 sm:gap-4">
+                  <div className="pt-3 border-t border-gray-100 flex items-center justify-between text-xs font-semibold text-[var(--color-primary)]">
                     <span className="text-gray-500">{item.detail}</span>
                     <span className="text-[var(--color-accent)] font-bold">{String(t("techSection.includedInCt"))}</span>
                   </div>

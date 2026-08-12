@@ -83,7 +83,7 @@ export default function TreatmentCalculator() {
 
             {/* Quantity Slider */}
             <div className="space-y-4">
-              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 sm:gap-4">
+              <div className="flex justify-between items-center">
                 <label className="text-xs font-bold uppercase tracking-wider text-gray-500">
                   2. Кількість ({currentTreatment.unitLabel}):
                 </label>
@@ -100,7 +100,7 @@ export default function TreatmentCalculator() {
                 onChange={(e) => setQuantity(Number(e.target.value))}
                 className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-[var(--color-accent)]"
               />
-              <div className="flex flex-col sm:flex-row sm:justify-between text-xs text-gray-400 font-semibold tabular-nums gap-1 sm:gap-4">
+              <div className="flex justify-between text-xs text-gray-400 font-semibold tabular-nums">
                 <span>{currentTreatment.minQty}</span>
                 <span>{currentTreatment.maxQty}</span>
               </div>
@@ -130,7 +130,7 @@ export default function TreatmentCalculator() {
                         {isChecked ? "✓" : ""}
                       </div>
                       <div className="flex-grow">
-                        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 sm:gap-4">
+                        <div className="flex justify-between items-center">
                           <span className="text-xs font-bold text-gray-800">{addon.name}</span>
                           <span className="text-xs font-bold text-[var(--color-primary)] tabular-nums">
                             +{money(addon.price)} UAH
@@ -157,7 +157,7 @@ export default function TreatmentCalculator() {
             </div>
 
             <div className="space-y-3 text-sm text-white/80">
-              <div className="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-4">
+              <div className="flex justify-between">
                 <span>
                   {currentTreatment.name} ({quantity} {currentTreatment.unitLabel})
                 </span>
@@ -167,7 +167,7 @@ export default function TreatmentCalculator() {
               {calculatorOptions.addons
                 .filter((a) => selectedAddons.includes(a.id))
                 .map((a) => (
-                  <div key={a.id} className="flex flex-col sm:flex-row sm:justify-between text-xs text-amber-200 gap-1 sm:gap-4">
+                  <div key={a.id} className="flex justify-between text-xs text-amber-200">
                     <span>+ {a.name}</span>
                     <span className="tabular-nums">{money(a.price)} UAH</span>
                   </div>
