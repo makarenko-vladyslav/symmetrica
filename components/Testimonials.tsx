@@ -60,7 +60,7 @@ export default function Testimonials() {
             <blockquote className="text-lg sm:text-2xl font-display italic text-[var(--color-text-main)] leading-relaxed">
               «Враження від стоматології чудове! Професійні лікарі, уважний персонал. Пояснюють всі кроки в процесі лікування та надають рекомендації для подальшого догляду.»
             </blockquote>
-            <div className="flex items-center justify-between pt-4 border-t border-gray-100 text-xs">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between pt-4 border-t border-gray-100 text-xs gap-1 sm:gap-4">
               <div>
                 <p className="font-bold text-[var(--color-text-main)]">{reviews[0].author}</p>
                 <p className="text-gray-500">{reviews[0].desc}</p>
@@ -80,7 +80,7 @@ export default function Testimonials() {
               className="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm flex flex-col justify-between h-full space-y-6"
             >
               <div className="space-y-4">
-                <div className="flex justify-between items-center">
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 sm:gap-4">
                   <span className="text-[10px] font-bold bg-[var(--color-accent)]/20 text-[var(--color-primary)] px-3 py-1 rounded-full uppercase tracking-wider">
                     {rev.type}
                   </span>
@@ -94,7 +94,7 @@ export default function Testimonials() {
                 </p>
               </div>
 
-              <div className="border-t border-gray-100 pt-4 flex items-center justify-between">
+              <div className="border-t border-gray-100 pt-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-4">
                 <div>
                   <h4 className="text-xs font-bold text-[var(--color-text-main)]">{rev.author}</h4>
                   <p className="text-[11px] text-gray-400">{rev.desc}</p>

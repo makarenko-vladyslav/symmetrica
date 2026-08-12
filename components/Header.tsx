@@ -36,7 +36,7 @@ export default function Header() {
             : "bg-gradient-to-b from-black/80 via-black/40 to-transparent py-5"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-4">
           {/* Logo */}
           <a href="#" className="flex items-center gap-3 group">
             <img
@@ -124,7 +124,7 @@ export default function Header() {
       {/* Full-Screen Mobile Menu */}
       {mobileMenuOpen && (
         <div className="fixed inset-0 z-40 bg-[var(--color-primary)] text-white flex flex-col justify-between p-8 overflow-y-auto">
-          <div className="flex justify-between items-center pt-16 border-b border-white/10 pb-6">
+          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center pt-16 border-b border-white/10 pb-6 gap-1 sm:gap-4">
             <img
               src="https://cdn.prod.website-files.com/65b22ee2a70bd488c02e918e/664f346033a636ff1febebae_%D0%BB%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF.svg"
               alt="Symmetrica"

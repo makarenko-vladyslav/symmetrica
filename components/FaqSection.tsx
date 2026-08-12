@@ -72,7 +72,7 @@ export default function FaqSection() {
               >
                 <button
                   onClick={() => setOpenIndex(isOpen ? null : idx)}
-                  className="w-full text-left p-6 bg-white hover:bg-[var(--color-bg-light)] flex justify-between items-center gap-4 transition-colors"
+                  className="w-full text-left p-6 bg-white hover:bg-[var(--color-bg-light)] flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 transition-colors gap-1 sm:gap-4"
                 >
                   <span className="font-display font-semibold text-base sm:text-lg text-[var(--color-text-main)]">
                     {item.q}

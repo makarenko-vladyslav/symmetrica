@@ -98,15 +98,15 @@ export default function BeforeAfter() {
             </p>
 
             <div className="space-y-3 pt-2 border-t border-gray-200">
-              <div className="flex justify-between text-xs">
+              <div className="flex flex-col sm:flex-row sm:justify-between text-xs gap-1 sm:gap-4">
                 <span className="text-gray-500">{String(t("beforeAfterSection.durationLabel"))}</span>
                 <span className="font-bold text-[var(--color-primary)] tabular-nums">{cases[0].time}</span>
               </div>
-              <div className="flex justify-between text-xs">
+              <div className="flex flex-col sm:flex-row sm:justify-between text-xs gap-1 sm:gap-4">
                 <span className="text-gray-500">{String(t("beforeAfterSection.doctorsLabel"))}</span>
                 <span className="font-bold text-[var(--color-primary)]">{cases[0].doctor}</span>
               </div>
-              <div className="flex justify-between text-xs">
+              <div className="flex flex-col sm:flex-row sm:justify-between text-xs gap-1 sm:gap-4">
                 <span className="text-gray-500">{String(t("beforeAfterSection.anesthesiaMethodLabel"))}</span>
                 <span className="font-bold text-emerald-600 uppercase tracking-wider">{String(t("beforeAfterSection.medicalSleep"))}</span>
               </div>

@@ -128,7 +128,7 @@ export default function Hero() {
 
             {/* Protocol Panel Card */}
             <div className="w-full rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20 p-6 space-y-4 text-white shadow-2xl">
-              <div className="flex justify-between items-center border-b border-white/10 pb-3">
+              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center border-b border-white/10 pb-3 gap-1 sm:gap-4">
                 <span className="text-[10px] font-bold uppercase tracking-widest text-[var(--color-accent)]">
                   ПРОТОКОЛ SYMMETRICA TECH
                 </span>
@@ -151,11 +151,11 @@ export default function Hero() {
               </div>
 
               <div className="space-y-2 text-xs text-white/80">
-                <p className="flex justify-between border-b border-white/10 pb-1">
+                <p className="flex flex-col sm:flex-row sm:justify-between border-b border-white/10 pb-1 gap-1 sm:gap-4">
                   <span>{String(t("hero.anesthesiologistLabel"))}</span>
                   <span className="font-bold text-white">{String(t("hero.anesthesiologistName"))}</span>
                 </p>
-                <p className="flex justify-between border-b border-white/10 pb-1">
+                <p className="flex flex-col sm:flex-row sm:justify-between border-b border-white/10 pb-1 gap-1 sm:gap-4">
                   <span>{String(t("hero.prosthesisReadyLabel"))}</span>
                   <span className="font-bold text-[var(--color-accent)]">{String(t("hero.prosthesisReadyTime"))}</span>
                 </p>
