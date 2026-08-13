@@ -72,23 +72,22 @@ export default function FaqSection() {
               >
                 <button
                   onClick={() => setOpenIndex(isOpen ? null : idx)}
-                  className="w-full text-left p-6 bg-white hover:bg-[var(--color-bg-light)] flex justify-between items-center gap-4 transition-colors"
+                  className="w-full text-left p-5 sm:p-6 bg-white hover:bg-[var(--color-bg-light)] flex justify-between items-start sm:items-center gap-3 sm:gap-4 transition-colors"
                 >
-                  <span className="font-display font-semibold text-base sm:text-lg text-[var(--color-text-main)]">
+                  <span className="font-display font-semibold text-base sm:text-lg text-[var(--color-text-main)] leading-snug">
                     {item.q}
                   </span>
-                  <span className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center shrink-0 font-bold text-gray-600">
+                  <span className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center shrink-0 font-bold text-gray-600 mt-0.5 sm:mt-0">
                     {isOpen ? "−" : "+"}
                   </span>
                 </button>
                 {isOpen && (
-                  <div className="p-6 pt-0 bg-white text-xs sm:text-sm text-[var(--color-text-muted)] leading-relaxed border-t border-gray-100">
+                  <div className="p-5 sm:p-6 pt-0 sm:pt-0 bg-white text-xs sm:text-sm text-[var(--color-text-muted)] leading-relaxed border-t border-gray-100">
                     {item.a}
                   </div>
                 )}
               </div>
-            );
-          })}
+            );  })}
         </div>
       </div>
     </section>

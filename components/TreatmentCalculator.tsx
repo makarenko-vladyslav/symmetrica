@@ -5,7 +5,7 @@ import pricingData from "@/lib/pricing.json";
 import { useLocale } from "@/lib/i18n";
 import { Reveal } from "@/components/motion";
 
-/** Формат числа, однаковий на збірці й у браузері: платформу не питаємо. */
+/** Формат числа, однаковий на збірці й у браузері */
 const money = (n: number) => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "\u00A0");
 
 export default function TreatmentCalculator() {
@@ -38,42 +38,42 @@ export default function TreatmentCalculator() {
   const totalPrice = baseCalc + addonsTotal;
 
   return (
-    <section id="calculator" className="py-20 bg-[var(--color-bg-light)] border-t border-gray-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-        <Reveal className="text-center max-w-3xl mx-auto space-y-4">
+    <section id="calculator" className="py-16 sm:py-20 bg-[var(--color-bg-light)] border-t border-gray-200">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10 sm:space-y-12">
+        <Reveal className="text-center max-w-3xl mx-auto space-y-3 sm:space-y-4">
           <p className="text-xs font-bold uppercase tracking-widest text-[var(--color-accent)]">
             ПРОЗОРІСТЬ ВАРТОСТІ
           </p>
-          <h2 className="text-3xl sm:text-4xl font-display font-bold text-[var(--color-text-main)]">
+          <h2 className="text-2xl sm:text-4xl font-display font-bold text-[var(--color-text-main)]">
             Калькулятор орієнтовної вартості лікування
           </h2>
-          <p className="text-base text-[var(--color-text-muted)]">
+          <p className="text-xs sm:text-base text-[var(--color-text-muted)]">
             Оберіть необхідні процедури та розрахуйте орієнтовну вартість комплексного відновлення в Symmetrica.
           </p>
         </Reveal>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Controls side */}
-          <div className="lg:col-span-7 bg-white p-6 sm:p-8 rounded-2xl border border-gray-200 shadow-sm space-y-8">
+          <div className="lg:col-span-7 bg-white p-5 sm:p-8 rounded-2xl border border-gray-200 shadow-sm space-y-6 sm:space-y-8">
             
             {/* Treatment Selector */}
             <div className="space-y-3">
               <label className="text-xs font-bold uppercase tracking-wider text-gray-500">
                 1. Оберіть напрямок відновлення
               </label>
-              <div className="grid grid-cols-1 gap-2">
+              <div className="grid grid-cols-1 gap-2.5">
                 {calculatorOptions.treatments.map((t) => (
                   <button
                     key={t.id}
                     onClick={() => handleTreatmentChange(t.id)}
-                    className={`p-4 rounded-xl text-left border transition-all flex justify-between items-center ${
+                    className={`p-4 rounded-xl text-left border transition-all flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5 sm:gap-4 ${
                       selectedTreatmentId === t.id
                         ? "border-[var(--color-primary)] bg-[var(--color-primary)]/5 font-semibold text-[var(--color-primary)]"
                         : "border-gray-200 hover:border-gray-300 text-gray-700"
                     }`}
                   >
-                    <span className="text-sm font-display font-bold">{t.name}</span>
-                    <span className="text-xs font-bold text-gray-500 tabular-nums">
+                    <span className="text-sm font-display font-bold leading-snug">{t.name}</span>
+                    <span className="text-xs font-bold text-[var(--color-primary)] sm:text-gray-500 tabular-nums shrink-0">
                       від {money(t.basePrice)} UAH / {t.unitLabel}
                     </span>
                   </button>
@@ -82,12 +82,12 @@ export default function TreatmentCalculator() {
             </div>
 
             {/* Quantity Slider */}
-            <div className="space-y-4">
-              <div className="flex justify-between items-center">
+            <div className="space-y-3 sm:space-y-4">
+              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1">
                 <label className="text-xs font-bold uppercase tracking-wider text-gray-500">
                   2. Кількість ({currentTreatment.unitLabel}):
                 </label>
-                <span className="text-lg font-bold text-[var(--color-primary)] tabular-nums">
+                <span className="text-base sm:text-lg font-bold text-[var(--color-primary)] tabular-nums">
                   {quantity} {currentTreatment.unitLabel}
                 </span>
               </div>
@@ -98,7 +98,7 @@ export default function TreatmentCalculator() {
                 step={currentTreatment.step}
                 value={quantity}
                 onChange={(e) => setQuantity(Number(e.target.value))}
-                className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-[var(--color-accent)]"
+                className="w-full h-2.5 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-[var(--color-accent)]"
               />
               <div className="flex justify-between text-xs text-gray-400 font-semibold tabular-nums">
                 <span>{currentTreatment.minQty}</span>
@@ -129,10 +129,10 @@ export default function TreatmentCalculator() {
                       }`}>
                         {isChecked ? "✓" : ""}
                       </div>
-                      <div className="flex-grow">
-                        <div className="flex justify-between items-center">
+                      <div className="flex-grow min-w-0">
+                        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-0.5 sm:gap-2">
                           <span className="text-xs font-bold text-gray-800">{addon.name}</span>
-                          <span className="text-xs font-bold text-[var(--color-primary)] tabular-nums">
+                          <span className="text-xs font-bold text-[var(--color-primary)] tabular-nums shrink-0">
                             +{money(addon.price)} UAH
                           </span>
                         </div>
@@ -146,37 +146,37 @@ export default function TreatmentCalculator() {
           </div>
 
           {/* Result card */}
-          <div className="lg:col-span-5 bg-[var(--color-primary)] text-white p-6 sm:p-8 rounded-2xl shadow-xl space-y-6 sticky top-28 border border-white/10">
+          <div className="lg:col-span-5 bg-[var(--color-primary)] text-white p-5 sm:p-8 rounded-2xl shadow-xl space-y-6 sticky top-28 border border-white/10">
             <div className="border-b border-white/10 pb-4">
               <span className="text-[10px] font-bold uppercase text-[var(--color-accent)] tracking-widest">
                 ПОПЕРЕДНІЙ РОЗРАХУНОК
               </span>
-              <h3 className="text-2xl font-display font-semibold mt-1">
+              <h3 className="text-xl sm:text-2xl font-display font-semibold mt-1">
                 Орієнтовний підсумок
               </h3>
             </div>
 
-            <div className="space-y-3 text-sm text-white/80">
-              <div className="flex justify-between">
+            <div className="space-y-3 text-xs sm:text-sm text-white/80">
+              <div className="flex flex-col sm:flex-row sm:justify-between gap-1">
                 <span>
                   {currentTreatment.name} ({quantity} {currentTreatment.unitLabel})
                 </span>
-                <span className="font-semibold text-white tabular-nums">{money(baseCalc)} UAH</span>
+                <span className="font-semibold text-white tabular-nums shrink-0">{money(baseCalc)} UAH</span>
               </div>
 
               {calculatorOptions.addons
                 .filter((a) => selectedAddons.includes(a.id))
                 .map((a) => (
-                  <div key={a.id} className="flex justify-between text-xs text-amber-200">
+                  <div key={a.id} className="flex flex-col sm:flex-row sm:justify-between gap-0.5 sm:gap-2 text-xs text-amber-200">
                     <span>+ {a.name}</span>
-                    <span className="tabular-nums">{money(a.price)} UAH</span>
+                    <span className="tabular-nums shrink-0">{money(a.price)} UAH</span>
                   </div>
                 ))}
             </div>
 
             <div className="border-t border-white/10 pt-4 space-y-2">
               <p className="text-xs text-white/60">{String(t("calculatorSection.totalCostLabel"))}</p>
-              <p className="text-3xl sm:text-4xl font-display font-bold text-[var(--color-accent)] tabular-nums">
+              <p className="text-2xl sm:text-4xl font-display font-bold text-[var(--color-accent)] tabular-nums">
                 від {money(totalPrice)} UAH
               </p>
               <p className="text-[11px] text-white/50 leading-relaxed pt-1">
@@ -190,12 +190,11 @@ export default function TreatmentCalculator() {
               </h4>
               <ul className="space-y-2 text-xs text-white/80">
                 {currentTreatment.includes.map((inc, idx) => (
-                  <li key={idx} className="flex items-center gap-2">
-                    <span className="text-[var(--color-accent)] font-bold">✓</span>
+                  <li key={idx} className="flex items-start gap-2">
+                    <span className="text-[var(--color-accent)] font-bold shrink-0">✓</span>
                     <span>{inc}</span>
                   </li>
-                ))}
-              </ul>
+                ))} #             </ul>
             </div>
 
             <a

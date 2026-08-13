@@ -26,8 +26,8 @@ export function Services() {
         { name: "Консультація хірурга-імплантолога + план лікування", price: "800 UAH", desc: "Детальний огляд, аналіз КТ та складання точного кошторису.", image: "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=800&q=80" },
         { name: "Дентальний імплант Megagen (Південна Корея)", price: "14 500 UAH", desc: "Преміальна система з високою первинною стабільністю.", image: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&q=80" },
         { name: "Дентальний імплант Straumann (Швейцарія)", price: "28 000 UAH", desc: "Світовий лідер з приживленням до 99.8%.", image: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=800&q=80" },
-        { name: "Відновлення зубів All-on-4 (під ключ на одну щелепу)", price: "от 120 000 UAH", desc: "4 імпланти + незнімний адаптаційний протез за 24 години.", image: "https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&w=800&q=80" },
-        { name: "Відновлення зубів All-on-6 (під ключ)", price: "от 155 000 UAH", desc: "Посилена фіксація на 6 імплантах для максимальної надійності.", image: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=800&q=80" },
+        { name: "Відновлення зубів All-on-4 (під ключ на одну щелепу)", price: "від 120 000 UAH", desc: "4 імпланти + незнімний адаптаційний протез за 24 години.", image: "https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&w=800&q=80" },
+        { name: "Відновлення зубів All-on-6 (під ключ)", price: "від 155 000 UAH", desc: "Посилена фіксація на 6 імплантах для максимальної надійності.", image: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=800&q=80" },
         { name: "Кісткова пластика (остеопластика)", price: "від 6 500 UAH", desc: "Нарощування об'єму кісткової тканини.", image: "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=800&q=80" },
         { name: "Синус-ліфтинг (відкритий / закритий)", price: "від 9 000 UAH", desc: "Підняття дна гайморової пазухи для встановлення імплантів у боковому відділі.", image: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&q=80" }
       ]
@@ -108,27 +108,27 @@ export function Services() {
   const categories = locale === "en" ? categoriesEn : categoriesUk;
 
   return (
-    <section id="services" className="py-24 bg-slate-900 text-white relative">
+    <section id="services" className="py-20 sm:py-24 bg-slate-900 text-white relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-16">
           <span className="text-amber-400 font-semibold tracking-widest text-xs uppercase mb-3 block">
-            {t("servicesSection.kicker")}
+            {String(t("servicesSection.kicker"))}
           </span>
-          <h2 className="text-3xl sm:text-4xl font-serif font-bold text-white mb-4">
-            {t("servicesSection.title")}
+          <h2 className="text-2xl sm:text-4xl font-serif font-bold text-white mb-4">
+            {String(t("servicesSection.title"))}
           </h2>
-          <p className="text-slate-300 text-base sm:text-lg">
-            {t("servicesSection.subtitle")}
+          <p className="text-slate-300 text-sm sm:text-lg">
+            {String(t("servicesSection.subtitle"))}
           </p>
         </div>
 
-        {/* Tabs */}
-        <div className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-12">
+        {/* Mobile Horizontal Filter Scroll Bar */}
+        <div className="flex overflow-x-auto sm:flex-wrap sm:justify-center gap-2 sm:gap-4 mb-8 sm:mb-12 -mx-4 px-4 sm:mx-0 sm:px-0 scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           {categories.map((cat, idx) => (
             <button
               key={idx}
               onClick={() => setActiveTab(idx)}
-              className={`px-5 py-3 rounded-full text-sm sm:text-base font-medium transition-all ${
+              className={`px-4 py-2.5 sm:px-5 sm:py-3 rounded-full text-xs sm:text-base font-medium transition-all shrink-0 whitespace-nowrap ${
                 activeTab === idx
                   ? "bg-amber-500 text-slate-950 font-semibold shadow-lg shadow-amber-500/20"
                   : "bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white"
@@ -140,14 +140,14 @@ export function Services() {
         </div>
 
         {/* Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-8">
           {categories[activeTab].items.map((item, idx) => (
             <div
               key={idx}
               className="bg-slate-800/80 backdrop-blur rounded-2xl overflow-hidden border border-slate-700/60 hover:border-amber-500/50 transition-all duration-300 flex flex-col shadow-xl group"
             >
               {item.image && (
-                <div className="w-full aspect-[4/3] overflow-hidden bg-slate-900 relative">
+                <div className="w-full aspect-[16/10] sm:aspect-[4/3] overflow-hidden bg-slate-900 relative">
                   <img
                     src={item.image}
                     alt={item.name}
@@ -156,22 +156,22 @@ export function Services() {
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent"></div>
                 </div>
               )}
-              <div className="p-6 flex flex-col flex-grow justify-between">
+              <div className="p-5 sm:p-6 flex flex-col flex-grow justify-between gap-4">
                 <div>
-                  <h3 className="text-lg font-bold text-white mb-2 group-hover:text-amber-400 transition-colors">
+                  <h3 className="text-base sm:text-lg font-bold text-white mb-2 group-hover:text-amber-400 transition-colors leading-snug">
                     {item.name}
                   </h3>
                   {item.desc && (
-                    <p className="text-slate-300 text-sm mb-4 leading-relaxed">
+                    <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
                       {item.desc}
                     </p>
                   )}
                 </div>
-                <div className="pt-4 border-t border-slate-700/60 flex items-center justify-between">
-                  <span className="text-xs uppercase tracking-wider text-slate-400 font-medium">
+                <div className="pt-3 sm:pt-4 border-t border-slate-700/60 flex flex-col gap-0.5 sm:flex-row sm:items-baseline sm:justify-between">
+                  <span className="text-[11px] sm:text-xs uppercase tracking-wider text-slate-400 font-medium">
                     {locale === "en" ? "Price from" : "Вартість"}
                   </span>
-                  <span className="text-lg sm:text-xl font-bold text-amber-400">
+                  <span className="text-lg sm:text-xl font-bold text-amber-400 tabular-nums">
                     {item.price}
                   </span>
                 </div>
@@ -180,8 +180,8 @@ export function Services() {
           ))}
         </div>
 
-        <div className="mt-12 text-center text-slate-400 text-xs sm:text-sm">
-          {t("servicesSection.footnote")}
+        <div className="mt-10 sm:mt-12 text-center text-slate-400 text-xs sm:text-sm">
+          {String(t("servicesSection.footnote"))}
         </div>
       </div>
     </section>
