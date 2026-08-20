@@ -2,92 +2,70 @@
 
 import { useState } from "react";
 import { useLocale } from "@/lib/i18n";
-import { Reveal } from "@/components/motion";
+
+interface FaqItem {
+  q: string;
+  a: string;
+}
 
 export default function FaqSection() {
   const { t } = useLocale();
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const faqData = t("faq") as {
+    kicker: string;
+    title: string;
+    items: FaqItem[];
+  };
 
-  const faqData = [
-    {
-      q: "Які покази для проведення художньої реставрації?",
-      a: "Покази: естетичні дефекти (сколи, тріщини, нерівні краї), дефекти емалі, невеликі каріозні порожнини в передній зоні, зміни форми зуба, заміна старих неестетичних пломб. Також — корекція діастеми (щілини між зубами).",
-    },
-    {
-      q: "Як потрапити до вас на лікування, якщо я живу за кордоном?",
-      a: "Якщо ви перебуваєте за кордоном, ми запропонуємо комплексну підтримку: від попередньої онлайн-консультації за знімком КТ та організації візиту до комфортного лікування під седацією у стислі терміни.",
-    },
-    {
-      q: "Навіщо в Центрі власна анестезіологічна служба?",
-      a: "Symmetrica володіє офіційною ліцензією МОЗ на анестезіологію. Власна служба з штатним лікарем-анестезіологом та кардіомоніторингом гарантує 100% безпечне проведення медикаментозного сну без залучення сторонніх бригад.",
-    },
-    {
-      q: "Для чого створена власна зуботехнічна лабораторія Symmetrica Tech?",
-      a: "Пряме спілкування між стоматологом і зуботехніком дозволяє пришвидшити виготовлення реставрацій до 24-48 годин, точно підібрати індивідуальну прозорість кераміки та контролювати якість на всіх етапах.",
-    },
-    {
-      q: "Що таке трирівнева система стерилізації інструментів?",
-      a: "Це передстерилізаційне очищення у розчині Korzolex (Німеччина) з ультразвуком, герметичне пакування у одноразові крафт-пакети та автоклавування під тиском для гарантії інфекційної безпеки.",
-    },
-    {
-      q: "Чи справді можна відновити всі зуби в дуже короткі терміни?",
-      a: "Так, за допомогою методик All-on-4 або All-on-6 встановлюються 4 або 6 імплантів, на які фіксується незнімний тимчасовий протез за 24 години.",
-    },
-    {
-      q: "Які переваги дає репрограмування м'язів обличчя?",
-      a: "Мікрострумова терапія розслабляє напружені м'язи при суглобових розладах, знижує біль, нормалізує тонус та пришвидшує ортодонтичне лікування.",
-    },
-    {
-      q: "Для чого при імплантації використовують навігаційні шаблони?",
-      a: "Навігаційний шаблон виготовляється з точністю до міліметра та спрямовує імплант у заздалегідь розраховану позицію. Це мінімізує травматичність тканини та виключає ризик зачепити нерв.",
-    },
-    {
-      q: "Чи є у вас дитяча стоматологія?",
-      a: "Стоматологічне лікування дітей віком 0–18 років проходить у дитячому стоматологічному центрі «Акварель», що є невід'ємною частиною Symmetrica Medical Group.",
-    },
-  ];
+  const [openIdx, setOpenIdx] = useState<number | null>(0);
+
+  const toggle = (idx: number) => {
+    setOpenIdx(openIdx === idx ? null : idx);
+  };
 
   return (
-    <section id="faq" className="py-20 bg-white border-t border-gray-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-        <Reveal className="text-center max-w-3xl mx-auto space-y-4">
-          <p className="text-xs font-bold uppercase tracking-widest text-[var(--color-accent)]">
-            ВІДПОВІДІ НА ЗАПИТАННЯ
+    <section id="faq" className="py-24 bg-[hsl(210_20%_98%)] border-t border-[hsl(210_15%_90%)] scroll-mt-16">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-2xl mx-auto mb-16">
+          <p className="text-xs uppercase tracking-[0.25em] font-sans font-bold text-[hsl(188_85%_38%)] mb-3">
+            {faqData.kicker}
           </p>
-          <h2 className="text-3xl sm:text-4xl font-display font-bold text-[var(--color-text-main)]">
-            Часті запитання пацієнтів
+          <h2 className="text-3xl sm:text-4xl font-serif font-bold text-[hsl(210_30%_14%)]">
+            {faqData.title}
           </h2>
-          <p className="text-base text-[var(--color-text-muted)]">
-            Дізнайтеся більше про безпеку, терміни та технології відновлення зубів.
-          </p>
-        </Reveal>
+        </div>
 
-        <div className="max-w-4xl mx-auto space-y-4">
-          {faqData.map((item, idx) => {
-            const isOpen = openIndex === idx;
+        {/* High-Contrast Full Width Accordion */}
+        <div className="space-y-4">
+          {faqData.items.map((item, idx) => {
+            const isOpen = openIdx === idx;
             return (
               <div
                 key={idx}
-                className="border border-gray-200 rounded-2xl overflow-hidden transition-all duration-200"
+                className="bg-white rounded-xl border border-[hsl(210_15%_88%)] overflow-hidden shadow-sm transition-all"
               >
                 <button
-                  onClick={() => setOpenIndex(isOpen ? null : idx)}
-                  className="w-full text-left p-5 sm:p-6 bg-white hover:bg-[var(--color-bg-light)] flex justify-between items-start sm:items-center gap-3 sm:gap-4 transition-colors"
+                  type="button"
+                  onClick={() => toggle(idx)}
+                  className="w-full text-left p-6 flex items-center justify-between space-x-4 focus:outline-none"
                 >
-                  <span className="font-display font-semibold text-base sm:text-lg text-[var(--color-text-main)] leading-snug">
+                  <span className="font-serif font-bold text-lg sm:text-xl text-[hsl(210_30%_14%)]">
                     {item.q}
                   </span>
-                  <span className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center shrink-0 font-bold text-gray-600 mt-0.5 sm:mt-0">
+                  <span className="w-8 h-8 rounded-full bg-[hsl(210_20%_95%)] flex items-center justify-center font-bold text-[hsl(188_85%_38%)] flex-shrink-0">
                     {isOpen ? "−" : "+"}
                   </span>
                 </button>
+
                 {isOpen && (
-                  <div className="p-5 sm:p-6 pt-0 sm:pt-0 bg-white text-xs sm:text-sm text-[var(--color-text-muted)] leading-relaxed border-t border-gray-100">
-                    {item.a}
+                  <div className="px-6 pb-6 pt-2 border-t border-[hsl(210_15%_92%)]">
+                    <p className="text-sm sm:text-base font-body text-[hsl(210_15%_45%)] leading-relaxed">
+                      {item.a}
+                    </p>
                   </div>
                 )}
               </div>
-            );  })}
+            );
+          })}
         </div>
       </div>
     </section>

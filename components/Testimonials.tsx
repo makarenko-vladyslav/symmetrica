@@ -1,112 +1,98 @@
+
 "use client";
 
-import { Reveal, Carousel } from "@/components/motion";
+import { useLocale } from "@/lib/i18n";
+
+interface TestimonialItem {
+  quote: string;
+  author: string;
+  descriptor: string;
+  tag: string;
+}
 
 export default function Testimonials() {
-  const reviews = [
-    {
-      quote: "Враження від стоматології чудове! Професійні лікарі, уважний персонал. Пояснюють всі кроки в процесі лікування. Дають відповіді на всі запитання і рекомендації для подальшого догляду. Є можливість провести все необхідне обстеження в клініці.",
-      author: "Марія К.",
-      desc: "постійна гостя з 2019 року",
-      type: "Комплексне лікування",
-      rating: "4.9/5",
-    },
-    {
-      quote: "Звернулася зі складним болем у скроневому суглобі. Пройшла діагностику та сплінт-терапію. Вирішення проблем з суглобами пройшло успішно!",
-      author: "Ольга П.",
-      desc: "пацієнтка гнатолога",
-      type: "Сплінт-терапія СНЩС",
-      rating: "5.0/5",
-    },
-    {
-      quote: "Тотальна реабілітація All-on-4 пройшла під медикаментозним сном абсолютно безболісно. На наступний день я вже була з новими красиво відновленими зубами. Дякую пану Андрію та команді!",
-      author: "Ірина В.",
-      desc: "відновлення All-on-4",
-      type: "All-on-4 під седацією",
-      rating: "5.0/5",
-    },
-    {
-      quote: "Протезування коронками виготовленими за 2 дні в їхній власій лабораторії Symmetrica Tech. Вигляд природний, підгонка точна.",
-      author: "Рафал С.",
-      desc: "пацієнт ортопеда",
-      type: "Протезування коронками",
-      rating: "4.9/5",
-    },
-  ];
+  const { t } = useLocale();
+  const testData = t("testimonials") as {
+    kicker: string;
+    title: string;
+    ratingSource: string;
+    featuredQuote: string;
+    featuredAuthor: string;
+    featuredDescriptor: string;
+    items: TestimonialItem[];
+  };
 
   return (
-    <section className="py-20 bg-[var(--color-bg-light)] border-t border-gray-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-        
-        {/* Layer 1-2: Kicker & Heading */}
-        <Reveal className="text-center max-w-3xl mx-auto space-y-4">
-          <p className="text-xs font-bold uppercase tracking-widest text-[var(--color-accent)]">
-            СЛОВО ГОСТЕЙ
+    <section className="py-24 bg-white border-t border-[hsl(210_15%_90%)]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Layer 1 & 2: Kicker + Heading */}
+        <div className="max-w-3xl mb-12">
+          <p className="text-xs uppercase tracking-[0.25em] font-sans font-bold text-[hsl(188_85%_38%)] mb-3">
+            {testData.kicker}
           </p>
-          <h2 className="text-3xl sm:text-4xl font-display font-bold text-[var(--color-text-main)]">
-            Відгуки пацієнтів про центр Symmetrica
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-[hsl(210_30%_14%)] mb-2">
+            {testData.title}
           </h2>
-          <p className="text-base text-[var(--color-text-muted)]">
-            Оцінка 4.9 / 5.0 на основі 340+ відгуків у Google Maps.
+          <p className="text-xs font-sans font-bold uppercase tracking-wider text-[hsl(188_85%_38%)]">
+            ★ {testData.ratingSource}
           </p>
-        </Reveal>
+        </div>
 
-        {/* Layer 3: Featured Quote in Display Type with Giant Quotation Mark */}
-        <div className="bg-white p-8 sm:p-12 rounded-3xl border border-gray-200 shadow-sm relative overflow-hidden max-w-4xl mx-auto">
-          <div aria-hidden="true" className="absolute -top-6 -left-2 text-9xl font-display font-bold text-[var(--color-accent)]/15 select-none pointer-events-none">
+        {/* Featured Pull Quote Block */}
+        <div className="mb-12 p-8 sm:p-12 bg-[hsl(210_20%_98%)] rounded-2xl border border-[hsl(210_15%_88%)] relative overflow-hidden">
+          <div aria-hidden="true" className="absolute top-2 left-6 text-8xl font-serif text-[hsl(188_85%_38%/0.15)] pointer-events-none select-none">
             “
           </div>
-          <div className="relative z-10 space-y-4">
-            <blockquote className="text-lg sm:text-2xl font-display italic text-[var(--color-text-main)] leading-relaxed">
-              «Враження від стоматології чудове! Професійні лікарі, уважний персонал. Пояснюють всі кроки в процесі лікування та надають рекомендації для подальшого догляду.»
-            </blockquote>
-            <div className="flex items-center justify-between pt-4 border-t border-gray-100 text-xs">
-              <div>
-                <p className="font-bold text-[var(--color-text-main)]">{reviews[0].author}</p>
-                <p className="text-gray-500">{reviews[0].desc}</p>
-              </div>
-              <p className="font-bold text-[var(--color-primary)] uppercase tracking-wider">
-                {reviews[0].rating} · GOOGLE REVIEWS
+          <p className="relative z-10 text-xl sm:text-2xl font-serif italic text-[hsl(210_30%_14%)] leading-relaxed mb-6">
+            {testData.featuredQuote}
+          </p>
+          <div className="relative z-10 flex items-center space-x-3 pt-4 border-t border-[hsl(210_15%_88%)]">
+            <div className="w-10 h-10 rounded-full bg-[hsl(188_85%_38%)] text-white flex items-center justify-center font-serif font-bold">
+              {testData.featuredAuthor[0]}
+            </div>
+            <div>
+              <p className="font-serif font-bold text-base text-[hsl(210_30%_14%)]">
+                {testData.featuredAuthor}
+              </p>
+              <p className="text-xs font-body text-[hsl(210_15%_45%)]">
+                {testData.featuredDescriptor}
               </p>
             </div>
           </div>
         </div>
 
-        {/* Layer 4: Carousel with Dot Indicators (No Prev/Next Arrow Buttons) */}
-        <Carousel>
-          {reviews.map((rev, idx) => (
+        {/* Testimonials Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {testData.items.map((item, idx) => (
             <div
               key={idx}
-              className="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm flex flex-col justify-between h-full space-y-6"
+              className="bg-white p-8 rounded-xl border border-[hsl(210_15%_88%)] shadow-sm space-y-6 flex flex-col justify-between"
             >
               <div className="space-y-4">
-                <div className="flex justify-between items-center">
-                  <span className="text-[10px] font-bold bg-[var(--color-accent)]/20 text-[var(--color-primary)] px-3 py-1 rounded-full uppercase tracking-wider">
-                    {rev.type}
-                  </span>
-                  <span className="text-amber-600 font-bold text-xs tabular-nums">
-                    {rev.rating}
-                  </span>
-                </div>
-
-                <p className="text-xs sm:text-sm text-[var(--color-text-main)] font-body leading-relaxed italic">
-                  «{rev.quote}»
+                <span className="inline-block bg-[hsl(188_85%_38%/0.1)] text-[hsl(188_85%_38%)] text-xs font-sans font-bold px-3 py-1 rounded">
+                  {item.tag}
+                </span>
+                <p className="text-base sm:text-lg font-body text-[hsl(210_30%_14%)] italic leading-relaxed">
+                  «{item.quote}»
                 </p>
               </div>
 
-              <div className="border-t border-gray-100 pt-4 flex items-center justify-between">
+              <div className="pt-4 border-t border-[hsl(210_15%_88%)] flex items-center justify-between">
                 <div>
-                  <h4 className="text-xs font-bold text-[var(--color-text-main)]">{rev.author}</h4>
-                  <p className="text-[11px] text-gray-400">{rev.desc}</p>
+                  <p className="font-serif font-bold text-base text-[hsl(210_30%_14%)]">
+                    {item.author}
+                  </p>
+                  <p className="text-xs font-body text-[hsl(210_15%_50%)]">
+                    {item.descriptor}
+                  </p>
                 </div>
-                <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">
-                  GOOGLE
+                <span className="text-[10px] font-sans font-bold uppercase tracking-wider text-[hsl(188_85%_38%)] bg-slate-100 px-2 py-1 rounded">
+                  Verified
                 </span>
               </div>
             </div>
           ))}
-        </Carousel>
-
+        </div>
       </div>
     </section>
   );

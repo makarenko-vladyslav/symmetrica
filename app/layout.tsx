@@ -4,24 +4,22 @@ import { LocaleProvider } from "@/lib/i18n";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Symmetrica — Центр стоматологічного відновлення Львів | Імплантація All-on-4, Седація",
-  description: "Преміальна стоматологія у Львові з 2013 року. Комплексне відновлення зубів All-on-4, медикаментозний сон, власна цифрова лабораторія Symmetrica Tech, 3D КТ діагностика.",
-  keywords: ["стоматологія Львів", "імплантація зубів Львів", "All-on-4 Львів", "вініри Львів", "лікування зубів уві сні", "Symmetrica стоматологія"],
-  icons: {
-    icon: "/icon.svg",
-  },
+  title: "Symmetrica — Центр стоматологічного відновлення у Львові",
+  description: "Комплексне стоматологічне відновлення, дентальна імплантація All-on-4/All-on-6 під седацією та власна цифрова лабораторія Symmetrica Tech у Львові. Запис на 3D-діагностику.",
+  keywords: ["стоматологія львів", "імплантація зубів", "All-on-4", "вініри львів", "лікування під седацією", "Symmetrica"],
+  icons: { icon: "/icon.svg" },
   openGraph: {
     title: "Symmetrica — Центр стоматологічного відновлення у Львові",
-    description: "Комплексна дентальна імплантація, естетична стоматологія та лікування під седацією. Власна анестезіологічна служба та зуботехнічна лабораторія.",
+    description: "Високоестетична хірургічна стоматологія, імплантація All-on-4 уві сні та власний анестезіологічний штат.",
     type: "website",
     locale: "uk_UA",
-    siteName: "Symmetrica Dental",
+    siteName: "Symmetrica",
   },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="uk">
+    <html lang="uk" className="scroll-smooth">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />

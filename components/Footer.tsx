@@ -4,107 +4,90 @@ import { useLocale } from "@/lib/i18n";
 
 export default function Footer() {
   const { t } = useLocale();
+  const meta = t("meta") as Record<string, string>;
+  const nav = t("nav") as Record<string, string>;
+  const footerData = t("footer") as Record<string, string>;
 
   return (
-    <footer className="bg-[var(--color-bg-dark)] text-white pt-16 pb-8 border-t border-white/10 relative overflow-hidden">
-      
-      {/* Background Giant Brand Wordmark Bleeding Off Bottom Edge */}
-      <div
-        aria-hidden="true"
-        className="absolute -bottom-10 left-1/2 -translate-x-1/2 z-0 pointer-events-none select-none text-[22vw] font-display font-bold text-white/[0.02] uppercase tracking-widest whitespace-nowrap leading-none"
-      >
-        SYMMETRICA
-      </div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 border-b border-white/10 pb-12">
-          
-          {/* Col 1: Brand Info & Logo */}
-          <div className="lg:col-span-2 space-y-4">
+    <footer className="bg-[hsl(205_45%_10%)] text-white pt-20 pb-12 border-t border-[hsl(188_85%_38%/0.2)] relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 pb-16 border-b border-white/10">
+          {/* Col 1: Brand & Logo */}
+          <div className="space-y-4">
             <img
               src="https://cdn.prod.website-files.com/65b22ee2a70bd488c02e918e/664f346033a636ff1febebae_%D0%BB%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF.svg"
-              alt="Symmetrica Dental Logo"
-              className="h-10 w-auto brightness-0 invert"
+              alt={meta.brand || "Symmetrica"}
+              className="h-10 w-auto object-contain brightness-0 invert"
             />
-            <p className="text-xs text-white/70 max-w-sm leading-relaxed font-light">
-              {String(t("footer.about"))}
+            <p className="text-sm font-body text-white/70 leading-relaxed">
+              {footerData.aboutText}
             </p>
-            <p className="text-xs text-[var(--color-accent)] font-semibold pt-1 tabular-nums">
-              {String(t("footer.hours"))}
-            </p>
+            <p className="text-xs font-sans text-white/50">{footerData.license}</p>
           </div>
 
-          {/* Col 2: Nav Column */}
-          <div className="space-y-3">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-[var(--color-accent)]">
-              Напрямки
+          {/* Col 2: Navigation */}
+          <div className="space-y-4">
+            <h4 className="text-xs uppercase font-sans font-bold tracking-widest text-[hsl(188_85%_48%)]">
+              {footerData.navHeader}
             </h4>
-            <ul className="space-y-2 text-xs text-white/70 font-medium">
-              <li><a href="#diagnostics" className="hover:text-white transition-colors">{String(t("footer.linkCt"))}</a></li>
-              <li><a href="#services" className="hover:text-white transition-colors">{String(t("footer.linkAllOn4"))}</a></li>
-              <li><a href="#services" className="hover:text-white transition-colors">{String(t("footer.linkVeneers"))}</a></li>
-              <li><a href="#sedation" className="hover:text-white transition-colors">{String(t("footer.linkSedation"))}</a></li>
-              <li><a href="#services" className="hover:text-white transition-colors">{String(t("footer.linkTmj"))}</a></li>
+            <ul className="space-y-2 text-sm font-body text-white/80">
+              <li><a href="#diagnostics" className="hover:text-[hsl(188_85%_48%)] transition-colors">{nav.diagnostics}</a></li>
+              <li><a href="#services" className="hover:text-[hsl(188_85%_48%)] transition-colors">{nav.services}</a></li>
+              <li><a href="#calculator" className="hover:text-[hsl(188_85%_48%)] transition-colors">{nav.calculator}</a></li>
+              <li><a href="#sedation" className="hover:text-[hsl(188_85%_48%)] transition-colors">{nav.sedation}</a></li>
+              <li><a href="#team" className="hover:text-[hsl(188_85%_48%)] transition-colors">{nav.team}</a></li>
+              <li><a href="#faq" className="hover:text-[hsl(188_85%_48%)] transition-colors">{nav.faq}</a></li>
             </ul>
           </div>
 
-          {/* Col 3: Contact Column */}
-          <div className="space-y-3">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-[var(--color-accent)]">
-              Контакти
+          {/* Col 3: Services & Social TEXT Links */}
+          <div className="space-y-4">
+            <h4 className="text-xs uppercase font-sans font-bold tracking-widest text-[hsl(188_85%_48%)]">
+              {footerData.socialHeader}
             </h4>
-            <div className="space-y-2 text-xs text-white/70">
-              <p>{String(t("footer.address"))}</p>
-              <p>
-                <a href="tel:+380674589247" className="hover:text-[var(--color-accent)] font-bold tabular-nums">
-                  +380 67 458 92 47
-                </a>
-              </p>
-              <p>{String(t("footer.email"))}</p>
+            <div className="flex flex-col space-y-2 text-sm font-sans text-white/80">
+              <a href="#" className="hover:text-[hsl(188_85%_48%)] transition-colors">{footerData.socialInsta}</a>
+              <a href="#" className="hover:text-[hsl(188_85%_48%)] transition-colors">{footerData.socialFb}</a>
+              <a href="#" className="hover:text-[hsl(188_85%_48%)] transition-colors">{footerData.socialYt}</a>
             </div>
           </div>
 
-          {/* Col 4: Socials Row as Text Links */}
-          <div className="space-y-3">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-[var(--color-accent)]">
-              Соціальні мережі
+          {/* Col 4: Contacts */}
+          <div className="space-y-4">
+            <h4 className="text-xs uppercase font-sans font-bold tracking-widest text-[hsl(188_85%_48%)]">
+              {footerData.contactHeader}
             </h4>
-            <div className="flex flex-col space-y-2 text-xs text-white/70 font-semibold uppercase tracking-wider">
-              <a
-                href="https://www.facebook.com/SymmetricaDent/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-[var(--color-accent)] transition-colors"
-              >
-                FACEBOOK →
-              </a>
-              <a
-                href="https://www.instagram.com/symmetrica_dent/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-[var(--color-accent)] transition-colors"
-              >
-                INSTAGRAM →
-              </a>
+            <div className="space-y-2 text-sm font-body text-white/80">
+              <p>{meta.address}</p>
+              <p><a href={`tel:${meta.phone}`} className="hover:text-[hsl(188_85%_48%)] text-base font-bold font-tabular">{meta.phoneFormatted}</a></p>
+              <p>{meta.email}</p>
+              <p className="text-xs text-white/60 pt-2">{meta.hours}</p>
             </div>
           </div>
-
         </div>
 
-        {/* Legal Row & Studio Credit */}
-        <div className="flex flex-col sm:flex-row justify-between items-center text-xs text-white/50 gap-4 font-light">
-          <p>{String(t("footer.rights"))}</p>
+        {/* Legal Row + Developer Credit */}
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs font-body text-white/60 gap-4">
+          <p>© 2026 Symmetrica Dental Center. {footerData.rights}</p>
+          <p className="text-white/40 italic">{footerData.brandVoiceCredit}</p>
           <p>
-            Розроблено{" "}
             <a
               href="https://makarich.framer.website"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[var(--color-accent)] hover:underline font-bold"
+              className="hover:text-[hsl(188_85%_48%)] underline transition-colors"
             >
-              Студія Тест
+              {footerData.developerCredit}
             </a>
           </p>
+        </div>
+
+        {/* Giant Full-Width Brand Wordmark Bleeding Off Bottom Edge */}
+        <div
+          aria-hidden="true"
+          className="mt-12 text-[16vw] font-serif font-black uppercase text-white/[0.04] leading-none text-center select-none pointer-events-none whitespace-nowrap overflow-hidden"
+        >
+          SYMMETRICA
         </div>
       </div>
     </footer>

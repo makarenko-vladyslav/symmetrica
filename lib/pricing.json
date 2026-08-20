@@ -1,72 +1,21 @@
 {
   "currency": "UAH",
-  "baseConsultation": 800,
-  "calculatorOptions": {
-    "treatments": [
-      {
-        "id": "all-on-4",
-        "name": "Тотальне відновлення All-on-4 / All-on-6",
-        "basePrice": 120000,
-        "unitLabel": "щелепа",
-        "minQty": 1,
-        "maxQty": 2,
-        "step": 1,
-        "includes": ["4 або 6 преміум імплантів", "Незнімний тимчасовий протез за 24 години", "Хірургічний навігаційний шаблон", "3D-томографія та сканування"]
-      },
-      {
-        "id": "implant",
-        "name": "Дентальна імплантація (1 зуб)",
-        "basePrice": 14500,
-        "unitLabel": "імплант",
-        "minQty": 1,
-        "maxQty": 14,
-        "step": 1,
-        "includes": ["Імплант Straumann / Megagen", "Встановлення формувача ясен", "Анестезія та супровід", "Гарантійний сертифікат"]
-      },
-      {
-        "id": "veneers",
-        "name": "Керамічні вініри / Ультраніри",
-        "basePrice": 12500,
-        "unitLabel": "од. кераміки",
-        "minQty": 2,
-        "maxQty": 20,
-        "step": 2,
-        "includes": ["Цифровий дизайн посмішки Digital Smile Design", "Власна цифрова виготовка Symmetrica Tech", "Примірка воскової моделі Mock-Up", "Фіксація під мікроскопом"]
-      },
-      {
-        "id": "invisalign",
-        "name": "Ортодонтія елайнерами (Invisalign)",
-        "basePrice": 75000,
-        "unitLabel": "комплекс",
-        "minQty": 1,
-        "maxQty": 2,
-        "step": 1,
-        "includes": ["3D-моделювання переміщення зубів", "Індивідуальний набір кап", "Репрограмування м'язів обличчя", "Регулярні планові корекції"]
-      },
-      {
-        "id": "endo",
-        "name": "Ендодонтія під мікроскопом (лікування каналів)",
-        "basePrice": 4200,
-        "unitLabel": "канал",
-        "minQty": 1,
-        "maxQty": 4,
-        "step": 1,
-        "includes": ["Операційний мікроскоп Zeiss", "Тривимірна обтурація гарячою гутаперчею", "Коффердам та антисептична обробка", "Контрольний знімок"]
-      }
+  "basePrices": {
+    "all_on_4": 120000,
+    "all_on_6": 165000,
+    "implant_single": 145000,
+    "veneers_unit": 12500,
+    "sedation_hour": 3500,
+    "diagnostic_3d": 800
+  },
+  "options": {
+    "arch_type": [
+      { "id": "single_jaw", "multiplier": 1.0, "label_uk": "Одна щелепа", "label_en": "Single Jaw" },
+      { "id": "both_jaws", "multiplier": 1.9, "label_uk": "Обидві щелепи", "label_en": "Both Jaws" }
     ],
-    "addons": [
-      {
-        "id": "sedation",
-        "name": "Лікування у медикаментозному сні (Седація)",
-        "price": 4500,
-        "description": "Повний комфорт без страху під наглядом штатного анестезіолога"
-      },
-      {
-        "id": "ct-scan",
-        "name": "Комплексна 3D КТ діагностика + консультація",
-        "price": 1200,
-        "description": "Тривимірне сканування з розбором головного лікаря"
-      }
+    "sedation_needed": [
+      { "id": "yes", "add": 3500, "label_uk": "З медикаментозним сном (седація)", "label_en": "With Sedation" },
+      { "id": "no", "add": 0, "label_uk": "Місцева анестезія", "label_en": "Local Anesthesia" }
     ]
   }
 }
