@@ -20,6 +20,25 @@ import { Children, useEffect, useRef, useState, type ReactNode, type RefObject }
 const EASE_OUT: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
 /**
+ * Named curves, so a section can mean something different from its neighbour.
+ *
+ * Measured 20.08: three sites for unrelated businesses carried byte-identical
+ * motion, and the cause was here — one curve and one duration for every element
+ * on every site. The defaults below keep the previous behaviour exactly; the
+ * point is that they are now overridable per element.
+ */
+export const CURVES = {
+  /** Entering the viewport. The default. */
+  enter: EASE_OUT,
+  /** Large blocks and hero content — softer landing. */
+  enterSoft: [0.33, 1, 0.68, 1] as [number, number, number, number],
+  /** Switching between two states: accordions, tabs, menus. */
+  transition: [0.65, 0, 0.35, 1] as [number, number, number, number],
+  /** Pointer feedback. Anything slower reads as lag. */
+  micro: [0.4, 0, 0.2, 1] as [number, number, number, number],
+} as const;
+
+/**
  * Elements still waiting to be revealed, watched by ONE listener for the page.
  *
  * This used to be Framer's `whileInView` with `once: true`, and Safari made a
@@ -105,13 +124,29 @@ interface RevealProps extends MotionBoxProps {
   delay?: number;
   /** Travel in px. 24-40 reads as intent; much more reads as a slide deck. */
   y?: number;
+  /**
+   * Seconds. Pick by job, not one value for the page: 0.5-0.75 for an ordinary
+   * entrance, 0.9-1.2 for a whole block revealing, 1.2-2.0 for the one signature
+   * moment. Leaving every element on the default is what made the fleet identical.
+   */
+  duration?: number;
+  /** A curve from CURVES. Default `enter`. */
+  ease?: readonly [number, number, number, number];
 }
 
 /**
  * Fade-and-rise as the element enters the viewport. The default entrance for
  * anything that is not a list — headings, images, panels, whole sections.
  */
-export function Reveal({ children, delay = 0, y = 32, as = "div", className }: RevealProps) {
+export function Reveal({
+  children,
+  delay = 0,
+  y = 32,
+  duration = 0.55,
+  ease = CURVES.enter,
+  as = "div",
+  className,
+}: RevealProps) {
   const ref = useRef<HTMLDivElement>(null);
   const revealed = useRevealed(ref);
   const reduced = useReducedMotion();
@@ -128,22 +163,30 @@ export function Reveal({ children, delay = 0, y = 32, as = "div", className }: R
       className={className}
       initial={{ opacity: 0, y }}
       animate={revealed ? { opacity: 1, y: 0 } : { opacity: 0, y }}
-      transition={{ duration: 0.55, ease: EASE_OUT, delay }}
+      transition={{ duration, ease, delay }}
     >
       {children}
     </Animated>
   );
 }
 
-const containerVariants: Variants = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.09, delayChildren: 0.05 } },
-};
+/**
+ * Built per instance instead of shared, so one list can cascade at text speed
+ * (0.025-0.05s) while another lands block by block (0.1-0.2s).
+ */
+function buildContainerVariants(stagger: number, delayChildren: number): Variants {
+  return { hidden: {}, show: { transition: { staggerChildren: stagger, delayChildren } } };
+}
 
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: EASE_OUT } },
-};
+function buildItemVariants(duration: number, ease: readonly [number, number, number, number]): Variants {
+  return {
+    hidden: { opacity: 0, y: 24 },
+    show: { opacity: 1, y: 0, transition: { duration, ease } },
+  };
+}
+
+const containerVariants = buildContainerVariants(0.09, 0.05);
+const itemVariants = buildItemVariants(0.55, EASE_OUT);
 
 /**
  * Reveals children one after another. Wrap the list, then wrap each child in

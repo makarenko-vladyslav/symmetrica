@@ -1,80 +1,71 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import SocialProof from "@/components/SocialProof";
+import Ticker from "@/components/Ticker";
 import Services from "@/components/Services";
 import Calculator from "@/components/Calculator";
-import LabAdvantage from "@/components/LabAdvantage";
-import TechShowcase from "@/components/TechShowcase";
+import LabFeature from "@/components/LabFeature";
+import AllOn4Protocol from "@/components/AllOn4Protocol";
+import AnesthesiaSection from "@/components/AnesthesiaSection";
+import SymmetricaTech from "@/components/SymmetricaTech";
 import Team from "@/components/Team";
-import Testimonials from "@/components/Testimonials";
+import Cases from "@/components/Cases";
 import Faq from "@/components/Faq";
-import ContactForm from "@/components/ContactForm";
+import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
-import { Marquee } from "@/components/motion";
-import { useLocale } from "@/lib/i18n";
+import { Reveal, Stagger, StaggerItem, Carousel } from "@/components/motion";
 
 export default function Home() {
   return (
     <>
       <Header />
-      <main>
-        {/* Section 1: Hero */}
+      <main className="min-h-screen">
         <Hero />
+        
+        <Reveal>
+          <Ticker />
+        </Reveal>
 
-        {/* Interstitial 1: Text Ticker Marquee Strip */}
-        <div className="py-3 bg-bg-dark text-white/60 border-y border-white/10 text-[11px] font-mono tracking-widest uppercase overflow-hidden whitespace-nowrap">
-          <Marquee>
-            <span>4.9/5 ВІДГУКИ GOOGLE MAPS · 100% ЛІЦЕНЗОВАНА АНЕСТЕЗІОЛОГІЧНА СЛУЖБА · DIGITALLY CRAFTED SMILES IN LVIV</span>
-          </Marquee>
-        </div>
+        <Reveal>
+          <Services />
+        </Reveal>
 
-        {/* Section 2: Social Proof / Stats */}
-        <SocialProof />
+        <Reveal>
+          <Calculator />
+        </Reveal>
 
-        {/* Section 3: Services / Price List */}
-        <Services />
+        <Reveal>
+          <LabFeature />
+        </Reveal>
 
-        {/* Interstitial 2: Standalone Labeled Hairline Statement */}
-        <div className="py-8 bg-primary text-white border-y border-white/10 text-center">
-          <div className="max-w-7xl mx-auto px-4 text-xs sm:text-sm font-mono tracking-widest uppercase text-accent font-semibold">
-            100% ЛІЦЕНЗОВАНА АНЕСТЕЗІОЛОГІЧНА СЛУЖБА · МЕДИКАМЕНТОЗНИЙ СОН БЕЗ ТРИВОГИ ТА БОЛЮ
-          </div>
-        </div>
+        <Reveal>
+          <SymmetricaTech />
+        </Reveal>
 
-        {/* Section 4: Interactive Calculator */}
-        <Calculator />
+        <Reveal>
+          <AllOn4Protocol />
+        </Reveal>
 
-        {/* Section 5: Lab & Sedation Craft Advantage */}
-        <LabAdvantage />
+        <Reveal>
+          <AnesthesiaSection />
+        </Reveal>
 
-        {/* Interstitial 3: Watermark / Marquee Band */}
-        <div className="py-3 bg-primary text-white/50 border-y border-white/10 text-[11px] font-mono tracking-widest uppercase overflow-hidden whitespace-nowrap">
-          <Marquee>
-            <span>SYMMETRICA TECH LABORATORY · ROLAND 3D MILLING · 24H EXPRESS TURNAROUND · DENTAL RESTORATION CENTER</span>
-          </Marquee>
-        </div>
+        <Reveal>
+          <Team />
+        </Reveal>
 
-        {/* Section 6: Tech Showcase */}
-        <TechShowcase />
+        <Reveal>
+          <Carousel>
+            <Cases />
+          </Carousel>
+        </Reveal>
 
-        {/* Interstitial 4: Hairline Section Divider */}
-        <div className="py-6 bg-bg-light border-y border-primary/10 text-center">
-          <span className="text-xs font-mono tracking-widest uppercase text-text-muted">
-            17 ЛІКАРІВ-ЕКСПЕРТІВ ПРАЦЮЮТЬ ЗА ЄДИНИМ МІЖНАРОДНИМ ПРОТОКОЛОМ DIGITAL SMILE DESIGN
-          </span>
-        </div>
+        <Reveal>
+          <Faq />
+        </Reveal>
 
-        {/* Section 7: Team */}
-        <Team />
-
-        {/* Section 8: Testimonials / Proof */}
-        <Testimonials />
-
-        {/* Section 9: FAQ */}
-        <Faq />
-
-        {/* Section 10: Booking / Contact Form */}
-        <ContactForm />
+        <Reveal>
+          <Contact />
+        </Reveal>
       </main>
       <Footer />
     </>

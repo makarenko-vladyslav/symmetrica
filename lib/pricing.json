@@ -1,32 +1,14 @@
 {
-  "currency": "UAH",
-  "services": {
-    "consultation": {
-      "id": "consultation",
-      "basePrice": 800,
-      "titleKey": "calculator.services.consultation"
-    },
-    "all_on_4": {
-      "id": "all_on_4",
-      "basePrice": 120000,
-      "titleKey": "calculator.services.all_on_4"
-    },
-    "implant": {
-      "id": "implant",
-      "basePrice": 14500,
-      "titleKey": "calculator.services.implant"
-    },
-    "veneers": {
-      "id": "veneers",
-      "basePrice": 12500,
-      "titleKey": "calculator.services.veneers"
-    },
-    "splint": {
-      "id": "splint",
-      "basePrice": 18000,
-      "titleKey": "calculator.services.splint"
-    }
+  "basePrices": {
+    "allOn4": 120000,
+    "allOn6": 165000,
+    "single": 28000
   },
-  "sedationAddon": 6000,
-  "techLabAddon": 4500
+  "multipliers": {
+    "straumann": 1.2,
+    "neodent": 1.0,
+    "sedation": 6500
+  },
+  "currency": "UAH",
+  "estimationLogic": "interactive"
 }

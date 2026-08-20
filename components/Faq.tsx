@@ -2,62 +2,57 @@
 
 import { useState } from 'react';
 import { useLocale } from '@/lib/i18n';
-import { Reveal } from '@/components/motion';
+
+interface FaqItem {
+  q: string;
+  a: string;
+}
 
 export default function Faq() {
   const { t } = useLocale();
+  const items = (t('faq.items') as FaqItem[]) || [];
   const [openIdx, setOpenIdx] = useState<number | null>(0);
 
-  const faqs = t('faq.items') as Array<{ q: string; a: string }>;
-
   return (
-    <section id="faq" className="py-24 bg-bg-light text-text-main scroll-mt-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Section Heading */}
-        <div className="max-w-3xl mb-16">
-          <Reveal>
-            <span className="text-xs font-semibold tracking-[0.2em] text-accent uppercase block mb-3 font-mono">
-              {t('faq.kicker') as string}
-            </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-medium tracking-tight mb-4 text-primary">
-              {t('faq.title') as string}
-            </h2>
-            <p className="text-base sm:text-lg text-text-muted font-light">
-              {t('faq.subtitle') as string}
-            </p>
-          </Reveal>
+    <section id="faq" className="py-20 px-4 sm:px-6 bg-[hsl(150_20%_93%)] scroll-mt-20">
+      <div className="max-w-4xl mx-auto">
+        <div className="text-center flex flex-col gap-3 mb-12">
+          <div className="text-xs uppercase tracking-[0.25em] font-bold text-[hsl(155_75%_38%)]">
+            {String(t('faq.kicker'))}
+          </div>
+          <h2 className="font-display text-3xl sm:text-5xl font-normal text-[hsl(162_40%_12%)]">
+            {String(t('faq.title'))}
+          </h2>
         </div>
 
-        {/* Accordion List Spanning Full Container Width */}
-        <div className="space-y-4">
-          {faqs.map((faq, idx) => {
+        <div className="flex flex-col gap-3">
+          {items.map((item, idx) => {
             const isOpen = openIdx === idx;
             return (
-              <Reveal key={idx} delay={idx * 0.04}>
-                <div className="bg-bg-card rounded-2xl border border-primary/10 overflow-hidden transition-all">
-                  <button
-                    onClick={() => setOpenIdx(isOpen ? null : idx)}
-                    className="w-full text-left p-6 flex justify-between items-center gap-4 focus:outline-none"
-                  >
-                    <span className="font-display font-medium text-base sm:text-lg text-primary">
-                      {faq.q}
-                    </span>
-                    <span className="text-accent font-mono text-xl font-bold">
-                      {isOpen ? '—' : '+'}
-                    </span>
-                  </button>
-                  {isOpen && (
-                    <div className="px-6 pb-6 text-xs sm:text-sm text-text-muted font-light leading-relaxed border-t border-primary/5 pt-4">
-                      {faq.a}
-                    </div>
-                  )}
-                </div>
-              </Reveal>
+              <div
+                key={idx}
+                className="bg-white rounded-2xl border border-gray-200/80 overflow-hidden transition-all shadow-sm"
+              >
+                <button
+                  type="button"
+                  onClick={() => setOpenIdx(isOpen ? null : idx)}
+                  className="w-full p-6 text-left flex items-center justify-between gap-4 font-display text-lg font-bold text-[hsl(162_40%_12%)] hover:text-[hsl(155_75%_38%)] transition-colors"
+                >
+                  <span>{item.q}</span>
+                  <span className="font-mono text-xl text-[hsl(155_75%_38%)] shrink-0">
+                    {isOpen ? '−' : '+'}
+                  </span>
+                </button>
+
+                {isOpen && (
+                  <div className="px-6 pb-6 text-sm text-[hsl(162_15%_42%)] font-light leading-relaxed border-t border-gray-100 pt-4">
+                    {item.a}
+                  </div>
+                )}
+              </div>
             );
           })}
         </div>
-
       </div>
     </section>
   );
