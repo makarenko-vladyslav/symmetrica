@@ -1,98 +1,91 @@
-
 "use client";
 
-import { useLocale } from "@/lib/i18n";
-
-interface TestimonialItem {
-  quote: string;
-  author: string;
-  descriptor: string;
-  tag: string;
-}
+import { useLocale } from '@/lib/i18n';
+import { Reveal, Carousel } from '@/components/motion';
 
 export default function Testimonials() {
   const { t } = useLocale();
-  const testData = t("testimonials") as {
-    kicker: string;
-    title: string;
-    ratingSource: string;
-    featuredQuote: string;
-    featuredAuthor: string;
-    featuredDescriptor: string;
-    items: TestimonialItem[];
-  };
+
+  const reviews = t('testimonials.items') as Array<{
+    author: string;
+    descriptor: string;
+    text: string;
+    tag: string;
+  }>;
 
   return (
-    <section className="py-24 bg-white border-t border-[hsl(210_15%_90%)]">
+    <section id="cases" className="py-24 bg-primary text-white scroll-mt-16 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Layer 1 & 2: Kicker + Heading */}
+        
+        {/* Header */}
         <div className="max-w-3xl mb-12">
-          <p className="text-xs uppercase tracking-[0.25em] font-sans font-bold text-[hsl(188_85%_38%)] mb-3">
-            {testData.kicker}
-          </p>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-[hsl(210_30%_14%)] mb-2">
-            {testData.title}
-          </h2>
-          <p className="text-xs font-sans font-bold uppercase tracking-wider text-[hsl(188_85%_38%)]">
-            ★ {testData.ratingSource}
-          </p>
+          <Reveal>
+            <span className="text-xs font-semibold tracking-[0.2em] text-accent uppercase block mb-3 font-mono">
+              {t('testimonials.kicker') as string}
+            </span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-medium tracking-tight mb-4">
+              {t('testimonials.title') as string}
+            </h2>
+            <p className="text-base sm:text-lg text-white/70 font-light">
+              {t('testimonials.subtitle') as string}
+            </p>
+          </Reveal>
         </div>
 
-        {/* Featured Pull Quote Block */}
-        <div className="mb-12 p-8 sm:p-12 bg-[hsl(210_20%_98%)] rounded-2xl border border-[hsl(210_15%_88%)] relative overflow-hidden">
-          <div aria-hidden="true" className="absolute top-2 left-6 text-8xl font-serif text-[hsl(188_85%_38%/0.15)] pointer-events-none select-none">
-            “
-          </div>
-          <p className="relative z-10 text-xl sm:text-2xl font-serif italic text-[hsl(210_30%_14%)] leading-relaxed mb-6">
-            {testData.featuredQuote}
-          </p>
-          <div className="relative z-10 flex items-center space-x-3 pt-4 border-t border-[hsl(210_15%_88%)]">
-            <div className="w-10 h-10 rounded-full bg-[hsl(188_85%_38%)] text-white flex items-center justify-center font-serif font-bold">
-              {testData.featuredAuthor[0]}
-            </div>
-            <div>
-              <p className="font-serif font-bold text-base text-[hsl(210_30%_14%)]">
-                {testData.featuredAuthor}
-              </p>
-              <p className="text-xs font-body text-[hsl(210_15%_45%)]">
-                {testData.featuredDescriptor}
-              </p>
+        {/* Featured Pull-Quote Section with Rating Source */}
+        <Reveal delay={0.2}>
+          <div className="mb-12 p-8 rounded-3xl bg-white/5 border border-white/10 relative overflow-hidden">
+            <span className="font-serif text-8xl text-accent/20 absolute -top-4 -left-2 select-none pointer-events-none">
+              «
+            </span>
+            <p className="text-xl sm:text-2xl font-serif italic text-white/90 leading-relaxed mb-6 relative z-10">
+              {t('testimonials.featuredQuote') as string}
+            </p>
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-4 border-t border-white/10 text-xs text-white/70">
+              <div className="font-semibold text-accent font-mono uppercase tracking-wider">
+                {t('testimonials.featuredAuthor') as string}
+              </div>
+              <div className="font-mono text-accent">
+                {t('testimonials.ratingSource') as string}
+              </div>
             </div>
           </div>
-        </div>
+        </Reveal>
 
-        {/* Testimonials Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {testData.items.map((item, idx) => (
+        {/* Reviews Slider */}
+        <Carousel>
+          {reviews.map((rev, idx) => (
             <div
               key={idx}
-              className="bg-white p-8 rounded-xl border border-[hsl(210_15%_88%)] shadow-sm space-y-6 flex flex-col justify-between"
+              className="bg-white/5 border border-white/10 rounded-2xl p-8 flex flex-col justify-between h-full min-h-[260px]"
             >
-              <div className="space-y-4">
-                <span className="inline-block bg-[hsl(188_85%_38%/0.1)] text-[hsl(188_85%_38%)] text-xs font-sans font-bold px-3 py-1 rounded">
-                  {item.tag}
-                </span>
-                <p className="text-base sm:text-lg font-body text-[hsl(210_30%_14%)] italic leading-relaxed">
-                  «{item.quote}»
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-[10px] font-mono font-semibold text-accent uppercase tracking-widest px-2.5 py-0.5 rounded-full bg-accent/10 border border-accent/20">
+                    {rev.tag}
+                  </span>
+                  <span className="text-accent font-mono text-xs">5.0 / 5.0</span>
+                </div>
+                <p className="text-sm sm:text-base text-white/90 font-serif italic leading-relaxed mb-6">
+                  «{rev.text}»
                 </p>
               </div>
 
-              <div className="pt-4 border-t border-[hsl(210_15%_88%)] flex items-center justify-between">
-                <div>
-                  <p className="font-serif font-bold text-base text-[hsl(210_30%_14%)]">
-                    {item.author}
-                  </p>
-                  <p className="text-xs font-body text-[hsl(210_15%_50%)]">
-                    {item.descriptor}
-                  </p>
+              <div className="pt-4 border-t border-white/10 flex items-center gap-3">
+                <div className="w-8 h-8 rounded-full bg-accent/20 border border-accent/40 flex items-center justify-center font-display font-bold text-accent text-xs">
+                  {rev.author[0]}
                 </div>
-                <span className="text-[10px] font-sans font-bold uppercase tracking-wider text-[hsl(188_85%_38%)] bg-slate-100 px-2 py-1 rounded">
-                  Verified
-                </span>
+                <div>
+                  <div className="text-xs font-bold text-white tracking-wider uppercase font-mono">
+                    {rev.author}
+                  </div>
+                  <div className="text-[10px] text-white/50">{rev.descriptor}</div>
+                </div>
               </div>
             </div>
           ))}
-        </div>
+        </Carousel>
+
       </div>
     </section>
   );

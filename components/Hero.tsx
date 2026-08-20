@@ -1,140 +1,179 @@
 "use client";
 
-import { useLocale } from "@/lib/i18n";
+import { useLocale } from '@/lib/i18n';
+import { Reveal, Marquee } from '@/components/motion';
 
 export default function Hero() {
   const { t } = useLocale();
-  const hero = t("hero") as Record<string, string>;
 
   return (
-    <section className="relative min-h-[100svh] flex flex-col justify-between pt-28 pb-12 overflow-hidden bg-[hsl(205_45%_10%)] text-white">
-      {/* Background Layer 1: Looping Video Clip */}
+    <section className="relative min-h-[100svh] flex items-center justify-center pt-28 pb-20 overflow-hidden bg-primary text-white">
+      
+      {/* Layer 1: Background Video Stack with Dark Scrim */}
       <div className="absolute inset-0 z-0">
         <video
           autoPlay
           muted
           loop
           playsInline
-          poster={hero.posterUrl}
-          className="w-full h-full object-cover opacity-35 scale-105"
+          poster="https://cdn.prod.website-files.com/65b22ee2a70bd488c02e918e%2F69ccddd651f817894d3f03fd_IMG_6295_poster.0000000.jpg"
+          className="w-full h-full object-cover opacity-30 scale-105"
         >
-          <source src={hero.videoUrl} type="video/mp4" />
+          <source src="https://videos.pexels.com/video-files/6998091/6998091-hd_1920_1080_25fps.mp4" type="video/mp4" />
         </video>
-        {/* Layer 2: Dark Tinted Scrim (never white) */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[hsl(205_45%_10%)] via-[hsl(205_45%_10%/0.75)] to-[hsl(205_45%_10%/0.5)]" />
+        <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/70 to-primary/80" />
       </div>
 
-      {/* Giant Background Watermark Layer (whitespace-nowrap, pointer-events-none, aria-hidden) */}
-      <div
+      {/* Layer 2: Giant Decorative Watermark Word */}
+      <div 
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center pointer-events-none select-none z-0 overflow-hidden opacity-[0.03]"
         aria-hidden="true"
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[14vw] font-serif font-black uppercase text-white/[0.03] select-none pointer-events-none whitespace-nowrap z-0"
       >
-        SYMMETRICA
+        <span className="font-display font-bold text-[15vw] leading-none uppercase tracking-widest text-white whitespace-nowrap">
+          SYMMETRICA
+        </span>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex-1 flex flex-col justify-center">
-        {/* Top Kicker with Real Meta */}
-        <div className="inline-flex items-center space-x-3 bg-white/10 border border-white/15 px-4 py-1.5 rounded-full text-xs font-sans tracking-widest uppercase mb-8 self-start backdrop-blur-sm shadow-inner">
-          <span className="w-2 h-2 rounded-full bg-[hsl(188_85%_48%)] animate-pulse" />
-          <span className="text-white/95 font-semibold">{hero.kicker}</span>
-        </div>
+      {/* Layer 3: Flanking Mini-Copy Marginalia (Left & Right) */}
+      <div className="hidden xl:block absolute left-8 top-1/2 -translate-y-1/2 z-10 text-[10px] font-mono tracking-widest uppercase text-white/40 rotate-90 origin-left">
+        {t('hero.leftNote') as string}
+      </div>
+      <div className="hidden xl:block absolute right-8 top-1/2 -translate-y-1/2 z-10 text-[10px] font-mono tracking-widest uppercase text-white/40 -rotate-90 origin-right">
+        {t('hero.rightNote') as string}
+      </div>
 
-        {/* Main Content Layout with Flanking Copy Columns on Desktop */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
-          <div className="lg:col-span-8 space-y-6">
-            {/* Multi-line Poster H1 with ONE word styled differently */}
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-serif font-semibold text-white leading-[1.08] tracking-tight">
-              Тотальне відновлення зубів{" "}
-              <span className="italic font-normal text-[hsl(188_85%_48%)] underline decoration-1 underline-offset-8">
-                {hero.titleAccentWord}
-              </span>{" "}
-              уві сні за 24 години
-            </h1>
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          {/* Main Hero Copy Box */}
+          <div className="lg:col-span-8 flex flex-col items-start">
+            
+            {/* Layer 4: Kicker with REAL Meta */}
+            <Reveal delay={0.1}>
+              <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-accent/15 border border-accent/30 text-accent font-semibold text-xs tracking-widest uppercase mb-6 backdrop-blur-md">
+                <span className="w-1.5 h-1.5 rounded-full bg-accent animate-ping" />
+                {t('hero.meta') as string}
+              </div>
+            </Reveal>
 
-            {/* Subtitle */}
-            <p className="text-base sm:text-lg font-body text-white/80 max-w-2xl leading-relaxed">
-              {hero.subtitle}
-            </p>
+            {/* Layer 5: Multi-line Poster H1 with ONE word set differently */}
+            <Reveal delay={0.2}>
+              <h1 className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-display font-medium leading-[1.08] tracking-tight text-white mb-6">
+                {t('hero.titlePart1') as string}{' '}
+                <span className="italic font-normal text-accent font-serif">{t('hero.titleAcc') as string}</span>{' '}
+                {t('hero.titlePart2') as string}
+              </h1>
+            </Reveal>
 
-            {/* CTA Pair: Solid CTA + Secondary Outline */}
-            <div className="pt-2 flex flex-col sm:flex-row gap-4 items-stretch sm:items-center">
-              <a
-                href="#contacts"
-                className="bg-[hsl(188_85%_38%)] hover:bg-[hsl(188_90%_30%)] text-white font-sans text-xs sm:text-sm uppercase tracking-wider font-bold px-8 py-4 rounded transition-all shadow-xl hover:shadow-[hsl(188_85%_38%/0.4)] text-center"
-              >
-                {hero.primaryCta}
-              </a>
-              <a
-                href="#calculator"
-                className="bg-white/10 hover:bg-white/20 border border-white/30 text-white font-sans text-xs sm:text-sm uppercase tracking-wider font-semibold px-8 py-4 rounded transition-all backdrop-blur-sm text-center"
-              >
-                {hero.secondaryCta}
-              </a>
-            </div>
+            {/* Layer 6: 1-2 Line Subtitle */}
+            <Reveal delay={0.3}>
+              <p className="text-base sm:text-lg lg:text-xl text-white/80 max-w-2xl font-light leading-relaxed mb-8">
+                {t('hero.subtitle') as string}
+              </p>
+            </Reveal>
+
+            {/* Layer 7: CTA Pair */}
+            <Reveal delay={0.4}>
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto mb-10">
+                <a
+                  href="#contact"
+                  className="px-8 py-4 rounded-full bg-accent text-white font-semibold text-xs sm:text-sm uppercase tracking-wider hover:bg-accent/90 transition-all shadow-xl hover:shadow-accent/40 text-center"
+                >
+                  {t('hero.primaryCta') as string}
+                </a>
+                <a
+                  href="#calculator"
+                  className="px-8 py-4 rounded-full bg-white/5 hover:bg-white/15 border border-white/20 text-white font-medium text-xs sm:text-sm uppercase tracking-wider transition-all text-center backdrop-blur-sm"
+                >
+                  {t('hero.secondaryCta') as string} →
+                </a>
+              </div>
+            </Reveal>
+
+            {/* Layer 8: 3-Item Meta Strip with Hairline Separators */}
+            <Reveal delay={0.5}>
+              <div className="w-full pt-6 border-t border-white/15 grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs text-white/70 font-light">
+                <div className="flex items-center gap-2">
+                  <span className="text-accent font-mono font-bold">—</span>
+                  <span>{t('hero.metaStrip1') as string}</span>
+                </div>
+                <div className="flex items-center gap-2 sm:border-l sm:border-white/15 sm:pl-4">
+                  <span className="text-accent font-mono font-bold">—</span>
+                  <span>{t('hero.metaStrip2') as string}</span>
+                </div>
+                <div className="flex items-center gap-2 sm:border-l sm:border-white/15 sm:pl-4">
+                  <span className="text-accent font-mono font-bold">—</span>
+                  <span className="font-medium text-white/90">{t('hero.metaStrip3') as string}</span>
+                </div>
+              </div>
+            </Reveal>
+
           </div>
 
-          {/* Flanking Mini-Copy Columns + Rotating Circular Text Seal */}
-          <div className="lg:col-span-4 flex flex-col justify-between space-y-6 pt-6 lg:pt-0 border-t lg:border-t-0 lg:border-l border-white/15 lg:pl-8">
-            {/* Rotating Floating Text Seal */}
-            <div className="relative w-28 h-28 self-start hidden sm:flex items-center justify-center">
-              <svg className="w-full h-full animate-spin-slow text-white/80" viewBox="0 0 100 100">
-                <path
-                  id="circlePath"
-                  d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0"
-                  fill="none"
-                />
-                <text className="text-[9px] font-sans uppercase font-bold tracking-[0.2em] fill-current">
-                  <textPath href="#circlePath">{hero.sealText}</textPath>
-                </text>
-              </svg>
-              <div className="absolute inset-0 flex items-center justify-center text-xs font-serif font-bold text-[hsl(188_85%_48%)]">
-                ★ 3D
+          {/* Layer 9: Floating Visual Card with Text Seal */}
+          <div className="lg:col-span-4 hidden lg:block relative">
+            
+            {/* Layer 10: Text-Only Rotating Circular Seal */}
+            <div className="absolute -top-8 -right-6 z-20 pointer-events-none">
+              <div className="w-28 h-28 relative flex items-center justify-center animate-spin-slow">
+                <svg viewBox="0 0 100 100" className="w-full h-full text-accent fill-current">
+                  <path id="heroSealPath" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="none" />
+                  <text className="text-[9.5px] uppercase tracking-[0.24em] font-mono font-semibold">
+                    <textPath href="#heroSealPath">
+                      SYMMETRICA · DENTAL CENTER · LVIV ·
+                    </textPath>
+                  </text>
+                </svg>
+                <div className="absolute inset-0 flex items-center justify-center text-xs font-bold text-accent font-mono">
+                  2013
+                </div>
               </div>
             </div>
 
-            {/* Mini Column 1 */}
-            <div className="space-y-1">
-              <h4 className="text-xs uppercase font-sans font-bold tracking-wider text-[hsl(188_85%_48%)]">
-                {hero.miniLeftTitle}
-              </h4>
-              <p className="text-xs font-body text-white/70 leading-normal">
-                {hero.miniLeftText}
-              </p>
-            </div>
+            <Reveal delay={0.4} direction="left">
+              <div className="relative rounded-3xl bg-white/10 backdrop-blur-md p-6 border border-white/20 shadow-2xl text-white">
+                <div className="relative h-64 rounded-2xl overflow-hidden mb-5">
+                  <img
+                    src="https://cdn.prod.website-files.com/65b22ee2a70bd488c02e918e/6659cb6805d7fc2915dd42de_%D1%96%D0%BC%D0%BF%D0%BB%D0%B0%D0%BD%D1%82%D0%B0%D1%86%D1%96%D1%8F.webp"
+                    alt={t('hero.implantationModelAlt') as string}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                  <div className="absolute top-3 left-3 px-3 py-1 rounded-full bg-primary/90 text-[10px] font-mono uppercase tracking-widest text-accent border border-accent/30">
+                    Symmetrica Tech 3D
+                  </div>
+                </div>
 
-            {/* Mini Column 2 */}
-            <div className="space-y-1 pt-3 border-t border-white/10">
-              <h4 className="text-xs uppercase font-sans font-bold tracking-wider text-[hsl(188_85%_48%)]">
-                {hero.miniRightTitle}
-              </h4>
-              <p className="text-xs font-body text-white/70 leading-normal">
-                {hero.miniRightText}
-              </p>
-            </div>
-          </div>
-        </div>
+                <div className="space-y-3">
+                  <div className="text-[11px] font-mono uppercase tracking-widest text-accent font-semibold">
+                    3D Комп'ютерна Томографія & Седація
+                  </div>
+                  <div className="text-base font-display font-medium leading-snug">
+                    Комплексна реабілітація під дахом однієї клініки у Львові
+                  </div>
+                  <p className="text-xs text-white/70 font-light leading-relaxed">
+                    Гарантійні зобов'язання та супровід сервіс-менеджера на кожному етапі лікування.
+                  </p>
+                </div>
+              </div>
+            </Reveal>
 
-        {/* 3-Item Meta Strip with Hairline Separators */}
-        <div className="mt-12 pt-6 border-t border-white/15 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs font-sans text-white/80">
-          <div className="flex items-center space-x-3">
-            <span className="text-[hsl(188_85%_48%)] font-bold">⏱</span>
-            <span>{hero.metaHours}</span>
           </div>
-          <div className="flex items-center space-x-3 md:border-l md:border-white/15 md:pl-6">
-            <span className="text-[hsl(188_85%_48%)] font-bold">📍</span>
-            <span>{hero.metaAddress}</span>
-          </div>
-          <div className="flex items-center space-x-3 md:border-l md:border-white/15 md:pl-6">
-            <span className="text-[hsl(188_85%_48%)] font-bold">★</span>
-            <span className="font-semibold">{hero.metaRating}</span>
-          </div>
-        </div>
 
-        {/* Scroll Cue (Classic tiny center indicator) */}
-        <div className="mt-10 flex flex-col items-center justify-center space-y-1.5 opacity-70 hover:opacity-100 transition-opacity">
-          <span className="text-[9px] uppercase tracking-[0.35em] font-sans text-white/70">{hero.scrollLabel || "SCROLL"}</span>
-          <div className="w-[1px] h-7 bg-gradient-to-b from-[hsl(188_85%_48%)] to-transparent animate-pulse" />
         </div>
+      </div>
+
+      {/* Layer 11: Base Marquee Strip */}
+      <div className="absolute bottom-0 left-0 right-0 py-2.5 bg-primary/90 border-t border-white/10 text-[11px] font-mono tracking-widest uppercase text-white/50 overflow-hidden whitespace-nowrap">
+        <Marquee>
+          <span>{t('hero.bannerTicker') as string}</span>
+        </Marquee>
+      </div>
+
+      {/* Layer 12: Classic Scroll Indicator */}
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-1 text-white/30">
+        <span className="text-[9px] font-mono tracking-[0.25em] uppercase">{t('hero.scroll') as string}</span>
+        <div className="w-0.5 h-5 bg-gradient-to-b from-accent to-transparent animate-pulse" />
       </div>
     </section>
   );

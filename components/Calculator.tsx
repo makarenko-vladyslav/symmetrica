@@ -1,198 +1,164 @@
 "use client";
 
-import { useState } from "react";
-import { useLocale } from "@/lib/i18n";
-import pricingData from "@/lib/pricing.json";
+import { useState } from 'react';
+import { useLocale } from '@/lib/i18n';
+import pricingData from '@/lib/pricing.json';
+import { Reveal } from '@/components/motion';
 
 export default function Calculator() {
   const { t } = useLocale();
-  const calcData = t("calculator") as Record<string, string>;
+  
+  const [selectedService, setSelectedService] = useState<'all_on_4' | 'implant' | 'veneers' | 'splint' | 'consultation'>('implant');
+  const [unitsCount, setUnitsCount] = useState<number>(1);
+  const [addSedation, setAddSedation] = useState<boolean>(true);
+  const [addTechLab, setAddTechLab] = useState<boolean>(true);
 
-  const [serviceType, setServiceType] = useState<"all_on_4" | "implant_single" | "veneers_unit">("all_on_4");
-  const [quantity, setQuantity] = useState(1);
-  const [archType, setArchType] = useState<"single_jaw" | "both_jaws">("single_jaw");
-  const [sedation, setSedation] = useState<boolean>(true);
-
-  const calculateEstimate = () => {
-    let base = pricingData.basePrices[serviceType] || 120000;
-    if (serviceType === "all_on_4") {
-      const multiplier = archType === "both_jaws" ? 1.9 : 1.0;
-      base = base * multiplier;
-    } else {
-      base = base * quantity;
-    }
-
-    if (sedation) {
-      base += pricingData.basePrices.sedation_hour * (serviceType === "all_on_4" ? 3 : 1);
-    }
-
-    return Math.round(base);
+  const calculateTotal = () => {
+    const base = pricingData.services[selectedService]?.basePrice || 14500;
+    let total = base * unitsCount;
+    if (addSedation) total += pricingData.sedationAddon;
+    if (addTechLab) total += pricingData.techLabAddon;
+    return total;
   };
 
-  const formattedEstimate = (n: number) => {
-    return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "\u00A0");
-  };
+  const formattedTotal = calculateTotal().toString().replace(/\B(?=(\d{3})+(?!\d))/g, "\u00A0");
+
+  const serviceButtons = [
+    { id: 'implant', label: t('calculator.servicesList.implant') as string, price: '14 500 UAH' },
+    { id: 'all_on_4', label: t('calculator.servicesList.all_on_4') as string, price: '120 000 UAH' },
+    { id: 'veneers', label: t('calculator.servicesList.veneers') as string, price: '12 500 UAH' },
+    { id: 'splint', label: t('calculator.servicesList.splint') as string, price: '18 000 UAH' },
+  ];
 
   return (
-    <section id="calculator" className="py-24 bg-[hsl(205_45%_10%)] text-white scroll-mt-16 relative overflow-hidden">
-      {/* Background Watermark */}
-      <div
-        aria-hidden="true"
-        className="absolute bottom-4 left-1/2 -translate-x-1/2 text-[14vw] font-serif font-black uppercase text-white/[0.02] select-none pointer-events-none whitespace-nowrap z-0"
-      >
-        ESTIMATE
-      </div>
-
-      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <p className="text-xs uppercase tracking-[0.25em] font-sans font-bold text-[hsl(188_85%_48%)] mb-3">
-            {calcData.kicker}
-          </p>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-white mb-4">
-            {calcData.title}
-          </h2>
-          <p className="text-base sm:text-lg font-body text-white/70">
-            {calcData.subtitle}
-          </p>
+    <section id="calculator" className="py-24 bg-primary text-white scroll-mt-16 relative overflow-hidden border-y border-white/10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        {/* Section Heading */}
+        <div className="max-w-3xl mb-16 text-center mx-auto">
+          <Reveal>
+            <span className="text-xs font-semibold tracking-[0.2em] text-accent uppercase block mb-3 font-mono">
+              {t('calculator.kicker') as string}
+            </span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-medium tracking-tight mb-4">
+              {t('calculator.title') as string}
+            </h2>
+            <p className="text-base sm:text-lg text-white/70 font-light">
+              {t('calculator.subtitle') as string}
+            </p>
+          </Reveal>
         </div>
 
-        {/* Solid Interactive Calculator Card */}
-        <div className="bg-white text-[hsl(210_30%_14%)] rounded-2xl shadow-2xl p-6 sm:p-10 space-y-8 border border-white/20">
-          {/* Step 1: Select Service */}
-          <div className="space-y-3">
-            <label className="text-xs font-sans font-bold uppercase tracking-wider text-[hsl(210_15%_45%)]">
-              {calcData.serviceLabel}
-            </label>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-              <button
-                type="button"
-                onClick={() => setServiceType("all_on_4")}
-                className={`p-4 rounded-lg text-left border font-serif font-bold text-base transition-all ${
-                  serviceType === "all_on_4"
-                    ? "border-[hsl(188_85%_38%)] bg-[hsl(188_85%_38%/0.08)] text-[hsl(188_85%_38%)] shadow-sm"
-                    : "border-[hsl(210_15%_88%)] hover:border-slate-300"
-                }`}
-              >
-                All-on-4 / All-on-6
-              </button>
-              <button
-                type="button"
-                onClick={() => setServiceType("implant_single")}
-                className={`p-4 rounded-lg text-left border font-serif font-bold text-base transition-all ${
-                  serviceType === "implant_single"
-                    ? "border-[hsl(188_85%_38%)] bg-[hsl(188_85%_38%/0.08)] text-[hsl(188_85%_38%)] shadow-sm"
-                    : "border-[hsl(210_15%_88%)] hover:border-slate-300"
-                }`}
-              >
-                {calcData.singleImplantLabel}
-              </button>
-              <button
-                type="button"
-                onClick={() => setServiceType("veneers_unit")}
-                className={`p-4 rounded-lg text-left border font-serif font-bold text-base transition-all ${
-                  serviceType === "veneers_unit"
-                    ? "border-[hsl(188_85%_38%)] bg-[hsl(188_85%_38%/0.08)] text-[hsl(188_85%_38%)] shadow-sm"
-                    : "border-[hsl(210_15%_88%)] hover:border-slate-300"
-                }`}
-              >
-                {calcData.ceramicVeneersLabel}
-              </button>
-            </div>
-          </div>
-
-          {/* Step 2: Parameters based on service */}
-          {serviceType === "all_on_4" ? (
-            <div className="space-y-3">
-              <label className="text-xs font-sans font-bold uppercase tracking-wider text-[hsl(210_15%_45%)]">
-                {calcData.archLabel}
-              </label>
-              <div className="grid grid-cols-2 gap-3">
-                <button
-                  type="button"
-                  onClick={() => setArchType("single_jaw")}
-                  className={`p-3.5 rounded-lg border font-sans text-xs sm:text-sm font-semibold transition-all ${
-                    archType === "single_jaw"
-                      ? "border-[hsl(188_85%_38%)] bg-[hsl(188_85%_38%/0.08)] text-[hsl(188_85%_38%)]"
-                      : "border-[hsl(210_15%_88%)]"
-                  }`}
-                >
-                  {calcData.singleJawLabel}
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setArchType("both_jaws")}
-                  className={`p-3.5 rounded-lg border font-sans text-xs sm:text-sm font-semibold transition-all ${
-                    archType === "both_jaws"
-                      ? "border-[hsl(188_85%_38%)] bg-[hsl(188_85%_38%/0.08)] text-[hsl(188_85%_38%)]"
-                      : "border-[hsl(210_15%_88%)]"
-                  }`}
-                >
-                  {calcData.bothJawsLabel}
-                </button>
-              </div>
-            </div>
-          ) : (
-            <div className="space-y-3">
-              <div className="flex justify-between items-center">
-                <label className="text-xs font-sans font-bold uppercase tracking-wider text-[hsl(210_15%_45%)]">
-                  {calcData.quantityLabel}
+        {/* Calculator Main Box */}
+        <div className="max-w-4xl mx-auto bg-white/5 backdrop-blur-xl border border-white/15 rounded-3xl p-6 sm:p-10 shadow-2xl">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            
+            {/* Options Left */}
+            <div className="lg:col-span-7 space-y-8">
+              
+              {/* Service Selection */}
+              <div>
+                <label className="block text-xs uppercase tracking-wider font-semibold text-accent mb-3 font-mono">
+                  {t('calculator.selectService') as string}
                 </label>
-                <span className="text-xl font-serif font-bold text-[hsl(188_85%_38%)] font-tabular">
-                  {quantity} {serviceType === "veneers_unit" ? calcData.unitsLabel : calcData.implantsLabel}
-                </span>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {serviceButtons.map((s) => (
+                    <button
+                      key={s.id}
+                      type="button"
+                      onClick={() => setSelectedService(s.id as any)}
+                      className={`p-3.5 rounded-xl text-left border transition-all text-xs font-medium ${
+                        selectedService === s.id
+                          ? 'bg-accent text-white border-accent shadow-lg shadow-accent/20'
+                          : 'bg-white/5 border-white/10 hover:bg-white/10 text-white/80'
+                      }`}
+                    >
+                      <div className="font-semibold">{s.label}</div>
+                      <div className="opacity-80 mt-1 text-[11px] font-mono">{s.price}</div>
+                    </button>
+                  ))}
+                </div>
               </div>
-              <input
-                type="range"
-                min="1"
-                max={serviceType === "veneers_unit" ? "20" : "10"}
-                value={quantity}
-                onChange={(e) => setQuantity(parseInt(e.target.value, 10))}
-                className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-[hsl(188_85%_38%)]"
-              />
-            </div>
-          )}
 
-          {/* Step 3: Sedation option */}
-          <div className="space-y-3 pt-2 border-t border-[hsl(210_15%_90%)]">
-            <label className="text-xs font-sans font-bold uppercase tracking-wider text-[hsl(210_15%_45%)]">
-              {calcData.sedationLabel}
-            </label>
-            <div className="flex items-center space-x-4">
-              <label className="flex items-center space-x-3 cursor-pointer font-body text-sm">
+              {/* Slider for Teeth/Units */}
+              <div>
+                <div className="flex justify-between items-center mb-2">
+                  <label className="text-xs uppercase tracking-wider font-semibold text-accent font-mono">
+                    {t('calculator.teethCount') as string}
+                  </label>
+                  <span className="text-xl font-display font-bold text-white font-mono">
+                    {unitsCount} од.
+                  </span>
+                </div>
                 <input
-                  type="checkbox"
-                  checked={sedation}
-                  onChange={(e) => setSedation(e.target.checked)}
-                  className="w-5 h-5 rounded border-slate-300 text-[hsl(188_85%_38%)] focus:ring-[hsl(188_85%_38%)]"
+                  type="range"
+                  min="1"
+                  max="14"
+                  value={unitsCount}
+                  onChange={(e) => setUnitsCount(parseInt(e.target.value))}
+                  className="w-full h-2 bg-white/20 rounded-lg appearance-none cursor-pointer accent-accent"
                 />
-                <span className="text-[hsl(210_30%_14%)]">{calcData.sedationCheckboxText}</span>
-              </label>
+                <div className="flex justify-between text-[10px] text-white/40 mt-1 font-mono">
+                  <span>1 од.</span>
+                  <span>7 од.</span>
+                  <span>{t('calculator.teethFullJaw') as string}</span>
+                </div>
+              </div>
+
+              {/* Toggle Options */}
+              <div className="space-y-3 pt-2">
+                <label className="flex items-center gap-3 cursor-pointer p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
+                  <input
+                    type="checkbox"
+                    checked={addSedation}
+                    onChange={(e) => setAddSedation(e.target.checked)}
+                    className="w-4 h-4 rounded text-accent focus:ring-accent accent-accent"
+                  />
+                  <span className="text-xs text-white/90 font-medium">
+                    {t('calculator.addSedation') as string} (+6 000 UAH)
+                  </span>
+                </label>
+
+                <label className="flex items-center gap-3 cursor-pointer p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
+                  <input
+                    type="checkbox"
+                    checked={addTechLab}
+                    onChange={(e) => setAddTechLab(e.target.checked)}
+                    className="w-4 h-4 rounded text-accent focus:ring-accent accent-accent"
+                  />
+                  <span className="text-xs text-white/90 font-medium">
+                    {t('calculator.addTechLab') as string} (+4 500 UAH)
+                  </span>
+                </label>
+              </div>
+
             </div>
-          </div>
 
-          {/* Result Output Display */}
-          <div className="bg-[hsl(210_20%_98%)] p-6 rounded-xl border border-[hsl(210_15%_88%)] flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div>
-              <p className="text-xs uppercase font-sans font-bold text-[hsl(210_15%_45%)]">
-                {calcData.estimateLabel}
+            {/* Total Display Right */}
+            <div className="lg:col-span-5 bg-gradient-to-br from-accent/20 to-primary/90 border border-accent/40 rounded-2xl p-6 flex flex-col justify-between text-center items-center">
+              <span className="text-xs uppercase tracking-widest text-accent font-semibold mb-2 font-mono">
+                {t('calculator.estimatedTotal') as string}
+              </span>
+              
+              <div className="text-3xl sm:text-4xl font-display font-bold text-white tracking-tight my-4 font-mono">
+                {formattedTotal} <span className="text-lg font-normal text-accent font-serif">{t('calculator.currency') as string}</span>
+              </div>
+
+              <p className="text-xs text-white/70 font-light leading-relaxed mb-6">
+                {t('calculator.note') as string}
               </p>
-              <p className="text-3xl sm:text-4xl font-serif font-bold text-[hsl(188_85%_38%)] mt-1 font-tabular">
-                {calcData.fromPrefix} {formattedEstimate(calculateEstimate())} UAH
-              </p>
+
+              <a
+                href="#contact"
+                className="w-full py-3.5 rounded-full bg-accent hover:bg-accent/90 text-white text-xs font-bold uppercase tracking-wider transition-all shadow-lg shadow-accent/30"
+              >
+                {t('calculator.cta') as string}
+              </a>
             </div>
 
-            <a
-              href="#contacts"
-              className="w-full sm:w-auto bg-[hsl(188_85%_38%)] hover:bg-[hsl(188_90%_30%)] text-white text-center font-sans font-bold text-xs uppercase tracking-wider px-8 py-4 rounded transition-colors shadow-md"
-            >
-              {calcData.submitCta}
-            </a>
           </div>
-
-          <p className="text-xs text-[hsl(210_15%_55%)] font-body text-center">
-            {calcData.note}
-          </p>
         </div>
+
       </div>
     </section>
   );

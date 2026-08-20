@@ -1,21 +1,32 @@
 {
   "currency": "UAH",
-  "basePrices": {
-    "all_on_4": 120000,
-    "all_on_6": 165000,
-    "implant_single": 145000,
-    "veneers_unit": 12500,
-    "sedation_hour": 3500,
-    "diagnostic_3d": 800
+  "services": {
+    "consultation": {
+      "id": "consultation",
+      "basePrice": 800,
+      "titleKey": "calculator.services.consultation"
+    },
+    "all_on_4": {
+      "id": "all_on_4",
+      "basePrice": 120000,
+      "titleKey": "calculator.services.all_on_4"
+    },
+    "implant": {
+      "id": "implant",
+      "basePrice": 14500,
+      "titleKey": "calculator.services.implant"
+    },
+    "veneers": {
+      "id": "veneers",
+      "basePrice": 12500,
+      "titleKey": "calculator.services.veneers"
+    },
+    "splint": {
+      "id": "splint",
+      "basePrice": 18000,
+      "titleKey": "calculator.services.splint"
+    }
   },
-  "options": {
-    "arch_type": [
-      { "id": "single_jaw", "multiplier": 1.0, "label_uk": "Одна щелепа", "label_en": "Single Jaw" },
-      { "id": "both_jaws", "multiplier": 1.9, "label_uk": "Обидві щелепи", "label_en": "Both Jaws" }
-    ],
-    "sedation_needed": [
-      { "id": "yes", "add": 3500, "label_uk": "З медикаментозним сном (седація)", "label_en": "With Sedation" },
-      { "id": "no", "add": 0, "label_uk": "Місцева анестезія", "label_en": "Local Anesthesia" }
-    ]
-  }
+  "sedationAddon": 6000,
+  "techLabAddon": 4500
 }

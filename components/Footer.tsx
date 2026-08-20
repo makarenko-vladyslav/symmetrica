@@ -1,94 +1,113 @@
 "use client";
 
-import { useLocale } from "@/lib/i18n";
+import { useLocale } from '@/lib/i18n';
 
 export default function Footer() {
   const { t } = useLocale();
-  const meta = t("meta") as Record<string, string>;
-  const nav = t("nav") as Record<string, string>;
-  const footerData = t("footer") as Record<string, string>;
 
   return (
-    <footer className="bg-[hsl(205_45%_10%)] text-white pt-20 pb-12 border-t border-[hsl(188_85%_38%/0.2)] relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 pb-16 border-b border-white/10">
-          {/* Col 1: Brand & Logo */}
+    <footer className="bg-bg-dark text-white pt-16 pb-12 border-t border-white/10 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-white/10">
+          
+          {/* Col 1: Brand Info */}
           <div className="space-y-4">
             <img
-              src="/symmetrica/media/1557f414372216b6.svg"
-              alt={meta.brand || "Symmetrica"}
-              className="h-10 w-auto object-contain brightness-0 invert"
+              src="https://cdn.prod.website-files.com/65b22ee2a70bd488c02e918e/664f346033a636ff1febebae_%D0%BB%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D1%8„.svg"
+              alt="Symmetrica"
+              className="h-8 w-auto filter brightness-0 invert"
             />
-            <p className="text-sm font-body text-white/70 leading-relaxed">
-              {footerData.aboutText}
+            <p className="text-xs text-white/60 font-light leading-relaxed">
+              {t('footer.tagline') as string}
             </p>
-            <p className="text-xs font-sans text-white/50">{footerData.license}</p>
+            <div className="text-xs font-semibold text-accent font-mono">
+              Est. 2013 — м. Львів
+            </div>
           </div>
 
-          {/* Col 2: Navigation */}
-          <div className="space-y-4">
-            <h4 className="text-xs uppercase font-sans font-bold tracking-widest text-[hsl(188_85%_48%)]">
-              {footerData.navHeader}
-            </h4>
-            <ul className="space-y-2 text-sm font-body text-white/80">
-              <li><a href="#diagnostics" className="hover:text-[hsl(188_85%_48%)] transition-colors">{nav.diagnostics}</a></li>
-              <li><a href="#services" className="hover:text-[hsl(188_85%_48%)] transition-colors">{nav.services}</a></li>
-              <li><a href="#calculator" className="hover:text-[hsl(188_85%_48%)] transition-colors">{nav.calculator}</a></li>
-              <li><a href="#sedation" className="hover:text-[hsl(188_85%_48%)] transition-colors">{nav.sedation}</a></li>
-              <li><a href="#team" className="hover:text-[hsl(188_85%_48%)] transition-colors">{nav.team}</a></li>
-              <li><a href="#faq" className="hover:text-[hsl(188_85%_48%)] transition-colors">{nav.faq}</a></li>
+          {/* Col 2: Navigation Column */}
+          <div className="space-y-3 text-xs">
+            <div className="font-semibold text-accent uppercase tracking-wider mb-2 font-mono">
+              {t('footer.navTitle') as string}
+            </div>
+            <ul className="space-y-2 text-white/70 font-light">
+              <li><a href="#services" className="hover:text-accent transition-colors py-1 inline-block">{t('footer.servicePricing') as string}</a></li>
+              <li><a href="#calculator" className="hover:text-accent transition-colors py-1 inline-block">{t('footer.calcCost') as string}</a></li>
+              <li><a href="#lab" className="hover:text-accent transition-colors py-1 inline-block">{t('footer.anesthesiaLab') as string}</a></li>
+              <li><a href="#tech" className="hover:text-accent transition-colors py-1 inline-block">{t('footer.digitalDiag') as string}</a></li>
+              <li><a href="#team" className="hover:text-accent transition-colors py-1 inline-block">{t('footer.teamDoctors') as string}</a></li>
             </ul>
           </div>
 
-          {/* Col 3: Services & Social TEXT Links */}
-          <div className="space-y-4">
-            <h4 className="text-xs uppercase font-sans font-bold tracking-widest text-[hsl(188_85%_48%)]">
-              {footerData.socialHeader}
-            </h4>
-            <div className="flex flex-col space-y-2 text-sm font-sans text-white/80">
-              <a href="#" className="hover:text-[hsl(188_85%_48%)] transition-colors">{footerData.socialInsta}</a>
-              <a href="#" className="hover:text-[hsl(188_85%_48%)] transition-colors">{footerData.socialFb}</a>
-              <a href="#" className="hover:text-[hsl(188_85%_48%)] transition-colors">{footerData.socialYt}</a>
+          {/* Col 3: Contacts Column */}
+          <div className="space-y-3 text-xs">
+            <div className="font-semibold text-accent uppercase tracking-wider mb-2 font-mono">
+              {t('footer.contactsTitle') as string}
+            </div>
+            <div className="text-white/70 font-light space-y-1">
+              <div>{t('footer.addressLine') as string}</div>
+              <div className="font-mono">Пн–Сб: 09:00 – 20:00</div>
+              <a href="tel:+380674589247" className="block text-white hover:text-accent font-mono font-semibold mt-2 py-1">
+                +38 (067) 458-92-47
+              </a>
+              <a href="mailto:symmetricalviv@gmail.com" className="block text-white/60 hover:text-white font-mono py-1">
+                symmetricalviv@gmail.com
+              </a>
             </div>
           </div>
 
-          {/* Col 4: Contacts */}
-          <div className="space-y-4">
-            <h4 className="text-xs uppercase font-sans font-bold tracking-widest text-[hsl(188_85%_48%)]">
-              {footerData.contactHeader}
-            </h4>
-            <div className="space-y-2 text-sm font-body text-white/80">
-              <p>{meta.address}</p>
-              <p><a href={`tel:${meta.phone}`} className="hover:text-[hsl(188_85%_48%)] text-base font-bold font-tabular">{meta.phoneFormatted}</a></p>
-              <p>{meta.email}</p>
-              <p className="text-xs text-white/60 pt-2">{meta.hours}</p>
+          {/* Col 4: Social Text Links */}
+          <div className="space-y-3 text-xs">
+            <div className="font-semibold text-accent uppercase tracking-wider mb-2 font-mono">
+              {t('footer.socialTitle') as string}
+            </div>
+            <div className="flex flex-col gap-2 text-white/70 font-light">
+              <a
+                href="https://www.instagram.com/symmetrica_dent/"
+                target="_blank"
+                rel="noreferrer"
+                className="hover:text-accent transition-colors font-mono py-1"
+              >
+                Instagram: @symmetrica_dent
+              </a>
+              <a
+                href="https://www.facebook.com/SymmetricaDent/"
+                target="_blank"
+                rel="noreferrer"
+                className="hover:text-accent transition-colors font-mono py-1"
+              >
+                Facebook: SymmetricaDent
+              </a>
             </div>
           </div>
+
         </div>
 
-        {/* Legal Row + Developer Credit */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs font-body text-white/60 gap-4">
-          <p>© 2026 Symmetrica Dental Center. {footerData.rights}</p>
-          <p className="text-white/40 italic">{footerData.brandVoiceCredit}</p>
-          <p>
+        {/* Giant Symmetrica Wordmark Bleeding Off Bottom Edge */}
+        <div className="py-8 border-b border-white/5 text-center overflow-hidden">
+          <span className="font-display font-bold text-5xl sm:text-8xl lg:text-9xl text-white/10 uppercase tracking-widest pointer-events-none select-none block leading-none">
+            SYMMETRICA
+          </span>
+        </div>
+
+        {/* Legal & Studio Developer Credit */}
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-[11px] text-white/50 gap-4 font-mono">
+          <div>
+            © 2026 Symmetrica Dental Center. {t('footer.rights') as string}
+          </div>
+          <div>
             <a
               href="https://makarich.framer.website"
               target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-[hsl(188_85%_48%)] underline transition-colors"
+              rel="noreferrer"
+              className="text-white/70 hover:text-accent transition-colors underline decoration-accent/40 py-1 inline-block"
             >
-              {footerData.developerCredit}
+              {t('footer.credit') as string} — https://makarich.framer.website
             </a>
-          </p>
+          </div>
         </div>
 
-        {/* Giant Full-Width Brand Wordmark Bleeding Off Bottom Edge */}
-        <div
-          aria-hidden="true"
-          className="mt-12 text-[16vw] font-serif font-black uppercase text-white/[0.04] leading-none text-center select-none pointer-events-none whitespace-nowrap overflow-hidden"
-        >
-          SYMMETRICA
-        </div>
       </div>
     </footer>
   );

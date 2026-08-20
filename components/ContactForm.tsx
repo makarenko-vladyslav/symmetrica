@@ -1,201 +1,203 @@
 "use client";
 
-import { useState } from "react";
-import { useLocale } from "@/lib/i18n";
+import { useState } from 'react';
+import { useLocale } from '@/lib/i18n';
+import { Reveal } from '@/components/motion';
 
 export default function ContactForm() {
   const { t } = useLocale();
-  const formData = t("form") as Record<string, string>;
-  const meta = t("meta") as Record<string, string>;
-
   const [submitted, setSubmitted] = useState(false);
-  const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
-  const [service, setService] = useState(formData.serviceOpt1);
-  const [date, setDate] = useState("");
-  const [comment, setComment] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name || !phone) return;
-    setSubmitted(true);
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      setSubmitted(true);
+    }, 800);
   };
 
+  const serviceOptions = t('contact.options') as string[];
+
   return (
-    <section id="contacts" className="py-24 bg-[hsl(205_45%_10%)] text-white scroll-mt-16 relative overflow-hidden">
-      {/* Background Watermark Layer */}
-      <div
-        aria-hidden="true"
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[14vw] font-serif font-black uppercase text-white/[0.02] select-none pointer-events-none whitespace-nowrap z-0"
-      >
-        RESERVATION
-      </div>
+    <section id="contact" className="py-24 bg-primary text-white scroll-mt-16 relative overflow-hidden border-t border-white/10">
+      
+      {/* Decorative Glow */}
+      <div className="absolute top-1/2 right-0 -translate-y-1/2 w-96 h-96 bg-accent/15 rounded-full blur-[140px] pointer-events-none" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-          {/* Left Column: Contact Details & Hours Table */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          
+          {/* Left Invitation Copy & Structured Hours Table */}
           <div className="lg:col-span-5 space-y-8">
-            <div>
-              <p className="text-xs uppercase tracking-[0.25em] font-sans font-bold text-[hsl(188_85%_48%)] mb-3">
-                {formData.kicker}
-              </p>
-              <h2 className="text-3xl sm:text-4xl font-serif font-bold text-white mb-4">
-                {formData.invitationTitle}
+            <Reveal>
+              <span className="text-xs font-semibold tracking-[0.2em] text-accent uppercase block mb-3 font-mono">
+                {t('contact.kicker') as string}
+              </span>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-medium tracking-tight mb-4">
+                {t('contact.invitationTitle') as string}
               </h2>
-              <p className="text-base font-body text-white/70">
-                {formData.subtitle}
+              <p className="text-base text-white/70 font-light leading-relaxed">
+                {t('contact.subtitle') as string}
               </p>
-            </div>
+            </Reveal>
 
-            {/* Address + Phone */}
-            <div className="space-y-4 pt-4 border-t border-white/15 text-sm font-body">
-              <div>
-                <p className="text-xs uppercase font-sans font-bold text-[hsl(188_85%_48%)]">{formData.addressLabel}</p>
-                <p className="text-lg font-serif font-bold text-white mt-1">{meta.address}</p>
-              </div>
-
-              <div>
-                <p className="text-xs uppercase font-sans font-bold text-[hsl(188_85%_48%)]">{formData.phoneHeaderLabel}</p>
-                <a href={`tel:${meta.phone}`} className="text-xl font-serif font-bold text-[hsl(188_85%_48%)] hover:underline mt-1 block font-tabular">
-                  {meta.phoneFormatted}
-                </a>
-              </div>
-            </div>
-
-            {/* Structured Hours Mini-Table */}
-            <div className="bg-white/5 border border-white/10 rounded-xl p-5 space-y-3">
-              <p className="text-xs uppercase font-sans font-bold text-[hsl(188_85%_48%)]">{formData.scheduleHeader}</p>
-              <div className="divide-y divide-white/10 text-xs font-body">
-                <div className="py-2 flex justify-between">
-                  <span className="text-white/70">{formData.weekdayLabel}</span>
-                  <span className="font-bold text-white font-tabular">{meta.hoursWeekday}</span>
+            {/* Direct Contacts & Structured Hours Mini-Table */}
+            <Reveal delay={0.2}>
+              <div className="space-y-6 pt-6 border-t border-white/15 text-xs font-light">
+                
+                {/* Structured Hours Mini-Table */}
+                <div>
+                  <div className="text-accent font-mono uppercase tracking-widest font-semibold mb-3">
+                    {t('contact.hoursTitle') as string}
+                  </div>
+                  <div className="space-y-1.5 font-mono text-white/80">
+                    <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between py-1 border-b border-white/10">
+                      <span>{t('contact.weekdayLabel') as string}</span>
+                      <span className="text-accent font-bold">{t('contact.weekdayTime') as string}</span>
+                    </div>
+                    <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between py-1 border-b border-white/10">
+                      <span>{t('contact.saturdayLabel') as string}</span>
+                      <span className="text-accent font-bold">{t('contact.saturdayTime') as string}</span>
+                    </div>
+                    <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between py-1">
+                      <span>{t('contact.sundayLabel') as string}</span>
+                      <span className="text-white/40">{t('contact.sundayTime') as string}</span>
+                    </div>
+                  </div>
                 </div>
-                <div className="py-2 flex justify-between">
-                  <span className="text-white/70">{formData.saturdayLabel}</span>
-                  <span className="font-bold text-white font-tabular">{meta.hoursSaturday}</span>
-                </div>
-                <div className="py-2 flex justify-between">
-                  <span className="text-white/70">{formData.sundayLabel}</span>
-                  <span className="font-bold text-[hsl(188_85%_48%)]">{meta.hoursSunday}</span>
-                </div>
-              </div>
-            </div>
 
-            {/* Google Map Embed */}
-            <div className="rounded-xl overflow-hidden border border-white/10 h-56 w-full shadow-md">
-              <iframe
-                title={formData.mapTitle}
-                src="https://www.google.com/maps?q= вул.+Стрийська,+45,+Львів&output=embed"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-              />
-            </div>
+                {/* Address + Map Line */}
+                <div className="pt-2">
+                  <div className="text-accent font-mono uppercase tracking-widest font-semibold mb-1">
+                    {t('contact.locationLabel') as string}
+                  </div>
+                  <div className="text-white text-sm font-display">
+                    {t('contact.locationText') as string}
+                  </div>
+                </div>
+
+                {/* Direct Phone & Trust Line */}
+                <div className="pt-2 space-y-1">
+                  <div className="text-accent font-mono uppercase tracking-widest font-semibold">
+                    {t('contact.directLineLabel') as string}
+                  </div>
+                  <a href="tel:+380674589247" className="text-white text-lg font-mono font-bold hover:text-accent transition-colors block py-1">
+                    +38 (067) 458-92-47
+                  </a>
+                  <p className="text-[11px] text-white/50 italic pt-1">
+                    {t('contact.trustMicro') as string}
+                  </p>
+                </div>
+
+              </div>
+            </Reveal>
           </div>
 
-          {/* Right Column: High Contrast Solid Form */}
-          <div className="lg:col-span-7 bg-white text-[hsl(210_30%_14%)] p-8 sm:p-10 rounded-2xl border border-white/20 shadow-2xl">
-            {submitted ? (
-              <div className="text-center py-12 space-y-4">
-                <div className="w-16 h-16 bg-[hsl(188_85%_38%/0.1)] text-[hsl(188_85%_38%)] rounded-full flex items-center justify-center mx-auto text-2xl font-bold">
-                  ✓
-                </div>
-                <h3 className="text-2xl font-serif font-bold text-[hsl(210_30%_14%)]">
-                  {formData.successHeading}
-                </h3>
-                <p className="text-base font-body text-[hsl(210_15%_45%)] max-w-md mx-auto leading-relaxed">
-                  {formData.successMessage}
-                </p>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <label className="block text-xs uppercase font-sans font-bold text-[hsl(210_15%_45%)] mb-2">
-                    {formData.nameLabel} *
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    placeholder={formData.namePlaceholder}
-                    className="w-full px-4 py-3.5 bg-[hsl(210_20%_98%)] border border-[hsl(210_15%_88%)] rounded text-[hsl(210_30%_14%)] font-body focus:outline-none focus:border-[hsl(188_85%_38%)]"
-                  />
-                </div>
+          {/* Right Form Card */}
+          <div className="lg:col-span-7">
+            <Reveal delay={0.3}>
+              <div className="bg-bg-card rounded-3xl p-8 sm:p-10 text-text-main shadow-2xl border border-primary/10">
+                {submitted ? (
+                  <div className="text-center py-12 space-y-4">
+                    <div className="w-16 h-16 rounded-full bg-accent/10 border border-accent/40 text-accent font-bold text-2xl flex items-center justify-center mx-auto font-mono">
+                      OK
+                    </div>
+                    <h3 className="text-2xl font-display font-semibold text-primary">
+                      {t('contact.successTitle') as string}
+                    </h3>
+                    <p className="text-sm text-text-muted max-w-md mx-auto">
+                      {t('contact.successMessage') as string}
+                    </p>
+                  </div>
+                ) : (
+                  <form onSubmit={handleSubmit} className="space-y-5">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                      <div>
+                        <label className="block text-xs font-semibold text-primary uppercase tracking-wider mb-2 font-mono">
+                          {t('contact.formName') as string} *
+                        </label>
+                        <input
+                          required
+                          type="text"
+                          placeholder={t('contact.namePlaceholder') as string}
+                          className="w-full px-4 py-3 rounded-xl bg-bg-light border border-primary/15 text-sm focus:border-accent focus:outline-none"
+                        />
+                      </div>
 
-                <div>
-                  <label className="block text-xs uppercase font-sans font-bold text-[hsl(210_15%_45%)] mb-2">
-                    {formData.phoneLabel} *
-                  </label>
-                  <input
-                    type="tel"
-                    required
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
-                    placeholder={formData.phonePlaceholder}
-                    className="w-full px-4 py-3.5 bg-[hsl(210_20%_98%)] border border-[hsl(210_15%_88%)] rounded text-[hsl(210_30%_14%)] font-body focus:outline-none focus:border-[hsl(188_85%_38%)]"
-                  />
-                </div>
+                      <div>
+                        <label className="block text-xs font-semibold text-primary uppercase tracking-wider mb-2 font-mono">
+                          {t('contact.formPhone') as string} *
+                        </label>
+                        <input
+                          required
+                          type="tel"
+                          placeholder="+380 67 000 00 00"
+                          className="w-full px-4 py-3 rounded-xl bg-bg-light border border-primary/15 text-sm focus:border-accent focus:outline-none font-mono"
+                        />
+                      </div>
+                    </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-xs uppercase font-sans font-bold text-[hsl(210_15%_45%)] mb-2">
-                      {formData.serviceLabel}
-                    </label>
-                    <select
-                      value={service}
-                      onChange={(e) => setService(e.target.value)}
-                      className="w-full px-4 py-3.5 bg-[hsl(210_20%_98%)] border border-[hsl(210_15%_88%)] rounded text-[hsl(210_30%_14%)] font-body focus:outline-none focus:border-[hsl(188_85%_38%)]"
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                      <div>
+                        <label className="block text-xs font-semibold text-primary uppercase tracking-wider mb-2 font-mono">
+                          {t('contact.formService') as string}
+                        </label>
+                        <select className="w-full px-4 py-3 rounded-xl bg-bg-light border border-primary/15 text-sm focus:border-accent focus:outline-none">
+                          {serviceOptions.map((opt, idx) => (
+                            <option key={idx}>{opt}</option>
+                          ))}
+                        </select>
+                      </div>
+
+                      <div>
+                        <label className="block text-xs font-semibold text-primary uppercase tracking-wider mb-2 font-mono">
+                          {t('contact.formDate') as string}
+                        </label>
+                        <input
+                          type="date"
+                          className="w-full px-4 py-3 rounded-xl bg-bg-light border border-primary/15 text-sm focus:border-accent focus:outline-none font-mono"
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="flex items-center gap-3 cursor-pointer p-3 rounded-xl bg-bg-light border border-primary/10">
+                        <input
+                          type="checkbox"
+                          className="w-4 h-4 rounded text-accent accent-accent"
+                        />
+                        <span className="text-xs text-text-main font-medium">
+                          {t('contact.formSedationOption') as string}
+                        </span>
+                      </label>
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-semibold text-primary uppercase tracking-wider mb-2 font-mono">
+                        {t('contact.formNote') as string}
+                      </label>
+                      <textarea
+                        rows={3}
+                        placeholder={t('contact.textareaPlaceholder') as string}
+                        className="w-full px-4 py-3 rounded-xl bg-bg-light border border-primary/15 text-sm focus:border-accent focus:outline-none"
+                      />
+                    </div>
+
+                    <button
+                      type="submit"
+                      disabled={loading}
+                      className="w-full py-4 rounded-full bg-accent hover:bg-accent/90 text-white font-bold uppercase tracking-wider text-xs transition-all shadow-xl shadow-accent/30"
                     >
-                      <option>{formData.serviceOpt1}</option>
-                      <option>{formData.serviceOpt2}</option>
-                      <option>{formData.serviceOpt3}</option>
-                      <option>{formData.serviceOpt4}</option>
-                      <option>{formData.serviceOpt5}</option>
-                    </select>
-                  </div>
-
-                  <div>
-                    <label className="block text-xs uppercase font-sans font-bold text-[hsl(210_15%_45%)] mb-2">
-                      {formData.dateLabel}
-                    </label>
-                    <input
-                      type="date"
-                      value={date}
-                      onChange={(e) => setDate(e.target.value)}
-                      className="w-full px-4 py-3.5 bg-[hsl(210_20%_98%)] border border-[hsl(210_15%_88%)] rounded text-[hsl(210_30%_14%)] font-body focus:outline-none focus:border-[hsl(188_85%_38%)]"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-xs uppercase font-sans font-bold text-[hsl(210_15%_45%)] mb-2">
-                    {formData.commentsLabel}
-                  </label>
-                  <textarea
-                    rows={3}
-                    value={comment}
-                    onChange={(e) => setComment(e.target.value)}
-                    placeholder={formData.commentPlaceholder}
-                    className="w-full px-4 py-3.5 bg-[hsl(210_20%_98%)] border border-[hsl(210_15%_88%)] rounded text-[hsl(210_30%_14%)] font-body focus:outline-none focus:border-[hsl(188_85%_38%)]"
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  className="w-full bg-[hsl(188_85%_38%)] hover:bg-[hsl(188_90%_30%)] text-white font-sans font-bold text-xs uppercase tracking-wider py-4 rounded transition-colors shadow-lg"
-                >
-                  {formData.submitButton}
-                </button>
-
-                <p className="text-[11px] text-[hsl(210_15%_55%)] text-center font-body">
-                  {formData.trustLine}
-                </p>
-              </form>
-            )}
+                      {loading ? '...' : (t('contact.submit') as string)}
+                    </button>
+                  </form>
+                )}
+              </div>
+            </Reveal>
           </div>
+
         </div>
       </div>
     </section>
