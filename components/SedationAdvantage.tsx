@@ -45,7 +45,7 @@ export default function SedationAdvantage() {
           {/* Photo Cluster */}
           <div className="lg:col-span-5 relative h-72 sm:h-80 w-full rounded-xl overflow-hidden bg-slate-100">
             <img
-              src="https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/6922f46f4ffa72d4d7099cfb_bigan-removebg-preview.webp"
+              src="/symmetrica/media/3b8eb4da114fd720.webp"
               alt={sedation.expertName}
               loading="lazy"
               className="w-full h-full object-cover object-top"

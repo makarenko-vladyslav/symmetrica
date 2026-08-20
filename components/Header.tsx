@@ -55,7 +55,7 @@ export default function Header() {
         {/* Real Logo */}
         <a href="#" className="flex items-center gap-3 group">
           <img
-            src="https://cdn.prod.website-files.com/65b22ee2a70bd488c02e918e/664f346033a636ff1febebae_%D0%BB%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF.svg"
+            src="/symmetrica/media/1557f414372216b6.svg"
             alt={meta.brand || "Symmetrica"}
             className="h-8 sm:h-10 w-auto object-contain brightness-0 invert"
           />
