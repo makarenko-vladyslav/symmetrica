@@ -45,7 +45,7 @@ export default function SymmetricaTech() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <div className="aspect-[4/3] rounded-lg overflow-hidden bg-white/10">
             <img
-              src="https://cdn.prod.website-files.com/65b22ee2a70bd488c02e918e/65b76cba7d575c31abae62e8_research-image-1.webp"
+              src="/symmetrica/media/7c9c5fd8d30c7c4b.webp"
               alt="3D CT Scan"
               loading="lazy"
               className="w-full h-full object-cover"
@@ -53,7 +53,7 @@ export default function SymmetricaTech() {
           </div>
           <div className="aspect-[4/3] rounded-lg overflow-hidden bg-white/10">
             <img
-              src="https://cdn.prod.website-files.com/65b22ee2a70bd488c02e918e/65b76cba519fa489ce0cb3e9_research-image-2.webp"
+              src="/symmetrica/media/fa8ddb7a5c67681b.webp"
               alt={cards[0]?.title || "Intraoral scan"}
               loading="lazy"
               className="w-full h-full object-cover"
@@ -61,7 +61,7 @@ export default function SymmetricaTech() {
           </div>
           <div className="aspect-[4/3] rounded-lg overflow-hidden bg-white/10">
             <img
-              src="https://cdn.prod.website-files.com/65b22ee2a70bd488c02e918e/65b76cc2a1a2d766f74db929_research-image-3.webp"
+              src="/symmetrica/media/72a9f05bc7dcf0db.webp"
               alt="Electromyography"
               loading="lazy"
               className="w-full h-full object-cover"
@@ -69,7 +69,7 @@ export default function SymmetricaTech() {
           </div>
           <div className="aspect-[4/3] rounded-lg overflow-hidden bg-white/10">
             <img
-              src="https://cdn.prod.website-files.com/65b22ee2a70bd488c02e918e/65b76cba145d5b167f9c596c_research-image-4.webp"
+              src="/symmetrica/media/a0dedeaf1853b0df.webp"
               alt="Dentograf"
               loading="lazy"
               className="w-full h-full object-cover"

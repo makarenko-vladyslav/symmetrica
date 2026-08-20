@@ -14,10 +14,10 @@ export default function Hero() {
           muted
           loop
           playsInline
-          poster="https://cdn.prod.website-files.com/65b22ee2a70bd488c02e918e%2F69ccddd651f817894d3f03fd_IMG_6295_poster.0000000.jpg"
+          poster="/symmetrica/media/6316077a007d752f.jpg"
           className="w-full h-full object-cover"
         >
-          <source src="https://cdn.prod.website-files.com/65b22ee2a70bd488c02e918e%2F69ccddd651f817894d3f03fd_IMG_6295_mp4.mp4" type="video/mp4" />
+          <source src="/symmetrica/media/200f4c779d0cf8fe.mp4" type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-gradient-to-b from-[hsl(162_55%_8%/0.9)] via-[hsl(162_55%_8%/0.7)] to-[hsl(162_55%_8%/0.95)]" />
       </div>

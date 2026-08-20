@@ -14,7 +14,7 @@ export default function AnesthesiaSection() {
           <div className="lg:col-span-5 relative">
             <div className="aspect-[3/4] rounded-2xl overflow-hidden bg-gray-100 border border-gray-200 shadow-md">
               <img
-                src="https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/6922f46f4ffa72d4d7099cfb_bigan-removebg-preview.webp"
+                src="/symmetrica/media/3b8eb4da114fd720.webp"
                 alt={String(t("anesthesia.doctorName"))}
                 loading="lazy"
                 className="w-full h-full object-cover object-top"

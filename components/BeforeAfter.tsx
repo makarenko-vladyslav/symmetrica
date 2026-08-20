@@ -28,8 +28,8 @@ export default function BeforeAfter() {
                 <img
                   src={
                     idx === 0
-                      ? "https://cdn.prod.website-files.com/65b22ee2a70bd488c02e918e/66a8ce4cf2f9e76340956062_1440_how-works-bg.webp"
-                      : "https://cdn.prod.website-files.com/65b22ee2a70bd488c02e918e/65b7d691b76e5f6f01875d44_awward-news-1.webp"
+                      ? "/symmetrica/media/885c7eb3f928f466.webp"
+                      : "/symmetrica/media/809da82708f4d0c2.webp"
                   }
                   alt={c.title}
                   loading="lazy"
