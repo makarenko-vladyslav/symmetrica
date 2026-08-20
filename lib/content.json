@@ -72,7 +72,7 @@
             "price": "120 000 UAH",
             "tag": "Хірургічний протокол",
             "isSignature": true,
-            "img": "https://cdn.prod.website-files.com/65b22ee2a70bd488c02e918e/6659cb6805d7fc2915dd42de_%D1%96%D0%BC%D0%BF%D0%BB%D0%B0%D0%BD%D1%82%D0%B0%D1%86%D1%96%D1%8F.webp"
+            "img": "/symmetrica/media/aacdf9085432ae20.webp"
           },
           {
             "id": "implant_straumann",
@@ -82,7 +82,7 @@
             "price": "24 500 UAH",
             "tag": "Straumann SLAactive",
             "isSignature": false,
-            "img": "https://cdn.prod.website-files.com/65b22ee2a70bd488c02e918e/65b76cba7d575c31abae62e8_research-image-1.webp"
+            "img": "/symmetrica/media/7c9c5fd8d30c7c4b.webp"
           },
           {
             "id": "implant_megagen",
@@ -92,7 +92,7 @@
             "price": "14 500 UAH",
             "tag": "Megagen AnyRidge",
             "isSignature": false,
-            "img": "https://cdn.prod.website-files.com/65b22ee2a70bd488c02e918e/65b76cba7d575c31abae62e8_research-image-1.webp"
+            "img": "/symmetrica/media/7c9c5fd8d30c7c4b.webp"
           },
           {
             "id": "veneers",
@@ -102,7 +102,7 @@
             "price": "12 500 UAH",
             "tag": "E-max Кераміка",
             "isSignature": false,
-            "img": "https://cdn.prod.website-files.com/65b22ee2a70bd488c02e918e/65b7d691b76e5f6f01875d44_awward-news-1.webp"
+            "img": "/symmetrica/media/809da82708f4d0c2.webp"
           },
           {
             "id": "splint",
@@ -112,7 +112,7 @@
             "price": "18 000 UAH",
             "tag": "Гнатологія СНЩС",
             "isSignature": false,
-            "img": "https://cdn.prod.website-files.com/65b22ee2a70bd488c02e918e/65b76cc2a1a2d766f74db929_research-image-3.webp"
+            "img": "/symmetrica/media/72a9f05bc7dcf0db.webp"
           },
           {
             "id": "sedation",
@@ -122,7 +122,7 @@
             "price": "6 000 UAH / год",
             "tag": "Ліцензована седація",
             "isSignature": false,
-            "img": "https://cdn.prod.website-files.com/65b22ee2a70bd488c02e918e/681b1e8bf899772803dd4c7b_8e1180665795c3da9ae4e62d22e4b3065cdf1840-p-800.webp"
+            "img": "/symmetrica/media/c55158e0d830edb2.webp"
           },
           {
             "id": "crown_zirconia",
@@ -132,7 +132,7 @@
             "price": "11 800 UAH",
             "tag": "Symmetrica Tech 24h",
             "isSignature": false,
-            "img": "https://cdn.prod.website-files.com/65b22ee2a70bd488c02e918e/66a8ce4cf2f9e76340956062_1440_how-works-bg.webp"
+            "img": "/symmetrica/media/885c7eb3f928f466.webp"
           },
           {
             "id": "ortho_invisalign",
@@ -142,7 +142,7 @@
             "price": "22 000 UAH",
             "tag": "Invisalign System",
             "isSignature": false,
-            "img": "https://cdn.prod.website-files.com/65b22ee2a70bd488c02e918e/65b76cba519fa489ce0cb3e9_research-image-2.webp"
+            "img": "/symmetrica/media/fa8ddb7a5c67681b.webp"
           }
         ],
         "footnote": "У вартість кожної маніпуляції включено місцеву анестезію, персональний сервіс та гарантійне обслуговування за договором.",
@@ -195,17 +195,17 @@
           {
             "name": "3D-комп'ютерна томографія (КТ)",
             "desc": "Візуалізація кісткової тканини та анатомічних структур у 3 проекціях з мінімальним променевим навантаженням.",
-            "img": "https://cdn.prod.website-files.com/65b22ee2a70bd488c02e918e/65b76cba7d575c31abae62e8_research-image-1.webp"
+            "img": "/symmetrica/media/7c9c5fd8d30c7c4b.webp"
           },
           {
             "name": "Інтраоральне 3D-сканування",
             "desc": "Цифровий відбиток зубів без неприємних силіконових мас за лічені хвилини.",
-            "img": "https://cdn.prod.website-files.com/65b22ee2a70bd488c02e918e/65b76cba519fa489ce0cb3e9_research-image-2.webp"
+            "img": "/symmetrica/media/fa8ddb7a5c67681b.webp"
           },
           {
             "name": "Електроміографія & Dentograf",
             "desc": "Аналіз роботи жувальних м'язів та динамічна візуалізація рухів суглоба (СНЩС).",
-            "img": "https://cdn.prod.website-files.com/65b22ee2a70bd488c02e918e/65b76cc2a1a2d766f74db929_research-image-3.webp"
+            "img": "/symmetrica/media/72a9f05bc7dcf0db.webp"
           }
         ]
       },
@@ -214,23 +214,23 @@
         "title": "Команда провідних лікарів та хірургів",
         "subtitle": "17 висококваліфікованих спеціалістів, які працюють за єдиним міжнародним протоколом.",
         "members": [
-          { "name": "Андрій Іванців", "role": "Засновник, ортодонт, ортопед", "img": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/6922f52c673c4b16cc37800b_ivanciv_a.webp" },
-          { "name": "Мар'ян Шляхта", "role": "Медичний директор, ортодонт", "img": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/69149b27ee2978af4c8c587d_shlyakhta.webp" },
-          { "name": "Олександр Біган", "role": "Керівник анестезіологічної служби", "img": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/6922f46f4ffa72d4d7099cfb_bigan-removebg-preview.webp" },
-          { "name": "Андрій Гриневич", "role": "Хірург-імплантолог, ортопед", "img": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/69149ad283c01f7f4d3acb1c_grynavich.webp" },
-          { "name": "Марія Лис", "role": "Стоматолог-терапевт", "img": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/69149aba00f14af00b2d6dfa_lus.webp" },
-          { "name": "Олексій Мотрук", "role": "Стоматолог-хірург", "img": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/695f88598c93ec8ba1edd93a_oleksiy-motruk.png" },
-          { "name": "Поліна Сухенко", "role": "Стоматолог-пародонтолог", "img": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/6953df50f03c26feba8b7e60_polina-suhenko-paradontolog.png" },
-          { "name": "Павло Троєцький", "role": "Стоматолог-ортопед", "img": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/69e086f5124d0fad2570c438_pavlo-troieckiy-likar.png" },
-          { "name": "Вікторія Стадницька", "role": "Стоматолог-ортопед", "img": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/6953c947d602dd2a84576c7c_viktoriya-kulyavec-likar-ortoped.png" },
-          { "name": "Аліна Сняк", "role": "Стоматолог-гігієніст", "img": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/69149b111161792dceda6fc4_snyak.webp" },
-          { "name": "Тарас Яріш", "role": "Хірург-стоматолог", "img": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/69149adb6b5b29b799279b23_Yarish.webp" },
-          { "name": "Максим Калужний", "role": "Стоматолог-ортопед", "img": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/69149b1b11e8cbcb70b0f604_kalushny.webp" },
-          { "name": "Софія Іванців", "role": "Спеціаліст цифрової діагностики", "img": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/6953dea203eab3b018f11864_sofiya-ivanciv-likar.png" },
-          { "name": "Дудун Ірена", "role": "Стоматолог-терапевт", "img": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/69f1f38dcc15c785218b1e84_dudun-irena.png" },
+          { "name": "Андрій Іванців", "role": "Засновник, ортодонт, ортопед", "img": "/symmetrica/media/51a51560a19b2cee.webp" },
+          { "name": "Мар'ян Шляхта", "role": "Медичний директор, ортодонт", "img": "/symmetrica/media/247d6caee60cc15c.webp" },
+          { "name": "Олександр Біган", "role": "Керівник анестезіологічної служби", "img": "/symmetrica/media/3b8eb4da114fd720.webp" },
+          { "name": "Андрій Гриневич", "role": "Хірург-імплантолог, ортопед", "img": "/symmetrica/media/81835ab515aacd41.webp" },
+          { "name": "Марія Лис", "role": "Стоматолог-терапевт", "img": "/symmetrica/media/624261bdfd362601.webp" },
+          { "name": "Олексій Мотрук", "role": "Стоматолог-хірург", "img": "/symmetrica/media/c417ed967411cbe4.png" },
+          { "name": "Поліна Сухенко", "role": "Стоматолог-пародонтолог", "img": "/symmetrica/media/c13053bdf0336708.png" },
+          { "name": "Павло Троєцький", "role": "Стоматолог-ортопед", "img": "/symmetrica/media/26ff80a8c22cc187.png" },
+          { "name": "Вікторія Стадницька", "role": "Стоматолог-ортопед", "img": "/symmetrica/media/ec5c541227a96510.png" },
+          { "name": "Аліна Сняк", "role": "Стоматолог-гігієніст", "img": "/symmetrica/media/539fa33775fe6074.webp" },
+          { "name": "Тарас Яріш", "role": "Хірург-стоматолог", "img": "/symmetrica/media/0320ef1aaa2d2624.webp" },
+          { "name": "Максим Калужний", "role": "Стоматолог-ортопед", "img": "/symmetrica/media/3ca5e60656096f00.webp" },
+          { "name": "Софія Іванців", "role": "Спеціаліст цифрової діагностики", "img": "/symmetrica/media/2dbab86817309d8e.png" },
+          { "name": "Дудун Ірена", "role": "Стоматолог-терапевт", "img": "/symmetrica/media/b145b8b00e01968e.png" },
           { "name": "Наталя Понаморьова", "role": "Стоматолог-терапевт", "img": null },
           { "name": "Андрій Комащенко", "role": "Лікар-анестезіолог", "img": null },
-          { "name": "Оксана Іванців", "role": "Стоматолог-терапевт", "img": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/69149b2fd624b9ea6cc76194_ivanciv_o.webp" }
+          { "name": "Оксана Іванців", "role": "Стоматолог-терапевт", "img": "/symmetrica/media/9dc70900cc6ab8d3.webp" }
         ]
       },
       "testimonials": {
@@ -428,7 +428,7 @@
             "price": "120,000 UAH",
             "tag": "Surgical Protocol",
             "isSignature": true,
-            "img": "https://cdn.prod.website-files.com/65b22ee2a70bd488c02e918e/6659cb6805d7fc2915dd42de_%D1%96%D0%BC%D0%BF%D0%BB%D0%B0%D0%BD%D1%82%D0%B0%D1%86%D1%96%D1%8F.webp"
+            "img": "/symmetrica/media/aacdf9085432ae20.webp"
           },
           {
             "id": "implant_straumann",
@@ -438,7 +438,7 @@
             "price": "24,500 UAH",
             "tag": "Straumann SLAactive",
             "isSignature": false,
-            "img": "https://cdn.prod.website-files.com/65b22ee2a70bd488c02e918e/65b76cba7d575c31abae62e8_research-image-1.webp"
+            "img": "/symmetrica/media/7c9c5fd8d30c7c4b.webp"
           },
           {
             "id": "implant_megagen",
@@ -448,7 +448,7 @@
             "price": "14,500 UAH",
             "tag": "Megagen AnyRidge",
             "isSignature": false,
-            "img": "https://cdn.prod.website-files.com/65b22ee2a70bd488c02e918e/65b76cba7d575c31abae62e8_research-image-1.webp"
+            "img": "/symmetrica/media/7c9c5fd8d30c7c4b.webp"
           },
           {
             "id": "veneers",
@@ -458,7 +458,7 @@
             "price": "12,500 UAH",
             "tag": "E-max Ceramic",
             "isSignature": false,
-            "img": "https://cdn.prod.website-files.com/65b22ee2a70bd488c02e918e/65b7d691b76e5f6f01875d44_awward-news-1.webp"
+            "img": "/symmetrica/media/809da82708f4d0c2.webp"
           },
           {
             "id": "splint",
@@ -468,7 +468,7 @@
             "price": "18,000 UAH",
             "tag": "Gnathology TMJ",
             "isSignature": false,
-            "img": "https://cdn.prod.website-files.com/65b22ee2a70bd488c02e918e/65b76cc2a1a2d766f74db929_research-image-3.webp"
+            "img": "/symmetrica/media/72a9f05bc7dcf0db.webp"
           },
           {
             "id": "sedation",
@@ -478,7 +478,7 @@
             "price": "6,000 UAH / hour",
             "tag": "Licensed Sedation",
             "isSignature": false,
-            "img": "https://cdn.prod.website-files.com/65b22ee2a70bd488c02e918e/681b1e8bf899772803dd4c7b_8e1180665795c3da9ae4e62d22e4b3065cdf1840-p-800.webp"
+            "img": "/symmetrica/media/c55158e0d830edb2.webp"
           },
           {
             "id": "crown_zirconia",
@@ -488,7 +488,7 @@
             "price": "11,800 UAH",
             "tag": "Symmetrica Tech 24h",
             "isSignature": false,
-            "img": "https://cdn.prod.website-files.com/65b22ee2a70bd488c02e918e/66a8ce4cf2f9e76340956062_1440_how-works-bg.webp"
+            "img": "/symmetrica/media/885c7eb3f928f466.webp"
           },
           {
             "id": "ortho_invisalign",
@@ -498,7 +498,7 @@
             "price": "22,000 UAH",
             "tag": "Invisalign System",
             "isSignature": false,
-            "img": "https://cdn.prod.website-files.com/65b22ee2a70bd488c02e918e/65b76cba519fa489ce0cb3e9_research-image-2.webp"
+            "img": "/symmetrica/media/fa8ddb7a5c67681b.webp"
           }
         ],
         "footnote": "Every procedure rate includes local anesthesia, personal coordinator support, and official warranty.",
@@ -551,17 +551,17 @@
           {
             "name": "3D Computed Tomography (CT)",
             "desc": "3D jaw structure mapping with minimal radiation exposure.",
-            "img": "https://cdn.prod.website-files.com/65b22ee2a70bd488c02e918e/65b76cba7d575c31abae62e8_research-image-1.webp"
+            "img": "/symmetrica/media/7c9c5fd8d30c7c4b.webp"
           },
           {
             "name": "Intraoral 3D Digital Scanning",
             "desc": "Precise digital impressions in minutes without uncomfortable silicone molds.",
-            "img": "https://cdn.prod.website-files.com/65b22ee2a70bd488c02e918e/65b76cba519fa489ce0cb3e9_research-image-2.webp"
+            "img": "/symmetrica/media/fa8ddb7a5c67681b.webp"
           },
           {
             "name": "Electromyography & Dentograf",
             "desc": "Dynamic visual tracking of masticatory muscle balance and TMJ joint movement.",
-            "img": "https://cdn.prod.website-files.com/65b22ee2a70bd488c02e918e/65b76cc2a1a2d766f74db929_research-image-3.webp"
+            "img": "/symmetrica/media/72a9f05bc7dcf0db.webp"
           }
         ]
       },
@@ -570,23 +570,23 @@
         "title": "Symmetrica Dental Specialists",
         "subtitle": "17 specialized doctors working under unified international protocols.",
         "members": [
-          { "name": "Andriy Ivantsiv", "role": "Founder, orthodontist, orthopedist", "img": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/6922f52c673c4b16cc37800b_ivanciv_a.webp" },
-          { "name": "Marian Shliakhta", "role": "Medical Director, orthodontist", "img": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/69149b27ee2978af4c8c587d_shlyakhta.webp" },
-          { "name": "Oleksandr Bihan", "role": "Head of Anesthesiology", "img": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/6922f46f4ffa72d4d7099cfb_bigan-removebg-preview.webp" },
-          { "name": "Andriy Grynevych", "role": "Implantologist, surgeon", "img": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/69149ad283c01f7f4d3acb1c_grynavich.webp" },
-          { "name": "Mariya Lys", "role": "General dentist", "img": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/69149aba00f14af00b2d6dfa_lus.webp" },
-          { "name": "Oleksiy Motruk", "role": "Dental surgeon", "img": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/695f88598c93ec8ba1edd93a_oleksiy-motruk.png" },
-          { "name": "Polina Suhenko", "role": "Periodontist", "img": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/6953df50f03c26feba8b7e60_polina-suhenko-paradontolog.png" },
-          { "name": "Pavlo Troieckiy", "role": "Orthopedist", "img": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/69e086f5124d0fad2570c438_pavlo-troieckiy-likar.png" },
-          { "name": "Viktoriya Stadnytska", "role": "Orthopedist", "img": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/6953c947d602dd2a84576c7c_viktoriya-kulyavec-likar-ortoped.png" },
-          { "name": "Alina Snyak", "role": "Hygienist", "img": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/69149b111161792dceda6fc4_snyak.webp" },
-          { "name": "Taras Yarish", "role": "Dental surgeon", "img": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/69149adb6b5b29b799279b23_Yarish.webp" },
-          { "name": "Maksym Kalushny", "role": "Orthopedist", "img": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/69149b1b11e8cbcb70b0f604_kalushny.webp" },
-          { "name": "Sofiya Ivantsiv", "role": "Digital Diagnostics", "img": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/6953dea203eab3b018f11864_sofiya-ivanciv-likar.png" },
-          { "name": "Dudun Irena", "role": "General dentist", "img": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/69f1f38dcc15c785218b1e84_dudun-irena.png" },
+          { "name": "Andriy Ivantsiv", "role": "Founder, orthodontist, orthopedist", "img": "/symmetrica/media/51a51560a19b2cee.webp" },
+          { "name": "Marian Shliakhta", "role": "Medical Director, orthodontist", "img": "/symmetrica/media/247d6caee60cc15c.webp" },
+          { "name": "Oleksandr Bihan", "role": "Head of Anesthesiology", "img": "/symmetrica/media/3b8eb4da114fd720.webp" },
+          { "name": "Andriy Grynevych", "role": "Implantologist, surgeon", "img": "/symmetrica/media/81835ab515aacd41.webp" },
+          { "name": "Mariya Lys", "role": "General dentist", "img": "/symmetrica/media/624261bdfd362601.webp" },
+          { "name": "Oleksiy Motruk", "role": "Dental surgeon", "img": "/symmetrica/media/c417ed967411cbe4.png" },
+          { "name": "Polina Suhenko", "role": "Periodontist", "img": "/symmetrica/media/c13053bdf0336708.png" },
+          { "name": "Pavlo Troieckiy", "role": "Orthopedist", "img": "/symmetrica/media/26ff80a8c22cc187.png" },
+          { "name": "Viktoriya Stadnytska", "role": "Orthopedist", "img": "/symmetrica/media/ec5c541227a96510.png" },
+          { "name": "Alina Snyak", "role": "Hygienist", "img": "/symmetrica/media/539fa33775fe6074.webp" },
+          { "name": "Taras Yarish", "role": "Dental surgeon", "img": "/symmetrica/media/0320ef1aaa2d2624.webp" },
+          { "name": "Maksym Kalushny", "role": "Orthopedist", "img": "/symmetrica/media/3ca5e60656096f00.webp" },
+          { "name": "Sofiya Ivantsiv", "role": "Digital Diagnostics", "img": "/symmetrica/media/2dbab86817309d8e.png" },
+          { "name": "Dudun Irena", "role": "General dentist", "img": "/symmetrica/media/b145b8b00e01968e.png" },
           { "name": "Natalya Ponamorova", "role": "General dentist", "img": null },
           { "name": "Andriy Komashchenko", "role": "Anesthesiologist", "img": null },
-          { "name": "Oksana Ivantsiv", "role": "General dentist", "img": "https://cdn.prod.website-files.com/65b82f4efc1dcbcde2d4e2c5/69149b2fd624b9ea6cc76194_ivanciv_o.webp" }
+          { "name": "Oksana Ivantsiv", "role": "General dentist", "img": "/symmetrica/media/9dc70900cc6ab8d3.webp" }
         ]
       },
       "testimonials": {

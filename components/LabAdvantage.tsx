@@ -52,7 +52,7 @@ export default function LabAdvantage() {
           <div className="lg:col-span-7 relative">
             <div className="rounded-2xl overflow-hidden border border-primary/10 shadow-lg h-80">
               <img
-                src="https://cdn.prod.website-files.com/65b22ee2a70bd488c02e918e/66a8ce4cf2f9e76340956062_1440_how-works-bg.webp"
+                src="/symmetrica/media/885c7eb3f928f466.webp"
                 alt={t('lab.labTitleAlt') as string}
                 className="w-full h-full object-cover"
                 loading="lazy"

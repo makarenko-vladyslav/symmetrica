@@ -16,7 +16,7 @@ export default function Hero() {
           muted
           loop
           playsInline
-          poster="https://cdn.prod.website-files.com/65b22ee2a70bd488c02e918e%2F69ccddd651f817894d3f03fd_IMG_6295_poster.0000000.jpg"
+          poster="/symmetrica/media/6316077a007d752f.jpg"
           className="w-full h-full object-cover opacity-30 scale-105"
         >
           <source src="https://videos.pexels.com/video-files/6998091/6998091-hd_1920_1080_25fps.mp4" type="video/mp4" />
@@ -134,7 +134,7 @@ export default function Hero() {
               <div className="relative rounded-3xl bg-white/10 backdrop-blur-md p-6 border border-white/20 shadow-2xl text-white">
                 <div className="relative h-64 rounded-2xl overflow-hidden mb-5">
                   <img
-                    src="https://cdn.prod.website-files.com/65b22ee2a70bd488c02e918e/6659cb6805d7fc2915dd42de_%D1%96%D0%BC%D0%BF%D0%BB%D0%B0%D0%BD%D1%82%D0%B0%D1%86%D1%96%D1%8F.webp"
+                    src="/symmetrica/media/aacdf9085432ae20.webp"
                     alt={t('hero.implantationModelAlt') as string}
                     className="w-full h-full object-cover"
                     loading="lazy"
